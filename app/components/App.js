@@ -1,5 +1,4 @@
 var React = require('react');
-//var videoList = require('./VideosContainer.js');
 
 var testComponent=React.createClass({
     render: function () {

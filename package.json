@@ -6,7 +6,6 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server"
-
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   },
   "homepage": "https://github.com/LukePepper/video#readme",
   "dependencies": {
+    "json-loader": "^0.5.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
   },
