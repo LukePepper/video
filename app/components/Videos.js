@@ -138,9 +138,9 @@ var Videos=React.createClass({
 
     createVideoContentsArrays: function(video){
         this.createVideoSections(video.section);//add all sections to an array
-
+        
         var currentVideoData=[
-            [video.title,video.src,video.subsection],
+            video.title,video.src,video.subsection
         ];
 
         var currentSectionIndex=videosSectionArray.indexOf(video.section);
@@ -151,9 +151,8 @@ var Videos=React.createClass({
             videosData[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exisits
         }
         else{
-            videosData.push(currentVideoData); //add this video data to an array as a new row
+            videosData[currentSectionIndex]=[currentVideoData];
         }
-
     },
 
     createVideos: function (video) {
@@ -166,25 +165,20 @@ var Videos=React.createClass({
         )
     },
 
-    createHeading: function(sectionIndex) {
-        var sectionHeading=videosSectionArray[sectionIndex];
-
-        return (
-            <h3>{sectionHeading}</h3>
-        )
-    },
-
     createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
 
         var videoSectionsData = videosSectionArray.map(function(headingName, index){
 
-            var sectionData =  videosData[index].map(function(dataElements, index){
-                return <li>{dataElements}</li>;
+            var sectionData =  videosData[index].map(function(dataElements, index2){
+                console.log(dataElements);
+                return (
+                    <li src={dataElements[1]} key={index2}> {dataElements[0]} </li>
+                );
             });
 
             return (
-                <div>
+                <div key={index}>
                     <h3>{headingName}</h3>
                     <ul>{sectionData}</ul>
                 </div>
