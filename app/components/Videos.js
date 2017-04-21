@@ -45,7 +45,6 @@ var Videos=React.createClass({
     playVideo: function(videoSrc){
         this.setState({currentVideo: videoSrc});
         this.setState({videoAutoPlay: 'autoplay'});
-        this.refs.video.play();
     },
     createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
