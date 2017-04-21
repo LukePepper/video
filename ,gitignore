@@ -1,1 +1,4 @@
-app/videos
+videos/
+build/
+node_modules/
+
