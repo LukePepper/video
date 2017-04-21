@@ -3,6 +3,7 @@ var React=require('react');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var VideoPlayer = require('./VideoPlayer');
+var Modal = require('./modal');
 
 //todo convert React.createClass to ES6 type class
 var Videos=React.createClass({
@@ -13,6 +14,7 @@ var Videos=React.createClass({
             playVideoData: '',
             sections: new Array(),
             videosData: new Array(),
+            isModalOpen: false
         };
     },
     createSections: function(section){
@@ -45,6 +47,7 @@ var Videos=React.createClass({
     playVideo: function(videoSrc){
         this.setState({currentVideo: videoSrc});
         this.setState({videoAutoPlay: 'autoplay'});
+        this.openModal();
     },
     createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
@@ -66,7 +69,15 @@ var Videos=React.createClass({
             </div>
         );
     },
+    openModal: function() {
+        this.setState({ isModalOpen: true })
+    },
+    closeModal: function() {
+        this.setState({ isModalOpen: false })
+    },
     componentWillMount: function(){
+
+
        var self=this;//used to access root
        var videosData=this.state.videosData;
        var sectionsArray=this.state.sections;
@@ -91,15 +102,27 @@ var Videos=React.createClass({
         var currentVideo = videoPath+this.state.currentVideo;
         var videoAutoPlay = this.state.videoAutoPlay;
         var videoSectionsData = this.state.playVideoData;
+        var isModalOpen=this.state.isModalOpen;
+        var self=this;
 
         return (
+
             <div id="videoPlayerContainer">
-                <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
-                <div className="choose-video">
-                    {videoSectionsData}
+                <div className="col-sm-1 col-md-2"></div>
+                <div className="col-sm-10 col-md-8">
+                    <h2>Videos</h2>
+                    <div className="choose-video" >
+                        {videoSectionsData}
+                    </div>
                 </div>
+                <div className="col-sm-1 col-md-2"></div>
+                <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
+                    <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
+                </Modal>
             </div>
         );
     }
 });
+
+
 module.exports=Videos;

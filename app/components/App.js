@@ -4,12 +4,11 @@ var Videos = require('./Videos');
 var appComponent=React.createClass({
     render: function () {
         return(
-            <div>
-                <Videos />
-            </div>
+            <Videos />
         )
     }
 });
+
 module.exports=appComponent;
 
 
