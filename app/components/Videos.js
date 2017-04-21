@@ -31,9 +31,9 @@ var Videos=React.createClass({
     createVideoContentsArrays: function(video){
         this.createVideoSections(video.section);//add all sections to an array
 
-        var currentVideoData=[
-            video.title,video.src,video.subsection
-        ];
+        var currentVideoData=
+            {videoTitle: video.title, videoSrc: video.src, videoSubsection: video.subsection}
+        ;
 
         var currentSectionIndex=videosSectionArray.indexOf(video.section);
         var currentVideosDataArrayRowContents=videosData[currentSectionIndex];//contents of the row at the moment
@@ -52,6 +52,7 @@ var Videos=React.createClass({
         this.setState({currentVideo: videoSrc});
         this.setState({videoAutoPlay: 'autoplay'});
         this.refs.video.play();
+        console.log('videoSrc: '+videoSrc);
     },
 
     createLists: function(listData){
@@ -74,17 +75,16 @@ var Videos=React.createClass({
        this.createLists(videosJSON.videos );//ingest the data from the JSON file
 
         var videoSectionsData = videosSectionArray.map(function(headingName, index){
-            var sectionData =  videosData[index].map(function(dataElements, index2){
-                openVideoComponent = self.createVideoOpenComponent(dataElements[1], dataElements[0], index2);
+            var videoPlayData =  videosData[index].map(function(videoDataElements, index2){
                 return (
-                    openVideoComponent
+                    self.createVideoOpenComponent( videoDataElements.videoSrc, videoDataElements.videoTitle, index2)
                 );
             });
 
             return (
                 <div key={index}>
                     <h3>{headingName}</h3>
-                    <ul>{sectionData}</ul>
+                    <ul>{videoPlayData}</ul>
                 </div>
             )
         });
@@ -97,6 +97,7 @@ var Videos=React.createClass({
         var videoAutoPlay = this.state.videoAutoPlay;
         var videoSectionsData = this.state.videoSectionData;
 
+        //todo move video-container to its own component
         return (
             <div>
                 <div className="video-container">
