@@ -17,11 +17,6 @@ var Videos=React.createClass({
         };
     },
 
-    changeColor: function(){
-        var newColor = this.state.color == green ? red : green;
-        this.setState({color : newColor });
-    },
-
     createVideoSections: function(videoSection){
         //build an array of the various sections
         if(videosSectionArray.indexOf(videoSection)===-1) {
@@ -45,7 +40,7 @@ var Videos=React.createClass({
 
         if(currentVideosDataArrayRowContents!=undefined){
             currentVideosDataArrayRowContents.push(currentVideoData);
-            videosData[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exisits
+            videosData[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exists
         }
         else{
             videosData.push([currentVideoData]);
@@ -63,19 +58,26 @@ var Videos=React.createClass({
         listData.map(this.createVideoContentsArrays);
     },
 
+    createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex){
+        return (
+            <li key={componentIndex} >
+                <a href="#"  onClick={ () => this.playVideo(videoSrc) } >
+                    {videoTitle}
+                </a>
+            </li>
+        );
+    },
+
     componentWillMount: function(){
-       var self=this;//used for the <li> onClicks
+       var self=this;//used to access root
 
        this.createLists(videosJSON.videos );//ingest the data from the JSON file
 
         var videoSectionsData = videosSectionArray.map(function(headingName, index){
             var sectionData =  videosData[index].map(function(dataElements, index2){
+                openVideoComponent = self.createVideoOpenComponent(dataElements[1], dataElements[0], index2);
                 return (
-                    <li key={index2} >
-                        <a href="#"  onClick={ () => self.playVideo(dataElements[1]) } >
-                            {dataElements[0]}
-                        </a>
-                    </li>
+                    openVideoComponent
                 );
             });
 
