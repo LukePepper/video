@@ -4,48 +4,51 @@ var React=require('react');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 
-var videosSectionArray = new Array();
-var videosData = new Array();
-
 var Videos=React.createClass({
 
     getInitialState: function(){
         return {
             currentVideo: 'starting_the_compressor.mp4',
             videoAutoplay: '',
-            playVideoData: ''
+            playVideoData: '',
+            sections: new Array(),
+            videosData: new Array(),
         };
     },
 
-    createVideoSections: function(videoSection){
+    createSections: function(section){
+        sectionsArray=this.state.sections;
+
         //build an array of the various sections
-        if(videosSectionArray.indexOf(videoSection)===-1) {
-            videosSectionArray.push(videoSection);
+        if(sectionsArray.indexOf(section)===-1) {
+            sectionsArray.push(section);
         }
 
-        //todo add the array to state
-        return videosSectionArray;
+        this.setState({sections: sectionsArray});
+
+        return sectionsArray;
 
     },
 
     createVideoContentsArrays: function(video){
-        this.createVideoSections(video.section);//add all sections to an array
+        sectionArray = this.createSections(video.section);//adds all sections to an array
+        videosDataArray=this.state.videosData;
 
-        var currentVideoData=
-            {videoTitle: video.title, videoSrc: video.src, videoSubsection: video.subsection}
-        ;
+        var currentVideoData={title: video.title, src: video.src, subsection: video.subsection};
 
-        var currentSectionIndex=videosSectionArray.indexOf(video.section);
-        var currentVideosDataArrayRowContents=videosData[currentSectionIndex];//contents of the row at the moment
+        var currentSectionIndex=sectionArray.indexOf(video.section);
+        var currentVideosDataArrayRowContents=videosDataArray[currentSectionIndex];//contents of the row at the moment
 
         if(currentVideosDataArrayRowContents!=undefined){
             currentVideosDataArrayRowContents.push(currentVideoData);
-            videosData[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exists
+            videosDataArray[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exists
         }
         else{
-            videosData.push([currentVideoData]);
+            videosDataArray.push([currentVideoData]);
         }
+        this.setState({videosData: videosDataArray});
     },
+
 
     playVideo: function(videoSrc){
         this.setState({currentVideo: videoSrc});
@@ -79,13 +82,15 @@ var Videos=React.createClass({
 
     componentWillMount: function(){
        var self=this;//used to access root
+       var videosData=this.state.videosData;
+       var sectionsArray=this.state.sections;
 
        this.createLists(videosJSON.videos );//ingest the data from the JSON file
 
-        var playVideosSectionsData = videosSectionArray.map(function(headingName, index){
+        var playVideosSectionsData = sectionsArray.map(function(headingName, index){
             var videoPlayData =  videosData[index].map(function(videoDataElements, index2){
                 return (
-                    self.createVideoOpenComponent( videoDataElements.videoSrc, videoDataElements.videoTitle, index2)
+                    self.createVideoOpenComponent( videoDataElements.src, videoDataElements.title, index2)
                 );
             });
 
