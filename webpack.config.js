@@ -4,6 +4,12 @@ var HTMLWebpackPluginConfig=new HTMLWebpackPlugin({
     filename: 'index.html',
     inject: 'body'
 });
+var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+var locals = {
+    routes: [
+        '/',
+    ]
+};
 module.exports = {
     entry: __dirname + '/app/index.js',
     module: {
@@ -20,4 +26,7 @@ module.exports = {
         path: __dirname + '/build'
     },
     plugins: [HTMLWebpackPluginConfig]
+},
+{
+
 };
