@@ -13,7 +13,7 @@ var Videos=React.createClass({
         return {
             currentVideo: 'starting_the_compressor.mp4',
             videoAutoplay: '',
-            videoSectionData: ''
+            playVideoData: ''
         };
     },
 
@@ -48,11 +48,10 @@ var Videos=React.createClass({
     },
 
     playVideo: function(videoSrc){
-        var videoToPlay = videoSrc;
         this.setState({currentVideo: videoSrc});
         this.setState({videoAutoPlay: 'autoplay'});
+
         this.refs.video.play();
-        console.log('videoSrc: '+videoSrc);
     },
 
     createLists: function(listData){
@@ -69,12 +68,21 @@ var Videos=React.createClass({
         );
     },
 
+    createPlayVideosSection: function(headingName, videoPlayData, index){
+        return(
+            <div key={index}>
+                <h3>{headingName}</h3>
+                <ul>{videoPlayData}</ul>
+            </div>
+        );
+    },
+
     componentWillMount: function(){
        var self=this;//used to access root
 
        this.createLists(videosJSON.videos );//ingest the data from the JSON file
 
-        var videoSectionsData = videosSectionArray.map(function(headingName, index){
+        var playVideosSectionsData = videosSectionArray.map(function(headingName, index){
             var videoPlayData =  videosData[index].map(function(videoDataElements, index2){
                 return (
                     self.createVideoOpenComponent( videoDataElements.videoSrc, videoDataElements.videoTitle, index2)
@@ -82,20 +90,17 @@ var Videos=React.createClass({
             });
 
             return (
-                <div key={index}>
-                    <h3>{headingName}</h3>
-                    <ul>{videoPlayData}</ul>
-                </div>
+                self.createPlayVideosSection(headingName, videoPlayData, index)
             )
         });
 
-        this.setState({videoSectionData: videoSectionsData});
+        this.setState({playVideoData: playVideosSectionsData});
     },
 
     render: function () {
         var currentVideo = videoPath+this.state.currentVideo;
         var videoAutoPlay = this.state.videoAutoPlay;
-        var videoSectionsData = this.state.videoSectionData;
+        var videoSectionsData = this.state.playVideoData;
 
         //todo move video-container to its own component
         return (
