@@ -2,6 +2,7 @@
 var React=require('react');
 //var ReactDOM=require('react-dom');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
+var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 
 var videosSectionArray = new Array();
 var videosData = new Array();
@@ -10,7 +11,9 @@ var Videos=React.createClass({
 
     getInitialState: function(){
         return {
-            currentVideo: 'starting_the_compressor.mp4'
+            currentVideo: 'starting_the_compressor.mp4',
+            videoAutoplay: '',
+            videoSectionData: ''
         };
     },
 
@@ -52,33 +55,29 @@ var Videos=React.createClass({
     playVideo: function(videoSrc){
         var videoToPlay = videoSrc;
         this.setState({currentVideo: videoSrc});
+        this.setState({videoAutoPlay: 'autoplay'});
+        this.refs.video.play();
     },
 
     createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
     },
 
-    render: function () {
-        //initialise the arrays
-        videosSectionArray = new Array();
-        videosData = new Array();
+    componentWillMount: function(){
+       var self=this;//used for the <li> onClicks
 
-        var dataToRender =  this.createLists(videosJSON.videos );
-        var self=this;//used for the <li> onClicks
-
-        var currentVideo = '../videos/'+this.state.currentVideo;
+       this.createLists(videosJSON.videos );//ingest the data from the JSON file
 
         var videoSectionsData = videosSectionArray.map(function(headingName, index){
             var sectionData =  videosData[index].map(function(dataElements, index2){
                 return (
                     <li key={index2} >
-                        <a href="#"  onClick={() => self.playVideo(dataElements[1])} >
-                           {dataElements[0]}
+                        <a href="#"  onClick={ () => self.playVideo(dataElements[1]) } >
+                            {dataElements[0]}
                         </a>
                     </li>
                 );
             });
-
 
             return (
                 <div key={index}>
@@ -88,10 +87,18 @@ var Videos=React.createClass({
             )
         });
 
+        this.setState({videoSectionData: videoSectionsData});
+    },
+
+    render: function () {
+        var currentVideo = videoPath+this.state.currentVideo;
+        var videoAutoPlay = this.state.videoAutoPlay;
+        var videoSectionsData = this.state.videoSectionData;
+
         return (
             <div>
                 <div className="video-container">
-                    <video controls type="video/mp4" id="videoPlayer" preload src={currentVideo}></video>
+                    <video controls type="video/mp4" id="videoPlayer" preload src={currentVideo} ref="video" autoPlay={videoAutoPlay} ></video>
                 </div>
                 <div className="choose-video">
                     {videoSectionsData}
