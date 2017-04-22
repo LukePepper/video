@@ -5,6 +5,8 @@ var videoPath = '../videos/';//change this to http:// for non-local videos hoste
 var VideoPlayer = require('./VideoPlayer');
 var Modal = require('./modal');
 
+//todo *** Set class to watched for videos that have been watched ****
+
 //todo convert React.createClass to ES6 type class
 var Videos=React.createClass({
     getInitialState: function(){
@@ -14,7 +16,9 @@ var Videos=React.createClass({
             playVideoData: '',
             sections: new Array(),
             videosData: new Array(),
-            isModalOpen: false
+            isModalOpen: false,
+            prevVideo: false,
+            allVideosSrc: null,
         };
     },
     createSections: function(section){
@@ -75,9 +79,56 @@ var Videos=React.createClass({
     closeModal: function() {
         this.setState({ isModalOpen: false })
     },
+    skipVideo: function(direction, e){
+        currentVideoPosition=this.videoPosition(this.state.currentVideo);
+        var totalVideos=this.state.totalVideos;
+        var allVideosSrc=this.state.allVideosSrc;
+
+        //todo fix first run bug
+
+        console.log('this.state.currentVideo: '+this.state.currentVideo);
+        console.log('direction: '+direction);
+        console.log('currentVideo: '+currentVideoPosition);
+        console.log('totalVideos: '+totalVideos);
+        //todo only display < > if there is a next or prev
+
+        if(direction=='prev' && currentVideoPosition > 0){
+            nextVideo=currentVideoPosition--;
+            //todo add load video stuff
+            this.setState({currentVideo: allVideosSrc[nextVideo-1]});
+            console.log('1: '+ allVideosSrc[nextVideo-1]);
+            //this.refs.video.props.src=
+        }
+        else if(currentVideoPosition < totalVideos ){
+            nextVideo=currentVideoPosition+1;
+            console.log('2 - nextVideo: '+nextVideo);
+            //todo add load video stuff
+            this.setState({currentVideo: allVideosSrc[nextVideo+1]});
+            this.openModal();
+            console.log('2: '+ allVideosSrc[nextVideo+1]);
+            //this.refs.video.props.src=allVideosSrc[nextVideo+1];
+        }
+    },
+    videoPosition: function(video){
+        if(this.state.allVideosSrc==null) {
+            var videosData = this.state.videosData;
+            var allVideosSrc = new Array();
+
+            videosData.map(function (videoDataElements, index) {
+                videoDataElements.map(function (videoDataElements, index) {
+                    allVideosSrc.push(videoDataElements.src);
+                });
+            });
+            this.setState({allVideosSrc: allVideosSrc});
+            this.setState({totalVideos: allVideosSrc.length});
+        }
+        else{
+            allVideosSrc=this.state.allVideosSrc;
+        }
+        videoPosition=allVideosSrc.indexOf(video);
+        return videoPosition;
+    },
     componentWillMount: function(){
-
-
        var self=this;//used to access root
        var videosData=this.state.videosData;
        var sectionsArray=this.state.sections;
@@ -106,17 +157,18 @@ var Videos=React.createClass({
         var self=this;
 
         return (
-
             <div id="videoPlayerContainer">
-                <div className="col-sm-1 col-md-2"></div>
+                <div className="col-sm-1 col-md-2" />
                 <div className="col-sm-10 col-md-8">
                     <h2>Videos</h2>
                     <div className="choose-video" >
                         {videoSectionsData}
                     </div>
                 </div>
-                <div className="col-sm-1 col-md-2"></div>
+                <div className="col-sm-1 col-md-2" />
                 <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
+                    <div id="prevVideo" className="glyphicon glyphicon-chevron-left"  onClick={e => this.skipVideo('prev',e)} />
+                    <div id="nextVideo" className="glyphicon glyphicon-chevron-right" onClick={e => this.skipVideo('next',e)} />
                     <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
                 </Modal>
             </div>
