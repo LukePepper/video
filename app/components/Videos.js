@@ -17,8 +17,10 @@ var Videos=React.createClass({
             sections: new Array(),
             videosData: new Array(),
             isModalOpen: false,
-            prevVideo: false,
-            allVideosSrc: null,
+            allVideosSrc: new Array(),
+            totalVideos: 0,
+            showPrevVideo:false,
+            showNextVideo:true
         };
     },
     createSections: function(section){
@@ -34,6 +36,7 @@ var Videos=React.createClass({
     createVideoContentsArrays: function(video){
         sectionArray = this.createSections(video.section);//adds all sections to an array
         videosDataArray=this.state.videosData;
+        var allVideosSrc = this.state.allVideosSrc;
 
         var currentVideoData={title: video.title, src: video.src, subsection: video.subsection};
         var currentSectionIndex=sectionArray.indexOf(video.section);
@@ -46,11 +49,19 @@ var Videos=React.createClass({
         else{
             videosDataArray.push([currentVideoData]);
         }
-        this.setState({videosData: videosDataArray});
+        allVideosSrc.push(currentVideoData.src);
+
+        this.setState({
+            allVideosSrc: allVideosSrc,
+            totalVideos: allVideosSrc.length,
+            videosData: videosDataArray
+        });
     },
     playVideo: function(videoSrc){
-        this.setState({currentVideo: videoSrc});
-        this.setState({videoAutoPlay: 'autoplay'});
+        this.setState({
+            currentVideo: videoSrc,
+            videoAutoPlay: 'autoplay'
+        });
         this.openModal();
     },
     createLists: function(listData){
@@ -79,54 +90,30 @@ var Videos=React.createClass({
     closeModal: function() {
         this.setState({ isModalOpen: false })
     },
+    skipPrevButton: function(){
+        if(this.videoPosition(this.state.currentVideo)==0){return null};
+        return(
+            <div id="prevVideo" className="glyphicon glyphicon-chevron-left" ref="prev" onClick={e => this.skipVideo('prev',e)} />
+        );
+    },
+    skipNextButton: function(){
+        currentVideoPosition=this.videoPosition(this.state.currentVideo);
+        if(this.videoPosition(this.state.currentVideo)==(this.state.totalVideos-1)){return null};
+        return(
+            <div id="nextVideo" className="glyphicon glyphicon-chevron-right" ref="next" onClick={e => this.skipVideo('next',e)} />
+        );
+    },
     skipVideo: function(direction, e){
         currentVideoPosition=this.videoPosition(this.state.currentVideo);
-        var totalVideos=this.state.totalVideos;
-        var allVideosSrc=this.state.allVideosSrc;
-
-        //todo fix first run bug
-
-        console.log('this.state.currentVideo: '+this.state.currentVideo);
-        console.log('direction: '+direction);
-        console.log('currentVideo: '+currentVideoPosition);
-        console.log('totalVideos: '+totalVideos);
-        //todo only display < > if there is a next or prev
-
         if(direction=='prev' && currentVideoPosition > 0){
-            nextVideo=currentVideoPosition--;
-            //todo add load video stuff
-            this.setState({currentVideo: allVideosSrc[nextVideo-1]});
-            console.log('1: '+ allVideosSrc[nextVideo-1]);
-            //this.refs.video.props.src=
+            this.setState({currentVideo: this.state.allVideosSrc[currentVideoPosition-1]});
         }
-        else if(currentVideoPosition < totalVideos ){
-            nextVideo=currentVideoPosition+1;
-            console.log('2 - nextVideo: '+nextVideo);
-            //todo add load video stuff
-            this.setState({currentVideo: allVideosSrc[nextVideo+1]});
-            this.openModal();
-            console.log('2: '+ allVideosSrc[nextVideo+1]);
-            //this.refs.video.props.src=allVideosSrc[nextVideo+1];
+        else if(direction=='next' && currentVideoPosition < this.state.totalVideos-1 ){
+            this.setState({currentVideo: this.state.allVideosSrc[currentVideoPosition+1]});
         }
     },
     videoPosition: function(video){
-        if(this.state.allVideosSrc==null) {
-            var videosData = this.state.videosData;
-            var allVideosSrc = new Array();
-
-            videosData.map(function (videoDataElements, index) {
-                videoDataElements.map(function (videoDataElements, index) {
-                    allVideosSrc.push(videoDataElements.src);
-                });
-            });
-            this.setState({allVideosSrc: allVideosSrc});
-            this.setState({totalVideos: allVideosSrc.length});
-        }
-        else{
-            allVideosSrc=this.state.allVideosSrc;
-        }
-        videoPosition=allVideosSrc.indexOf(video);
-        return videoPosition;
+        return this.state.allVideosSrc.indexOf(video);
     },
     componentWillMount: function(){
        var self=this;//used to access root
@@ -141,12 +128,10 @@ var Videos=React.createClass({
                     self.createVideoOpenComponent( videoDataElements.src, videoDataElements.title, index2)
                 );
             });
-
             return (
                 self.createPlayVideosSection(headingName, videoPlayData, index)
             )
         });
-
         this.setState({playVideoData: playVideosSectionsData});
     },
     render: function () {
@@ -167,14 +152,13 @@ var Videos=React.createClass({
                 </div>
                 <div className="col-sm-1 col-md-2" />
                 <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
-                    <div id="prevVideo" className="glyphicon glyphicon-chevron-left"  onClick={e => this.skipVideo('prev',e)} />
-                    <div id="nextVideo" className="glyphicon glyphicon-chevron-right" onClick={e => this.skipVideo('next',e)} />
+                    {this.skipPrevButton()}
+                    {this.skipNextButton()}
                     <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
                 </Modal>
             </div>
         );
     }
 });
-
 
 module.exports=Videos;
