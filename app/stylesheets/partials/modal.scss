@@ -8,3 +8,11 @@
     width:80%;
     padding-bottom:0;
 }
+#likeButtonModal.glyphicon-heart{
+    font-size: 25px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    opacity: 0.5;
+    z-index: 11;
+}

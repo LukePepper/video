@@ -21,7 +21,8 @@ var Videos=React.createClass({
             totalVideos: 0,
             showPrevVideo: false,
             showNextVideo: true,
-            watchedVideos: new Array()
+            watchedVideos: new Array(),
+            likedVideos: new Array()
         };
     },
     createSections: function(section){
@@ -54,7 +55,7 @@ var Videos=React.createClass({
     createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex, numVideosRendered){
         return (
             <li key={componentIndex}>
-                <div class="glyphicon glyphicon-
+                <div className="glyphicon glyphicon-heart" id={"like_"+numVideosRendered} onClick={this.like} />
                 <a href="#"  onClick={this.playVideo} data-src={videoSrc} id={'video_'+numVideosRendered} >
                     {videoTitle}
                 </a>
@@ -68,6 +69,65 @@ var Videos=React.createClass({
                 <ul  key={index}>{videoPlayData}</ul>
             </div>
         );
+    },
+    like: function(event){
+        //todo refactor this
+        var likedVideos=this.state.likedVideos;
+
+        if(event.currentTarget.id == 'likeButtonModal'){
+            var thisVideoSrc=this.state.currentVideo;
+            if( likedVideos.indexOf(thisVideoSrc) === -1 ){
+                this.setLikeOnTitle(thisVideoSrc);
+            }else{
+                this.unsetLikeOnTitle(thisVideoSrc);
+            }
+
+        }else{
+            var thisLikeId=event.currentTarget.id.split('_');
+            thisLikeId=thisLikeId[1];
+            var thisVideoSrc=this.state.allVideosSrc[thisLikeId-1];
+        }
+
+        if( likedVideos.indexOf(thisVideoSrc) === -1 ){
+            likedVideos.push( thisVideoSrc );
+            //event.currentTarget.className=event.currentTarget.className+" liked";
+            this.setLikeOnTitle(thisVideoSrc);
+
+        }else{
+            likedVideos.splice( likedVideos.indexOf(thisVideoSrc), 1 ) ;
+            this.unsetLikeOnTitle(thisVideoSrc);
+        }
+        this.setState({likedVideos:likedVideos});
+    },
+    setLikeOnTitle: function(videoSrc){
+        videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
+        var itemId = 'like_'+(videoIndex+1);
+        document.getElementById(itemId).className=document.getElementById(itemId).className+" liked";
+    },
+    unsetLikeOnTitle: function(videoSrc){
+        videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
+        var itemId = 'like_'+(videoIndex+1);
+        newClassName= document.getElementById(itemId).className.replace(/ liked/gi,'');
+        document.getElementById(itemId).className=newClassName;
+    },
+    likeVideoButton: function(liked,event){
+        var css="glyphicon glyphicon-heart"
+        if(liked!=-1){
+            css+=" liked";
+        }
+        return (
+            <div id="likeButtonModal" className={css} onClick={this.like} />
+        );
+    },
+    likeVideoButtonClicked: function(event){
+        var currentVideoSrc=this.state.currentVideo;
+        if( likedVideos.indexOf(this.state.allVideosSrc[thisVideoId]) === -1 ){
+            event.currentTarget.className=event.currentTarget.className+" liked";
+            likedVideos.push( currentVideoSrc );
+        }
+        else{
+
+        }
     },
     openModal: function() {
         this.setState({ isModalOpen: true })
@@ -163,6 +223,7 @@ var Videos=React.createClass({
         var videoSectionsData = this.state.playVideoData;
         var isModalOpen=this.state.isModalOpen;
         var self=this;
+        var videoIsLiked=this.state.likedVideos.indexOf(this.state.currentVideo);
 
         return (
             <div id="videoPlayerContainer">
@@ -175,6 +236,7 @@ var Videos=React.createClass({
                 </div>
                 <div className="col-sm-1 col-md-2" />
                 <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
+                    {this.likeVideoButton(videoIsLiked)}
                     {this.skipPrevButton()}
                     {this.skipNextButton()}
                     <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />

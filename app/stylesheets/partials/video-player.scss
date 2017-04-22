@@ -56,3 +56,10 @@ video{
 .choose-video a.watched{
   color:$video-watched;
 }
+.choose-video .glyphicon-heart{
+  font-size: 12px;
+  width:15px;
+  height:15px;
+  margin-right: $margin-standard;
+}
+
