@@ -19,12 +19,12 @@ var Videos=React.createClass({
             isModalOpen: false,
             allVideosSrc: new Array(),
             totalVideos: 0,
-            showPrevVideo:false,
-            showNextVideo:true
+            showPrevVideo: false,
+            showNextVideo: true,
+            watchedVideos: new Array()
         };
     },
     createSections: function(section){
-        //builds an array of the various sections and stores to state
         sectionsArray=this.state.sections;
 
         if(sectionsArray.indexOf(section)===-1) {
@@ -34,43 +34,28 @@ var Videos=React.createClass({
         return sectionsArray;
     },
     createVideoContentsArrays: function(video){
-        sectionArray = this.createSections(video.section);//adds all sections to an array
+        sectionArray = this.createSections(video.section);
         videosDataArray=this.state.videosData;
-        var allVideosSrc = this.state.allVideosSrc;
 
         var currentVideoData={title: video.title, src: video.src, subsection: video.subsection};
-        var currentSectionIndex=sectionArray.indexOf(video.section);
-        var currentVideosDataArrayRowContents=videosDataArray[currentSectionIndex];//contents of the row at the moment
 
-        if(currentVideosDataArrayRowContents!=undefined){
-            currentVideosDataArrayRowContents.push(currentVideoData);
-            videosDataArray[currentSectionIndex]=currentVideosDataArrayRowContents; //add this video data to the array row that already exists
+        if(videosDataArray[sectionArray.indexOf(video.section)]!=undefined){
+            videosDataArray[sectionArray.indexOf(video.section)].push(currentVideoData);
+            videosDataArray[sectionArray.indexOf(video.section)]=videosDataArray[sectionArray.indexOf(video.section)];
         }
         else{
             videosDataArray.push([currentVideoData]);
         }
-        allVideosSrc.push(currentVideoData.src);
-
-        this.setState({
-            allVideosSrc: allVideosSrc,
-            totalVideos: allVideosSrc.length,
-            videosData: videosDataArray
-        });
+        this.setState({ videosData: videosDataArray });
     },
-    playVideo: function(videoSrc){
-        this.setState({
-            currentVideo: videoSrc,
-            videoAutoPlay: 'autoplay'
-        });
-        this.openModal();
-    },
-    createLists: function(listData){
+     createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
     },
-    createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex){
+    createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex, numVideosRendered){
         return (
-            <li key={componentIndex} >
-                <a href="#"  onClick={ () => this.playVideo(videoSrc) } >
+            <li key={componentIndex}>
+                <div class="glyphicon glyphicon-
+                <a href="#"  onClick={this.playVideo} data-src={videoSrc} id={'video_'+numVideosRendered} >
                     {videoTitle}
                 </a>
             </li>
@@ -80,7 +65,7 @@ var Videos=React.createClass({
         return(
             <div key={index}>
                 <h3>{headingName}</h3>
-                <ul>{videoPlayData}</ul>
+                <ul  key={index}>{videoPlayData}</ul>
             </div>
         );
     },
@@ -90,6 +75,15 @@ var Videos=React.createClass({
     closeModal: function() {
         this.setState({ isModalOpen: false })
     },
+    playVideo: function(event){
+        this.setState({
+            currentVideo: event.currentTarget.dataset.src,
+            videoAutoPlay: 'autoplay'
+        });
+        this.openModal();
+        this.addToWatchedVideos(event.currentTarget.dataset.src);
+        event.currentTarget.className = "watched";
+    },
     skipPrevButton: function(){
         if(this.videoPosition(this.state.currentVideo)==0){return null};
         return(
@@ -97,7 +91,6 @@ var Videos=React.createClass({
         );
     },
     skipNextButton: function(){
-        currentVideoPosition=this.videoPosition(this.state.currentVideo);
         if(this.videoPosition(this.state.currentVideo)==(this.state.totalVideos-1)){return null};
         return(
             <div id="nextVideo" className="glyphicon glyphicon-chevron-right" ref="next" onClick={e => this.skipVideo('next',e)} />
@@ -106,33 +99,63 @@ var Videos=React.createClass({
     skipVideo: function(direction, e){
         currentVideoPosition=this.videoPosition(this.state.currentVideo);
         if(direction=='prev' && currentVideoPosition > 0){
-            this.setState({currentVideo: this.state.allVideosSrc[currentVideoPosition-1]});
+            nextPosition=currentVideoPosition-1;
+            this.setState({currentVideo: this.state.allVideosSrc[nextPosition]});
+            this.addToWatchedVideos(  this.state.allVideosSrc[nextPosition] );
+            document.getElementById('video_'+nextPosition).className='watched';
         }
-        else if(direction=='next' && currentVideoPosition < this.state.totalVideos-1 ){
-            this.setState({currentVideo: this.state.allVideosSrc[currentVideoPosition+1]});
+        else if( direction=='next' && currentVideoPosition < this.state.totalVideos-1 ){
+            nextPosition=currentVideoPosition+1;
+            this.setState({currentVideo: this.state.allVideosSrc[nextPosition]});
+            this.addToWatchedVideos( this.state.allVideosSrc[nextPosition] );
+            document.getElementById('video_'+nextPosition).className='watched';
         }
+
     },
     videoPosition: function(video){
         return this.state.allVideosSrc.indexOf(video);
+    },
+    addToWatchedVideos: function(thisVideoSrc){
+        var addToWatchedVideosArray=this.state.watchedVideos;
+        if( addToWatchedVideosArray.indexOf(thisVideoSrc) === -1 ) {
+            addToWatchedVideosArray.push(thisVideoSrc);
+            this.setState({watchedVideos: addToWatchedVideosArray});
+        }
+    },
+    videoHasBeenWatched: function(videoSrc){
+        var watchedVideosArray=this.state.watchedVideos;
+        if(watchedVideosArray.indexOf(videoSrc) === -1 ){
+            return false;
+        }else{
+            return true;
+        }
     },
     componentWillMount: function(){
        var self=this;//used to access root
        var videosData=this.state.videosData;
        var sectionsArray=this.state.sections;
+       var allVideosSrc = this.state.allVideosSrc;
+       var i=0;
 
-       this.createLists(videosJSON.videos );//ingest the data from the JSON file
+       this.createLists(videosJSON.videos );
 
         var playVideosSectionsData = sectionsArray.map(function(headingName, index){
             var videoPlayData =  videosData[index].map(function(videoDataElements, index2){
+                allVideosSrc.push(videoDataElements.src);
+                i++;
                 return (
-                    self.createVideoOpenComponent( videoDataElements.src, videoDataElements.title, index2)
+                    self.createVideoOpenComponent( videoDataElements.src, videoDataElements.title, index2, i)
                 );
             });
             return (
                 self.createPlayVideosSection(headingName, videoPlayData, index)
             )
         });
-        this.setState({playVideoData: playVideosSectionsData});
+        this.setState({
+            playVideoData: playVideosSectionsData,
+            allVideosSrc: allVideosSrc,
+            totalVideos: allVideosSrc.length
+        });
     },
     render: function () {
         var currentVideo = videoPath+this.state.currentVideo;
