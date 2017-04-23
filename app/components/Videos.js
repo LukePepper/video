@@ -56,9 +56,17 @@ var Videos=React.createClass({
         listData.map(this.createVideoContentsArrays);
     },
     createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex, numVideosRendered){
+        var className="glyphicon glyphicon-heart";
+        var likedVideos=this.state.likedVideos;
+
+           if(likedVideos.indexOf(videoSrc) !== -1){
+               className =+ ' liked';
+           }
+
+
         return (
             <li key={componentIndex}>
-                <div className="glyphicon glyphicon-heart" id={"like_"+numVideosRendered} onClick={this.like} />
+                <div className={className} id={"like_"+numVideosRendered} onClick={this.like} />
                 <a href="#"  onClick={this.playVideo} data-src={videoSrc} id={'video_'+numVideosRendered} >
                     {videoTitle}
                 </a>
@@ -102,10 +110,21 @@ var Videos=React.createClass({
         }
         this.setState({likedVideos:likedVideos});
     },
+    resetLikesOnTitles: function(){
+        console.log('resetLikesOnTitles');
+        var likedVideos=this.state.likedVideos;
+        var self= this;
+       likedVideos.map(function(likedVideoSrc, index){
+           console.log('likedVideoSrc: '+likedVideoSrc);
+           self.setLikeOnTitle(likedVideoSrc);
+       });
+    },
     setLikeOnTitle: function(videoSrc){
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
         var itemId = 'like_'+(videoIndex+1);
         document.getElementById(itemId).className=document.getElementById(itemId).className+" liked";
+        document.getElementById(itemId).props.liked="liked";
+
     },
     unsetLikeOnTitle: function(videoSrc){
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
@@ -260,6 +279,7 @@ var Videos=React.createClass({
 
             </div>
         );
+
     }
 });
 
