@@ -1,13 +1,37 @@
 //nicely designed and implemented version of the code
 var React=require('react');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
+var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var VideoPlayer = require('./VideoPlayer');
 var Modal = require('./modal');
 var Nav = require('./Nav');
 var Images = require('./Images');
+var Lists = require('./Lists');
 
-//todo *** Set class to watched for videos that have been watched ****
+class CreateSections extends Lists{
+    constructor(props) {
+        super(props);
+        this.state = {
+            sections:  new Array()
+        };
+    }
+    render(){
+
+        var sections = this.testPing().toString();
+        console.log(testPing);
+        testPing += ' '+this.props.echoData;
+        console.log(testPing);
+
+        return(
+
+            <div>
+                { testPing }
+
+            </div>
+        )
+    }
+}
 
 //todo convert React.createClass to ES6 type class
 var Videos=React.createClass({
@@ -25,7 +49,9 @@ var Videos=React.createClass({
             showNextVideo: true,
             watchedVideos: new Array(),
             likedVideos: new Array(),
-            selectedMenuItem: 'videos'
+            selectedMenuItem: 'videos',
+            listData: '',
+            mediaData: '',
         };
     },
     createSections: function(section){
@@ -39,20 +65,20 @@ var Videos=React.createClass({
     },
     createVideoContentsArrays: function(video){
         sectionArray = this.createSections(video.section);
-        videosDataArray=this.state.videosData;
+        itemsDataArray=this.state.videosData;
 
         var currentVideoData={title: video.title, src: video.src, subsection: video.subsection};
 
-        if(videosDataArray[sectionArray.indexOf(video.section)]!=undefined){
-            videosDataArray[sectionArray.indexOf(video.section)].push(currentVideoData);
-            videosDataArray[sectionArray.indexOf(video.section)]=videosDataArray[sectionArray.indexOf(video.section)];
+        if(itemsDataArray[sectionArray.indexOf(video.section)]!=undefined){
+            itemsDataArray[sectionArray.indexOf(video.section)].push(currentVideoData);
+            itemsDataArray[sectionArray.indexOf(video.section)]=itemsDataArray[sectionArray.indexOf(video.section)];
         }
         else{
-            videosDataArray.push([currentVideoData]);
+            itemsDataArray.push([currentVideoData]);
         }
-        this.setState({ videosData: videosDataArray });
+        this.setState({ videosData: itemsDataArray });
     },
-     createLists: function(listData){
+    createLists: function(listData){
         listData.map(this.createVideoContentsArrays);
     },
     createVideoOpenComponent: function(videoSrc, videoTitle, componentIndex, numVideosRendered){
@@ -111,11 +137,9 @@ var Videos=React.createClass({
         this.setState({likedVideos:likedVideos});
     },
     resetLikesOnTitles: function(){
-        console.log('resetLikesOnTitles');
         var likedVideos=this.state.likedVideos;
         var self= this;
        likedVideos.map(function(likedVideoSrc, index){
-           console.log('likedVideoSrc: '+likedVideoSrc);
            self.setLikeOnTitle(likedVideoSrc);
        });
     },
@@ -168,13 +192,13 @@ var Videos=React.createClass({
     skipPrevButton: function(){
         if(this.videoPosition(this.state.currentVideo)==0){return null};
         return(
-            <div id="prevVideo" className="glyphicon glyphicon-chevron-left" ref="prev" onClick={e => this.skipVideo('prev',e)} />
+            <div id="prevItem" className="glyphicon glyphicon-chevron-left" ref="prev" onClick={e => this.skipVideo('prev',e)} />
         );
     },
     skipNextButton: function(){
         if(this.videoPosition(this.state.currentVideo)==(this.state.totalVideos-1)){return null};
         return(
-            <div id="nextVideo" className="glyphicon glyphicon-chevron-right" ref="next" onClick={e => this.skipVideo('next',e)} />
+            <div id="nextItem" className="glyphicon glyphicon-chevron-right" ref="next" onClick={e => this.skipVideo('next',e)} />
         );
     },
     skipVideo: function(direction, e){
@@ -221,7 +245,13 @@ var Videos=React.createClass({
        var allVideosSrc = this.state.allVideosSrc;
        var i=0;
 
+
+       this.setState({listData: videosJSON.videos});//old style JSON file
+        this.setState({mediaData: mediaJSON});//new  style combinded JSON file
        this.createLists(videosJSON.videos );
+       //todo ** Start Here **
+       var lists = <Lists dataJSON={videosJSON.videos} />;
+
 
         var playVideosSectionsData = sectionsArray.map(function(headingName, index){
             var videoPlayData =  videosData[index].map(function(videoDataElements, index2){
@@ -256,11 +286,11 @@ var Videos=React.createClass({
 
                     {(this.state.selectedMenuItem=='videos') ?
 
-                        <div id="videoPlayerContainer">
+                        <div className="itemPlayerContainer">
                             <div className="col-sm-1 col-md-2" />
                             <div className="col-sm-10 col-md-8 section-container">
                                 <h2>Videos</h2>
-                                <div className="choose-video" >
+                                <div className="chooseItem" >
                                     {videoSectionsData}
                                 </div>
                             </div>
@@ -272,14 +302,19 @@ var Videos=React.createClass({
                                 <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
                             </Modal>
                         </div>
+
                      : ""}
 
-                    {('images'==this.state.selectedMenuItem) ? <Images /> : ""}
+                    {('images'==this.state.selectedMenuItem) ?
+                        <Images />
+                        : ""
+                    }
 
             </div>
         );
 
     }
 });
+
 
 module.exports=Videos;

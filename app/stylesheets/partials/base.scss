@@ -29,6 +29,7 @@ h3{
   font-size:$text-regular;
   font-weight: bold;
   color:$main-text;
+  text-transform: uppercase;
 }
 .section-container{
   border: 1px solid $border-color;
@@ -43,12 +44,4 @@ h3{
   padding-top:$padding-large;
   background-color: $sectionContainerBgColor;
   color:$main-text;
-}
-#videoPlayerContainer, #photosPlayerContainer{
-  position: absolute;
-  width:100%;
-  height:100%;
-  padding-bottom:$padding-large;
-  top: 0;
-  padding-top: 20px
 }
