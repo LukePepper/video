@@ -1,9 +1,12 @@
 body{
   font-family:arial;
-  background-color: #fafafa;
+  background-color: #cacaca;
   position: absolute;
   width: 100%;
   height: 100%;
+}
+ul{
+  padding:0
 }
 ul li{
   list-style-type:none;
@@ -13,14 +16,19 @@ ul li{
 ul li a{
   color:$main-text;
 }
+ul li a:hover{
+  color:$main-text-hover;
+}
 h2{
   margin-top:$margin-standard;
+  color:$main-text;
 }
 h3{
   margin-top:0;
   margin-bottom:$margin-standard;
   font-size:$text-regular;
   font-weight: bold;
+  color:$main-text;
 }
 .section-container{
   border: 1px solid $border-color;
@@ -32,6 +40,9 @@ h3{
   -moz-border-radius-topright: 0;
   padding: $padding-medium;
   padding-left: $padding-large;
+  padding-top:$padding-large;
+  background-color: $sectionContainerBgColor;
+  color:$main-text;
 }
 #videoPlayerContainer, #photosPlayerContainer{
   position: absolute;
