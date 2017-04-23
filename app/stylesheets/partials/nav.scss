@@ -1,0 +1,31 @@
+#topNav{
+  width:100%;
+  margin-bottom: 0;
+  height: 30px;
+  z-index:9;
+  position: absolute;
+ }
+#topNav .navContainer{
+  border: 1px solid $border-color;
+  border-bottom:0;
+  border-radius: $border-radius;
+  border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+ }
+#topNav ul{
+  float:right;
+}
+#topNav li{
+  float: left;
+  padding: $padding-standard;
+  margin-left: $margin-medium;
+  font-size: $text-menu-top;
+}
+#topNav li a{
+  color:$unselected;
+}
+#topNav li.selected a{
+  color:$selected;
+}

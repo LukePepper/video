@@ -4,6 +4,8 @@ var videosJSON = require('json-loader!./Videos.json');//JSON file containing the
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var VideoPlayer = require('./VideoPlayer');
 var Modal = require('./modal');
+var Nav = require('./Nav');
+var Images = require('./Images');
 
 //todo *** Set class to watched for videos that have been watched ****
 
@@ -22,7 +24,8 @@ var Videos=React.createClass({
             showPrevVideo: false,
             showNextVideo: true,
             watchedVideos: new Array(),
-            likedVideos: new Array()
+            likedVideos: new Array(),
+            selectedMenuItem: 'videos'
         };
     },
     createSections: function(section){
@@ -190,6 +193,9 @@ var Videos=React.createClass({
             return true;
         }
     },
+    menuChange: function(event){
+        this.setState({selectedMenuItem: event.currentTarget.title});
+    },
     componentWillMount: function(){
        var self=this;//used to access root
        var videosData=this.state.videosData;
@@ -224,23 +230,34 @@ var Videos=React.createClass({
         var isModalOpen=this.state.isModalOpen;
         var self=this;
         var videoIsLiked=this.state.likedVideos.indexOf(this.state.currentVideo);
+        var menuChange = this.menuChange;
 
         return (
-            <div id="videoPlayerContainer">
-                <div className="col-sm-1 col-md-2" />
-                <div className="col-sm-10 col-md-8">
-                    <h2>Videos</h2>
-                    <div className="choose-video" >
-                        {videoSectionsData}
-                    </div>
-                </div>
-                <div className="col-sm-1 col-md-2" />
-                <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
-                    {this.likeVideoButton(videoIsLiked)}
-                    {this.skipPrevButton()}
-                    {this.skipNextButton()}
-                    <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
-                </Modal>
+            <div>
+                    <Nav menuChange = {self.menuChange} selectedMenuItem={this.state.selectedMenuItem} />
+
+                    {(this.state.selectedMenuItem=='videos') ?
+
+                        <div id="videoPlayerContainer">
+                            <div className="col-sm-1 col-md-2" />
+                            <div className="col-sm-10 col-md-8 section-container">
+                                <h2>Videos</h2>
+                                <div className="choose-video" >
+                                    {videoSectionsData}
+                                </div>
+                            </div>
+                            <div className="col-sm-1 col-md-2" />
+                            <Modal isOpen={isModalOpen} onClose={() => this.closeModal()} >
+                                {this.likeVideoButton(videoIsLiked)}
+                                {this.skipPrevButton()}
+                                {this.skipNextButton()}
+                                <VideoPlayer src={currentVideo} autoPlay={videoAutoPlay} />
+                            </Modal>
+                        </div>
+                     : ""}
+
+                    {('images'==this.state.selectedMenuItem) ? <Images /> : ""}
+
             </div>
         );
     }
