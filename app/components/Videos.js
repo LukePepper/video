@@ -123,7 +123,6 @@ var Videos=React.createClass({
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
         var itemId = 'like_'+(videoIndex+1);
         document.getElementById(itemId).className=document.getElementById(itemId).className+" liked";
-        document.getElementById(itemId).props.liked="liked";
 
     },
     unsetLikeOnTitle: function(videoSrc){
