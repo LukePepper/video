@@ -18,7 +18,7 @@ var imagePath = '../images/';//change this to http:// for non-local videos hoste
 var VideoPlayer = require('./VideoPlayer_deleteMe');
 var ImagePlayer = require('./ImagePlayer_deleteMe');
 var Modal = require('./../modal');
-var ModalItemList = require('./../ModalItemList');
+var ModalItemList = require('./../Modal');
 
 var Nav = require('./../Nav');
 var Images = require('./Items');
