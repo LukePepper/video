@@ -11,12 +11,12 @@
 
 
 var React=require('react');
-var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
+//var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
 var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
-var VideoPlayer = require('./VideoPlayer');
-var ImagePlayer = require('./ImagePlayer');
+var VideoPlayer = require('./VideoPlayer_deleteMe');
+var ImagePlayer = require('./ImagePlayer_deleteMe');
 var Modal = require('./modal');
 var ModalItemList = require('./ModalItemList');
 

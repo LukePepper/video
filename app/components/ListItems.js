@@ -2,18 +2,20 @@
  * Container for: lists: i.e. videos, images
  * Container for: modal and item state info
  *
+ * Change these vars when moving from locally stored media to media stored on a web server:
+ * var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
+ * var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
+ *
  * ListItems.js
   ********************************************/
 
 var React=require('react');
 var ModalItemList = require('./ModalItemList');
-var Videos = require('./Videos');//todo remove
-var Images = require('./Images_deleteMe');//todo remove
 var Items = require('./Items');
-var ImagePlayer = require('./ImagePlayer');
-var VideoPlayer = require('./VideoPlayer');
+var ItemPlayer = require('./ItemPlayer');
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
+
 
 class ListItems extends React.Component {
     constructor(props) {
@@ -71,9 +73,12 @@ class ListItems extends React.Component {
                         <div className="col-sm-1 col-md-2" />
                         <ModalItemList isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} onClick={this.state.doOnClick} doOnClick={this.state.doOnClick} >
                             { (this.props.typeOfMedia == 'videos') ?
-                                    <VideoPlayer src={this.state.currentItem} autoPlay={this.state.videoAutoPlay} />
+
+                                    <ItemPlayer src={this.state.currentItem} autoPlay={this.state.videoAutoPlay} typeOfMedia={this.state.typeOfMedia} />
+
                                 :
-                                    <ImagePlayer src={this.state.currentItem} />
+
+                                    <ItemPlayer src={this.state.currentItem} typeOfMedia={this.state.typeOfMedia} />
                             }
                         </ModalItemList>
                     </div>
@@ -81,5 +86,6 @@ class ListItems extends React.Component {
         );
     }
 }
+
 
 module.exports=ListItems;

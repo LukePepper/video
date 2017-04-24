@@ -10,7 +10,7 @@
 
 var React=require('react');
 var Lists = require('./Lists');
-var ImagePlayer = require('./ImagePlayer');
+var ImagePlayer = require('./ImagePlayer_deleteMe');
 var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
 class Images extends React.Component {

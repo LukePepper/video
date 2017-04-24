@@ -1,5 +1,7 @@
 /*
 ********************************************************
+* DEPRICATED: delete when <ready></ready>
+*
 * Renders the image player
 *
 * ImagesPlayer.js

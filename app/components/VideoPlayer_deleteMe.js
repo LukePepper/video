@@ -1,3 +1,10 @@
+/*
+ ********************************************************
+ * DEPRICATED: delete when <ready></ready>
+ *
+ *
+ * */
+
 var React=require('react');
 
 class VideoPlayer extends React.Component{
