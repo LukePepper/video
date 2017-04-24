@@ -36,5 +36,6 @@ class Images extends React.Component {
         );
     }
 }
+
 module.exports=Images;
 

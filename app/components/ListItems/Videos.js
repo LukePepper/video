@@ -17,13 +17,13 @@ var videoPath = '../videos/';//change this to http:// for non-local videos hoste
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
 var VideoPlayer = require('./VideoPlayer_deleteMe');
 var ImagePlayer = require('./ImagePlayer_deleteMe');
-var Modal = require('./modal');
-var ModalItemList = require('./ModalItemList');
+var Modal = require('./../modal');
+var ModalItemList = require('./../ModalItemList');
 
-var Nav = require('./Nav');
+var Nav = require('./../Nav');
 var Images = require('./Items');
 var Lists = require('./Lists');
-var ListItems = require('./ListItems');
+var ListItems = require('./../ListItems');
 
 class CreateSections extends Lists{
     constructor(props) {

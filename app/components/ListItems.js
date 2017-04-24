@@ -11,11 +11,10 @@
 
 var React=require('react');
 var ModalItemList = require('./ModalItemList');
-var Items = require('./Items');
-var ItemPlayer = require('./ItemPlayer');
+var Items = require('./ListItems/Items');
+var ItemPlayer = require('./ListItems/ItemPlayer');
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
-
 
 class ListItems extends React.Component {
     constructor(props) {

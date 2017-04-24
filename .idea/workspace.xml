@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/app/components/itemList/ItemListComponent.js" line="30" />
+    <bookmark url="file://$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" line="30" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed77bf45-fa61-4105-8ec9-9bf5114e8b6c" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\dev\video\app\components\ImagePlayer_deleteMe.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\video\app\components\Images_deleteMe.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\video\app\components\VideoPlayer_deleteMe.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\video\app\components\images_deleteMe.json" afterPath="" />
-      <change type="DELETED" beforePath="C:\dev\video\app\components\videos_deleteMe.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/Items.js" afterPath="$PROJECT_DIR$/app/components/Items.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/ListItems/ItemPlayer.js" />
+      <change type="DELETED" beforePath="C:\dev\video\app\components\itemPlayer.js" afterPath="" />
+      <change type="MOVED" beforePath="C:\dev\video\app\components\Items.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Items.js" />
+      <change type="MOVED" beforePath="C:\dev\video\app\components\Lists.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
+      <change type="MOVED" beforePath="C:\dev\video\app\components\Videos.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Videos.js" />
+      <change type="MOVED" beforePath="C:\dev\video\app\components\itemList\ItemListComponent.js" afterPath="$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" />
+      <change type="MOVED" beforePath="C:\dev\video\app\components\media.json" afterPath="$PROJECT_DIR$/app/components/ListItems/media.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems.js" afterPath="$PROJECT_DIR$/app/components/ListItems.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="video.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,18 +40,18 @@
       <file leaf-file-name="ListItems.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.0" vertical-offset="523" max-vertical-offset="1649">
-              <caret line="39" column="112" selection-start-line="39" selection-start-column="106" selection-end-line="39" selection-end-column="112" />
+            <state vertical-scroll-proportion="-6.678571" vertical-offset="102" max-vertical-offset="1632">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Items.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/components/Items.js">
+        <entry file="file://$PROJECT_DIR$/app/components/ListItems/Items.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33179724" vertical-offset="26" max-vertical-offset="782">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.686636" vertical-offset="348" max-vertical-offset="799">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -107,8 +110,10 @@
         <option value="$PROJECT_DIR$/app/components/ImagePlayer.js" />
         <option value="$PROJECT_DIR$/app/components/ItemPlayer.js" />
         <option value="$PROJECT_DIR$/app/components/VideoPlayer.js" />
-        <option value="$PROJECT_DIR$/app/components/ListItems.js" />
         <option value="$PROJECT_DIR$/app/components/Items.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems.js" />
+        <option value="$PROJECT_DIR$/app/components/itemList/Items.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems/Items.js" />
       </list>
     </option>
   </component>
@@ -289,7 +294,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="itemList" />
+              <option name="myItemId" value="ListItems" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -311,6 +316,7 @@
       <recent name="C:\dev\video\app\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\dev\video\app\components\itemList" />
       <recent name="C:\dev\video\app\stylesheets\partials" />
       <recent name="C:\dev\video\app" />
     </key>
@@ -377,7 +383,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1552" height="840" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -385,7 +391,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32968536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -446,7 +452,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Videos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1870">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -487,7 +493,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Videos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -537,7 +543,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Videos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1802">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -697,7 +703,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/media.json">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/media.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.346154" vertical-offset="123" max-vertical-offset="3893">
           <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
@@ -729,7 +735,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/itemList/ItemListComponent.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25528702" vertical-offset="341" max-vertical-offset="1003">
           <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="33" selection-end-column="7" />
@@ -747,7 +753,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/ItemPlayer.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/ItemPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.77272725" vertical-offset="0" max-vertical-offset="731">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
@@ -757,7 +763,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Videos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5403423" vertical-offset="0" max-vertical-offset="6001">
           <caret line="13" column="89" selection-start-line="13" selection-start-column="89" selection-end-line="13" selection-end-column="89" />
@@ -767,7 +773,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Lists.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5151515" vertical-offset="0" max-vertical-offset="2550">
           <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
@@ -795,16 +801,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.0" vertical-offset="523" max-vertical-offset="1649">
-          <caret line="39" column="112" selection-start-line="39" selection-start-column="106" selection-end-line="39" selection-end-column="112" />
+        <state vertical-scroll-proportion="-6.678571" vertical-offset="102" max-vertical-offset="1632">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Items.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Items.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33179724" vertical-offset="26" max-vertical-offset="782">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.686636" vertical-offset="348" max-vertical-offset="799">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

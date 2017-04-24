@@ -9,7 +9,7 @@
 //todo: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
 
 var React=require('react');
-var ItemListComponent=require('./itemList/ItemListComponent.js');
+var ItemListComponent=require('./ItemListComponent.js');
 mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
 class Lists extends React.Component{
