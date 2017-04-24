@@ -1,4 +1,15 @@
-//nicely designed and implemented version of the code
+/*
+*   DEPRECATED: delete when ready
+*
+*
+*
+*
+*
+*
+ */
+
+
+
 var React=require('react');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
 var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
@@ -10,8 +21,9 @@ var Modal = require('./modal');
 var ModalItemList = require('./ModalItemList');
 
 var Nav = require('./Nav');
-var Images = require('./Images');
+var Images = require('./Items');
 var Lists = require('./Lists');
+var ListItems = require('./ListItems');
 
 class CreateSections extends Lists{
     constructor(props) {
@@ -245,7 +257,7 @@ var Videos=React.createClass({
     playItem: function(event){
       console.log('** video.js -> playItem() **');
         this.setState({
-            currentItem: event.currentTarget.dataset.src,
+            currentItem: event.currentTarget.dataset.src
         });
         this.openModal();
         //this.addToWatchedItems(event.currentTarget.dataset.src);
@@ -286,7 +298,6 @@ var Videos=React.createClass({
         });
     },
     render: function () {
-
             var currentVideo = videoPath+this.state.currentItem;
             var currentItem = imagePath+this.state.currentItem;//todo - fix these
 
@@ -323,16 +334,7 @@ var Videos=React.createClass({
                      : ""}
 
                     {('images'==this.state.selectedMenuItem) ?
-                        <div className="itemPlayerContainer">
-                            <div className="col-sm-1 col-md-2" />
-                            <div className="col-sm-10 col-md-8 section-container">
-                                <Images doOnClick={this.playItem} />
-                            </div>
-                            <div className="col-sm-1 col-md-2" />
-                            <ModalItemList isOpen={isModalOpen} onClose={() => this.closeModal()} onClick={this.playItem} doOnClick={this.playItem} >
-                                <ImagePlayer src={currentItem} />
-                            </ModalItemList>
-                        </div>
+                        <ListItems typeOfMedia="images" />
                         : ""
                     }
 

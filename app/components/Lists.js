@@ -1,6 +1,8 @@
 /*
  ********************************************************************************
  Creates the lists for the media items i.e. lists of Videos or lists of Images
+
+ Lists.js
  ********************************************************************************
  */
 
@@ -19,13 +21,14 @@ class Lists extends React.Component{
             allItemsSrc: new Array(),
             allItemsData: new Array(),
             likedItems: new Array(),
-            typeOfMedia: 'videos',
-            doOnClick: this.props.doOnClick
+            typeOfMedia: this.props.typeOfMedia,
+            doOnClick: this.props.doOnClick,
         };
     }
+
     createDataContentsArrays(dataItem, self){
         var sectionArray = this.state.sections;
-        itemsDataArray=this.state.itemsData;
+        var itemsDataArray=this.state.itemsData;
         var currentItemData={title: dataItem.title, src: dataItem.src, subsection: dataItem.subsection};
 
         if( sectionArray.indexOf(dataItem.section) === -1 ){
@@ -83,10 +86,6 @@ class Lists extends React.Component{
             </div>
         );
     }
-    playItem(){
-        console.log('lists.js playItem()');
-
-    }
     componentWillMount(){
         var itemsData=this.props.listData;
         var allItemsSrc=this.state.allItemsSrc;
@@ -95,9 +94,8 @@ class Lists extends React.Component{
         var i=0;
 
         var dataToRender=mediaJSON;
-        var typeOfMedia=this.props.typeOfMedia;
 
-        if(typeOfMedia=='videos'){
+        if(this.state.typeOfMedia=='videos'){
             this.setState({itemsData:dataToRender.videos});
             this.createLists(dataToRender.videos);
         }

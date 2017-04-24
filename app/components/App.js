@@ -1,28 +1,41 @@
 var React = require('react');
-var Videos = require('./Videos');
-var Photos = require('./Images');
-//var Nav = require('./Nav');
+var ListItems = require('./ListItems');
+var Nav = require('./Nav');
+
+//var Videos = require('./Videos');//todo remove this
 
 class AppComponent extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
+            typeOfMedia: 'videos',
             selectedMenuItem: 'videos'
         }
     }
+    menuChange(event){
+        this.setState({
+            selectedMenuItem: event.currentTarget.title,
+            typeOfMedia: event.currentTarget.title
+        });
+    }
     render() {
-        var menuChange =   this.menuChange;
-        var self = this;
+        //todo - bugfix re: needing to add a div to first component to render on menu change
 
         return(
             <div>
-
-                <Videos />
-
+                <Nav menuChange={this.menuChange.bind(this)} selectedMenuItem={this.state.selectedMenuItem} />
+                {(this.state.typeOfMedia == 'videos') ?
+                        <div>
+                            <ListItems typeOfMedia="videos" />
+                        </div>
+                    :
+                        <ListItems typeOfMedia="images" />
+                }
             </div>
         )
     }
 }
+
 module.exports=AppComponent;
 
 

@@ -1,3 +1,11 @@
+/*
+********************************************************
+* Renders the image player
+*
+* ImagesPlayer.js
+********************************************************
+*/
+
 var React=require('react');
 
 class ImagePlayer extends React.Component{

@@ -1,6 +1,8 @@
 /*
  ********************************************************************************
      Creates the list item elements - i.e. click-able link: Like Icon, Title
+
+     ItemListComponent
  ********************************************************************************
  */
 
@@ -14,8 +16,8 @@ class ItemListComponent extends React.Component {
             numItemsRendered: this.props.numItemsRendered,
             itemComponentData: this.props.itemComponentData,
             liked: this.props.liked,
-            isModalOpen: false,
-            doOnClick: this.props.doOnClick
+            doOnClick: this.props.doOnClick,
+            typeOfMedia: this.props.typeOfMedia
         };
     }
     likeChange(e){
@@ -26,20 +28,11 @@ class ItemListComponent extends React.Component {
             this.setState({liked: true});
         }
     }
-    playItem(event){
-        console.log('###################################');
-        //console.log(event.CurrentTarget);
-        console.log(this.state.isModalOpen);
-        //console.log(liked);
+    //playItem(event){
+    //    console.log('itemListComponent.js - playItem()');
+    //    selfReference.playItem();
+    //}
 
-        console.log('###################################');
-/*
-        this.setState({
-            currentItem: src,
-            isModalOpen: true
-        });
-*/
-    }
     openModal() {
         this.setState({ isModalOpen: true })
     }
@@ -57,4 +50,5 @@ class ItemListComponent extends React.Component {
         );
     }
 }
+
 module.exports=ItemListComponent;
