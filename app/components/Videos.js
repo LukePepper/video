@@ -3,8 +3,12 @@ var React=require('react');
 var videosJSON = require('json-loader!./Videos.json');//JSON file containing the videos
 var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
+var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
 var VideoPlayer = require('./VideoPlayer');
+var ImagePlayer = require('./ImagePlayer');
 var Modal = require('./modal');
+var ModalItemList = require('./ModalItemList');
+
 var Nav = require('./Nav');
 var Images = require('./Images');
 var Lists = require('./Lists');
@@ -37,7 +41,7 @@ class CreateSections extends Lists{
 var Videos=React.createClass({
     getInitialState: function(){
         return {
-            currentVideo: 'starting_the_compressor.mp4',
+            currentItem: 'starting_the_compressor.mp4',
             videoAutoplay: '',
             playVideoData: '',
             sections: new Array(),
@@ -89,7 +93,6 @@ var Videos=React.createClass({
                className =+ ' liked';
            }
 
-
         return (
             <li key={componentIndex}>
                 <div className={className} id={"like_"+numVideosRendered} onClick={this.like} />
@@ -112,7 +115,7 @@ var Videos=React.createClass({
         var likedVideos=this.state.likedVideos;
 
         if(event.currentTarget.id == 'likeButtonModal'){
-            var thisVideoSrc=this.state.currentVideo;
+            var thisVideoSrc=this.state.currentItem;
             if( likedVideos.indexOf(thisVideoSrc) === -1 ){
                 this.setLikeOnTitle(thisVideoSrc);
             }else{
@@ -165,7 +168,7 @@ var Videos=React.createClass({
         );
     },
     likeVideoButtonClicked: function(event){
-        var currentVideoSrc=this.state.currentVideo;
+        var currentVideoSrc=this.state.currentItem;
         if( likedVideos.indexOf(this.state.allVideosSrc[thisVideoId]) === -1 ){
             event.currentTarget.className=event.currentTarget.className+" liked";
             likedVideos.push( currentVideoSrc );
@@ -182,7 +185,7 @@ var Videos=React.createClass({
     },
     playVideo: function(event){
         this.setState({
-            currentVideo: event.currentTarget.dataset.src,
+            currentItem: event.currentTarget.dataset.src,
             videoAutoPlay: 'autoplay'
         });
         this.openModal();
@@ -190,7 +193,7 @@ var Videos=React.createClass({
         event.currentTarget.className = "watched";
     },
     skipPrevButton: function(){
-        if(this.videoPosition(this.state.currentVideo)==0){return null};
+        if(this.videoPosition(this.state.currentItem)==0){return null};
         return(
             <div id="prevItem" className="glyphicon glyphicon-chevron-left" ref="prev" onClick={e => this.skipVideo('prev',e)} />
         );
@@ -202,7 +205,7 @@ var Videos=React.createClass({
         );
     },
     skipVideo: function(direction, e){
-        currentVideoPosition=this.videoPosition(this.state.currentVideo);
+        currentVideoPosition=this.videoPosition(this.state.currentItem);
         if(direction=='prev' && currentVideoPosition > 0){
             nextPosition=currentVideoPosition-1;
             this.setState({currentVideo: this.state.allVideosSrc[nextPosition]});
@@ -235,9 +238,20 @@ var Videos=React.createClass({
             return true;
         }
     },
+    /* new bits START */
     menuChange: function(event){
         this.setState({selectedMenuItem: event.currentTarget.title});
     },
+    playItem: function(event){
+      console.log('** video.js -> playItem() **');
+        this.setState({
+            currentItem: event.currentTarget.dataset.src,
+        });
+        this.openModal();
+        //this.addToWatchedItems(event.currentTarget.dataset.src);
+        event.currentTarget.className = "watched";
+    },
+    /* new bits END */
     componentWillMount: function(){
        var self=this;//used to access root
        var videosData=this.state.videosData;
@@ -272,12 +286,15 @@ var Videos=React.createClass({
         });
     },
     render: function () {
-        var currentVideo = videoPath+this.state.currentVideo;
+
+            var currentVideo = videoPath+this.state.currentItem;
+            var currentItem = imagePath+this.state.currentItem;//todo - fix these
+
         var videoAutoPlay = this.state.videoAutoPlay;
         var videoSectionsData = this.state.playVideoData;
         var isModalOpen=this.state.isModalOpen;
         var self=this;
-        var videoIsLiked=this.state.likedVideos.indexOf(this.state.currentVideo);
+        var videoIsLiked=this.state.likedVideos.indexOf(this.state.currentItem);
         var menuChange = this.menuChange;
 
         return (
@@ -306,7 +323,16 @@ var Videos=React.createClass({
                      : ""}
 
                     {('images'==this.state.selectedMenuItem) ?
-                        <Images />
+                        <div className="itemPlayerContainer">
+                            <div className="col-sm-1 col-md-2" />
+                            <div className="col-sm-10 col-md-8 section-container">
+                                <Images doOnClick={this.playItem} />
+                            </div>
+                            <div className="col-sm-1 col-md-2" />
+                            <ModalItemList isOpen={isModalOpen} onClose={() => this.closeModal()} onClick={this.playItem} doOnClick={this.playItem} >
+                                <ImagePlayer src={currentItem} />
+                            </ModalItemList>
+                        </div>
                         : ""
                     }
 

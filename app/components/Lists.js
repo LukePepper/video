@@ -1,26 +1,14 @@
+/*
+ ********************************************************************************
+ Creates the lists for the media items i.e. lists of Videos or lists of Images
+ ********************************************************************************
+ */
+
+//todo: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
+
 var React=require('react');
+var ItemListComponent=require('./itemList/ItemListComponent.js');
 mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
-
-class Sections extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            sections: new Array(),
-            itemsData: new Array()
-        };
-    }
-    createSections(section){
-        sectionsArray=this.props.sections;
-
-        if(sectionsArray.indexOf(section)===-1) {
-            sectionsArray.push(section);
-        }
-        return sectionsArray;
-    }
-    render(){
-        return sectionsArray;
-    }
-}
 
 class Lists extends React.Component{
     constructor(props) {
@@ -30,26 +18,10 @@ class Lists extends React.Component{
             itemsData: new Array(),
             allItemsSrc: new Array(),
             allItemsData: new Array(),
-            likedVideos: new Array(),
-            typeOfMedia: 'videos'
+            likedItems: new Array(),
+            typeOfMedia: 'videos',
+            doOnClick: this.props.doOnClick
         };
-    }
-    testPing(){
-        console.log('Lists.js - PING');
-        return 'PING';
-    }
-    createSections(section){
-
-        //todo remove this function
-
-        sectionsArray=this.state.sections;
-
-        if(sectionsArray.indexOf(section)===-1) {
-            sectionsArray.push(section);
-        }
-        this.setState({sections: sectionsArray});//todo needed?
-
-        return sectionsArray;
     }
     createDataContentsArrays(dataItem, self){
         var sectionArray = this.state.sections;
@@ -80,24 +52,28 @@ class Lists extends React.Component{
 
         listDataArray.map(this.createDataContentsArrays, self);
     }
-
-    createItemOpenComponent(itemComponentData, componentIndex, numVideosRendered){
-        var className="glyphicon glyphicon-heart";
-        var likedVideos=this.state.likedVideos;
-
-        if(likedVideos.indexOf(itemComponentData.src) !== -1){
-            className =+ ' liked';
-        }
-
+    createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){
+        var randomNumForKey=Math.floor((Math.random() * 10000) + 1);
+        var thisItemIsLiked = this.itemIsLiked(itemComponentData.src);
 
         return (
-            <li key={componentIndex}>
-                <div className={className} id={"like_"+numVideosRendered} onClick={this.like} />
-                <a href="#"  onClick={this.playVideo} data-src={itemComponentData.src} id={'video_'+numVideosRendered} >
-                        {itemComponentData.title}
-                </a>
-            </li>
+            <ItemListComponent
+                componentIndex={componentIndex}
+                numItemsRendered={numItemsRendered}
+                itemComponentData={itemComponentData}
+                key={randomNumForKey}
+                liked={thisItemIsLiked}
+                doOnClick={this.state.doOnClick}
+            />
         );
+    }
+    itemIsLiked(itemSrc){
+        if(this.state.likedItems.indexOf(itemSrc) !== -1){
+            return true;
+        }
+        else{
+            return false
+        }
     }
     createPlayItemSection(headingName, videoPlayData, index){
         return(
@@ -106,6 +82,10 @@ class Lists extends React.Component{
                 <ul  key={index}>{videoPlayData}</ul>
             </div>
         );
+    }
+    playItem(){
+        console.log('lists.js playItem()');
+
     }
     componentWillMount(){
         var itemsData=this.props.listData;
@@ -149,7 +129,6 @@ class Lists extends React.Component{
     }
     render(){
         var allItemsDataElements=this.state.allItemsData;
-
         if (this.props.typeOfQuery == 'sections'){
             return(
                 <Sections sections={this.state.sections} />

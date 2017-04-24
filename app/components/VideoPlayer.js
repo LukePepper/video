@@ -4,7 +4,7 @@ class VideoPlayer extends React.Component{
     render(){
         return(
             <div>
-                <video controls type="video/mp4" id="videoPlayer" preload src={this.props.src} ref="video" autoPlay={this.props.autoPlay} ></video>
+                <video controls type="video/mp4" id="itemPlayer" preload src={this.props.src} ref="video" autoPlay={this.props.autoPlay} ></video>
             </div>
         )
     }

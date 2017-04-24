@@ -111,6 +111,30 @@
   ],
   "images": [
     {
+      "title": "Rio left shot",
+      "src": "IMG_1406.JPG",
+      "subsection": false,
+      "section": ""
+    },
+    {
+      "title": "Rio - Copa Cabana Beach",
+      "src": "IMG_1475.JPG",
+      "subsection": false,
+      "section": ""
+    },
+    {
+      "title": "Rio - Favela",
+      "src": "IMG_1551.JPG",
+      "subsection": false,
+      "section": ""
+    },
+    {
+      "title": "Rio - Christ The Redeemer",
+      "src": "IMG_1559.JPG",
+      "subsection": false,
+      "section": ""
+    },
+    {
       "title": "Robin",
       "src": "IMG_2945.JPG",
       "subsection": true,
@@ -163,30 +187,6 @@
       "src": "IMG_2989.JPG",
       "subsection": true,
       "section": "squirrels"
-    },
-    {
-      "title": "Rio left shot",
-      "src": "IMG_1406.JPG",
-      "subsection": false,
-      "section": ""
-    },
-    {
-      "title": "Rio - Copa Cabana Beach",
-      "src": "IMG_1475.JPG",
-      "subsection": false,
-      "section": ""
-    },
-    {
-      "title": "Rio - Favela",
-      "src": "IMG_1551.JPG",
-      "subsection": false,
-      "section": ""
-    },
-    {
-      "title": "Rio - Christ The Redeemer",
-      "src": "IMG_1559.JPG",
-      "subsection": false,
-      "section": ""
     }
   ]
 }

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/app/components/itemList/ItemListComponent.js" line="28" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ed77bf45-fa61-4105-8ec9-9bf5114e8b6c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/Lists.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/media.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/ImagePlayer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/components/itemList/ItemListComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/Images.js" afterPath="$PROJECT_DIR$/app/components/Images.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/Lists.js" afterPath="$PROJECT_DIR$/app/components/Lists.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/VideoPlayer.js" afterPath="$PROJECT_DIR$/app/components/VideoPlayer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/Videos.js" afterPath="$PROJECT_DIR$/app/components/Videos.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/modules/_all.scss" afterPath="$PROJECT_DIR$/app/stylesheets/modules/_all.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/app.scss" afterPath="$PROJECT_DIR$/app/stylesheets/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/partials/base.scss" afterPath="$PROJECT_DIR$/app/stylesheets/partials/base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/images.json" afterPath="$PROJECT_DIR$/app/components/images.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/partials/video-player.scss" afterPath="$PROJECT_DIR$/app/stylesheets/partials/video-player.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" afterPath="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/media.json" afterPath="$PROJECT_DIR$/app/components/media.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="video.iws" />
@@ -38,8 +39,8 @@
             <file leaf-file-name="Videos.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5377644" vertical-offset="3044" max-vertical-offset="5525">
-                    <caret line="200" column="29" selection-start-line="200" selection-start-column="29" selection-end-line="200" selection-end-column="29" />
+                  <state vertical-scroll-proportion="0.7432024" vertical-offset="5101" max-vertical-offset="5967">
+                    <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
                     <folding />
                   </state>
                 </provider>
@@ -56,12 +57,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Lists.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Lists.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/Lists.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28096676" vertical-offset="392" max-vertical-offset="2941">
-              <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
-              <folding />
+            <state vertical-scroll-proportion="-20.035715" vertical-offset="612" max-vertical-offset="2584">
+              <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemListComponent.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/itemList/ItemListComponent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-12.714286" vertical-offset="154" max-vertical-offset="1122">
+              <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -69,39 +84,31 @@
       <file leaf-file-name="Images.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/Images.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.714286" vertical-offset="0" max-vertical-offset="595">
-              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="media.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/media.json">
+      <file leaf-file-name="ImagePlayer.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/ImagePlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.8076923" vertical-offset="2689" max-vertical-offset="3366">
-              <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <caret line="12" column="52" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/base.scss">
+      <file leaf-file-name="ModalItemList.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/components/ModalItemList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.784314" vertical-offset="249" max-vertical-offset="901">
-              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_all.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/stylesheets/modules/_all.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="612">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,38 +116,28 @@
       <file leaf-file-name="video-player.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/video-player.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.5822785" vertical-offset="51" max-vertical-offset="731">
+            <state vertical-scroll-proportion="-3.164557" vertical-offset="5" max-vertical-offset="731">
               <caret line="15" column="17" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item-player.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="item-player.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/item-player.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="714">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="27" />
+            <state vertical-scroll-proportion="0.7131902" vertical-offset="215" max-vertical-offset="867">
+              <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/stylesheets/app.scss">
+      <file leaf-file-name="photos-player.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/photos-player.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="340">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Nav.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/Nav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="238">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -169,7 +166,6 @@
         <option value="$PROJECT_DIR$/app/stylesheets/partials/header.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/modal.css" />
         <option value="$PROJECT_DIR$/app/components/modal.js" />
-        <option value="$PROJECT_DIR$/app/components/VideoPlayer.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/,gitignore" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/modal.scss" />
@@ -182,15 +178,20 @@
         <option value="$PROJECT_DIR$/app/stylesheets/partials/nav.scss" />
         <option value="$PROJECT_DIR$/app/components/Nav.js" />
         <option value="$PROJECT_DIR$/app/components/images.json" />
-        <option value="$PROJECT_DIR$/app/components/media.json" />
-        <option value="$PROJECT_DIR$/app/components/Lists.js" />
         <option value="$PROJECT_DIR$/app/stylesheets/app.scss" />
-        <option value="$PROJECT_DIR$/app/components/Images.js" />
-        <option value="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/modules/_all.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/base.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/video-player.scss" />
+        <option value="$PROJECT_DIR$/app/components/media.json" />
+        <option value="$PROJECT_DIR$/app/components/VideoPlayer.js" />
+        <option value="$PROJECT_DIR$/app/components/modalItemList.js" />
+        <option value="$PROJECT_DIR$/app/components/ModalItemList.js" />
+        <option value="$PROJECT_DIR$/app/components/itemList/ItemListComponent.js" />
+        <option value="$PROJECT_DIR$/app/components/Lists.js" />
+        <option value="$PROJECT_DIR$/app/components/ImagePlayer.js" />
+        <option value="$PROJECT_DIR$/app/components/Images.js" />
         <option value="$PROJECT_DIR$/app/components/Videos.js" />
+        <option value="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
       </list>
     </option>
   </component>
@@ -336,6 +337,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="video" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="video" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="itemList" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -685,22 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/VideoPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19345662" vertical-offset="0" max-vertical-offset="703">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/photos-player.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="238">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.048364155" vertical-offset="0" max-vertical-offset="703">
@@ -713,14 +720,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29018492" vertical-offset="0" max-vertical-offset="703">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/modal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43527737" vertical-offset="0" max-vertical-offset="731">
-          <caret line="18" column="29" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -781,14 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/media.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.8076923" vertical-offset="2689" max-vertical-offset="3366">
-          <caret line="164" column="19" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/stylesheets/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.0" vertical-offset="0" max-vertical-offset="340">
@@ -813,42 +804,104 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/item-player.scss">
+    <entry file="file://$PROJECT_DIR$/app/components/media.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333" vertical-offset="0" max-vertical-offset="714">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="27" />
+        <state vertical-scroll-proportion="-24.73077" vertical-offset="1652" max-vertical-offset="3366">
+          <caret line="135" column="6" selection-start-line="135" selection-start-column="6" selection-end-line="135" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/modal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09672831" vertical-offset="0" max-vertical-offset="731">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/video-player.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.5822785" vertical-offset="51" max-vertical-offset="731">
+        <state vertical-scroll-proportion="-3.164557" vertical-offset="5" max-vertical-offset="731">
           <caret line="15" column="17" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/ModalItemList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/Lists.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.035715" vertical-offset="612" max-vertical-offset="2584">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/VideoPlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29018492" vertical-offset="0" max-vertical-offset="703">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/photos-player.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3333334" vertical-offset="0" max-vertical-offset="238">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/ImagePlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <caret line="12" column="52" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/Images.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.714286" vertical-offset="0" max-vertical-offset="595">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="731">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/Lists.js">
+    <entry file="file://$PROJECT_DIR$/app/components/itemList/ItemListComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28096676" vertical-offset="392" max-vertical-offset="2941">
-          <caret line="34" column="10" selection-start-line="34" selection-start-column="10" selection-end-line="34" selection-end-column="10" />
-          <folding />
+        <state vertical-scroll-proportion="-12.714286" vertical-offset="154" max-vertical-offset="1122">
+          <caret line="30" column="43" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/Videos.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5377644" vertical-offset="3044" max-vertical-offset="5525">
-          <caret line="200" column="29" selection-start-line="200" selection-start-column="29" selection-end-line="200" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.7432024" vertical-offset="5101" max-vertical-offset="5967">
+          <caret line="329" column="0" selection-start-line="329" selection-start-column="0" selection-end-line="329" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/stylesheets/partials/item-player.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7131902" vertical-offset="215" max-vertical-offset="867">
+          <caret line="40" column="10" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
           <folding />
         </state>
       </provider>

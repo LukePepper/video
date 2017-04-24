@@ -32,5 +32,15 @@
   font-size:15px;
 }
 .itemPlayerContainer li a{
-  text-transform: uppercase;
+  text-transform: capitalize;
+}
+.itemPlayerImageContainer{
+
+}
+#itemPlayer {
+  width:100%;
+}
+#itemPlayer img{
+  width:80%;
+  text-align:center;
 }
