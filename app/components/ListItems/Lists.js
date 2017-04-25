@@ -124,6 +124,7 @@ class Lists extends React.Component{
             allItemsSrc: allItemsSrc,
             totalVideos: allItemsSrc.length
         });
+console.log('Lists.js -> this.state.allItemsSrc: '+this.state.allItemsSrc);
     }
     render(){
         var allItemsDataElements=this.state.allItemsData;
