@@ -12,6 +12,14 @@ var React=require('react');
 var ItemListComponent=require('./ItemListComponent.js');
 mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
+//todo
+/*
+ use this new data structure
+ allItemData={this.state.allItemData} sections={this.state.allItemData}
+
+ allItemData is already ordered correctly
+ */
+
 class Lists extends React.Component{
     constructor(props) {
         super(props);

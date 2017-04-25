@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed77bf45-fa61-4105-8ec9-9bf5114e8b6c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/TESTING.readme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/Items.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Items.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems.js" afterPath="$PROJECT_DIR$/app/components/ListItems.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/Lists.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="video.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,8 +44,8 @@
             <file leaf-file-name="Lists.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="-0.635514" vertical-offset="1377" max-vertical-offset="2465">
-                    <caret line="55" column="55" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="55" />
+                  <state vertical-scroll-proportion="0.39719626" vertical-offset="408" max-vertical-offset="2601">
+                    <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
                     <folding />
                   </state>
                 </provider>
@@ -68,8 +65,8 @@
       <file leaf-file-name="ListItems.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.9855595" vertical-offset="2307" max-vertical-offset="4318">
-              <caret line="233" column="175" selection-start-line="233" selection-start-column="105" selection-end-line="233" selection-end-column="175" />
+            <state vertical-scroll-proportion="5.6155233" vertical-offset="0" max-vertical-offset="3910">
+              <caret line="183" column="62" selection-start-line="183" selection-start-column="62" selection-end-line="183" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -150,10 +147,10 @@
         <option value="$PROJECT_DIR$/app/components/VideoPlayer.js" />
         <option value="$PROJECT_DIR$/app/components/Items.js" />
         <option value="$PROJECT_DIR$/app/components/itemList/Items.js" />
-        <option value="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
         <option value="$PROJECT_DIR$/app/TESTING.readme" />
-        <option value="$PROJECT_DIR$/app/components/ListItems.js" />
         <option value="$PROJECT_DIR$/app/components/ListItems/Items.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems.js" />
       </list>
     </option>
   </component>
@@ -819,14 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.635514" vertical-offset="1377" max-vertical-offset="2465">
-          <caret line="55" column="55" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/TESTING.readme">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
@@ -845,10 +834,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39719626" vertical-offset="408" max-vertical-offset="2601">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.9855595" vertical-offset="2307" max-vertical-offset="4318">
-          <caret line="233" column="175" selection-start-line="233" selection-start-column="105" selection-end-line="233" selection-end-column="175" />
+        <state vertical-scroll-proportion="5.6155233" vertical-offset="0" max-vertical-offset="3910">
+          <caret line="183" column="62" selection-start-line="183" selection-start-column="62" selection-end-line="183" selection-end-column="62" />
           <folding />
         </state>
       </provider>

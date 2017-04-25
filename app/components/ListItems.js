@@ -137,6 +137,9 @@ console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
         isThisItemLiked(thisItem){
             return (this.state.likedItems.indexOf(this.state.thisItem) === -1) ? false : true;
         }
+    //new imported functions - END
+
+    //refactored code - START
         buildItemsStateTable(){
                 /* todo
                     * build data structure to hold all items - {src:"xxx.png",watched:false,liked:false}
@@ -158,17 +161,27 @@ console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
             var sectionsArray=new Array();
             var sections = mediaData.map(function(itemData){
                 (sectionsArray.indexOf(itemData.section) === -1 ) ? sectionsArray.push(itemData.section) : null;
-            })
+            });
+            //todo order sections alphabetically?
 
                 //order array based on sections (i.e. so it is ready to render to the lists)
             var itemsArrayOrdered=new Array();
             var sections = sectionsArray.map(function(section, index){
                 var itemOrdering=mediaData.map(function(item, index2){
-                    if(item.section == section){
-                        itemsArrayOrdered.push(item);
-                    }
+                    (item.section == section) ? itemsArrayOrdered.push(item) : null;
                 });
             });
+
+            console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
+            console.log('sections: ');
+            console.log(sections);
+
+            console.log('sectionsArray: ');
+            console.log(sectionsArray);
+
+            console.log('itemsArrayOrdered: ');
+            console.log(itemsArrayOrdered);
+            console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX');
 
                 //store to states
             this.setState({
@@ -176,45 +189,8 @@ console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@');
                 sections: sections
             });
 
-
-                //add to props for Lists.js to ingest (via Items.js)
-
-
-            /*
-             if(this.state.typeOfMedia=='videos'){
-             this.setState({itemsData:dataToRender.videos});
-             this.createLists(dataToRender.videos);
-             }
-             else{
-             this.setState({itemsData:dataToRender.images});
-             this.createLists(dataToRender.images);
-             }
-
-             var playItemSectionsData = sectionsArray.map(function(headingName, index){
-             var itemsDataFiltered = self.state.itemsData;
-             var thisDataItem=itemsDataFiltered[index];
-             var itemPlayData =  thisDataItem.map(function(itemDataElements, index2){
-             allItemsSrc.push(itemDataElements.src);
-             i++;
-             return (
-             self.createItemOpenComponent( itemDataElements, index2, i)
-             );
-             });
-             return (
-             self.createPlayItemSection(headingName, itemPlayData, index)
-             )
-             });
-
-             this.setState({
-             allItemsData: playItemSectionsData,
-             allItemsSrc: allItemsSrc,
-             totalVideos: allItemsSrc.length
-             });
-
-             */
-
         }
-        //new imported functions - END
+  //refactored code - END
 
     // Modal and Play Item  - END
     componentWillMount(){
