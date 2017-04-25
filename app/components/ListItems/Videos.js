@@ -159,12 +159,15 @@ var Videos=React.createClass({
        });
     },
     setLikeOnTitle: function(videoSrc){
+        //todo refactor
+        //todo get this called from item onClick
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
         var itemId = 'like_'+(videoIndex+1);
         document.getElementById(itemId).className=document.getElementById(itemId).className+" liked";
 
     },
     unsetLikeOnTitle: function(videoSrc){
+        //todo refactor
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
         var itemId = 'like_'+(videoIndex+1);
         newClassName= document.getElementById(itemId).className.replace(/ liked/gi,'');

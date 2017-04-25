@@ -13,7 +13,6 @@ class ItemPlayer extends React.Component{
         super(props);
         this.state = {
             typeOfMedia: this.props.typeOfMedia,
-            src: this.props.src,
             liked: this.props.liked,
             autoPlay: this.props.autoPlay
         };
@@ -23,11 +22,11 @@ class ItemPlayer extends React.Component{
             <div>
                  {(this.state.typeOfMedia=='videos') ?
                     <div className="itemPlayerImageContainer">
-                        <video controls type="video/mp4" id="itemPlayer" preload src={this.state.src} ref="video" autoPlay={this.state.autoPlay} />
+                        <video controls type="video/mp4" id="itemPlayer" preload src={this.props.src} ref="video" autoPlay={this.state.autoPlay} />
                     </div>
                     :
                     <div className="itemPlayerImageContainer">
-                        <img id="itemPlayer" src={this.state.src} ref="image"  />
+                        <img id="itemPlayer" src={this.props.src} ref="image"  />
                     </div>
                 }
             </div>

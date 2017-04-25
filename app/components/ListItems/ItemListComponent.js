@@ -17,7 +17,10 @@ class ItemListComponent extends React.Component {
             itemComponentData: this.props.itemComponentData,
             liked: this.props.liked,
             doOnClick: this.props.doOnClick,
-            typeOfMedia: this.props.typeOfMedia
+            typeOfMedia: this.props.typeOfMedia,
+            itemIsWatched: this.props.itemIsWatched,
+            cssClassLike: this.props.cssClassLike,
+            cssClassLink: this.props.cssClassLink
         };
     }
     likeChange(e){
@@ -27,28 +30,48 @@ class ItemListComponent extends React.Component {
         else{
             this.setState({liked: true});
         }
+        //this.generateCssClass();
     }
-    //playItem(event){
-    //    console.log('itemListComponent.js - playItem()');
-    //    selfReference.playItem();
-    //}
+    /*
+    generateCssClass(){
+        var cssClassLike=(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart';//likes
+        var cssClassLink=(this.state.itemIsWatched) ? ' watched' : '';//watched
 
-    openModal() {
-        this.setState({ isModalOpen: true })
+        this.setState({
+            cssClassLike: cssClassLike,
+            cssClassLink: cssClassLink
+        });
+
+        console.log('_________________________________________');
+        console.log('      **** ItemListComponent.js ****');
+        console.log('cssClassLike: '+cssClassLike);
+        console.log('cssClassLink: '+cssClassLink);
+        console.log('_________________________________________');
     }
-    closeModal() {
-        this.setState({ isModalOpen: false })
+    */
+    cssClassData(){
+        var likeStandard='';
+        var likeIsLiked='glyphicon glyphicon-heart liked';
+    }
+    componentWillMount(){
+        //this.generateCssClass();
+
+    }
+    componentWillRender(){
+
+    }
+    componentWillUpdate(){
+        //this.generateCssClass()
     }
     render(){
         return(
             <li key={this.state.componentIndex}>
                 <div className={(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'} id={"like_"+this.state.numItemsRendered} onClick={ (e)=> this.likeChange(e) } key={'like_'+this.state.componentIndex} />
-                <a href="#" key={"link_"+this.state.componentIndex} onClick={this.state.doOnClick} data-src={this.state.itemComponentData.src} id={'video_'+this.state.numItemsRendered} >
+                <a href="#" className={(this.props.itemIsWatched) ? 'watched' : ''}  id={'item_'+this.state.numItemsRendered}  onClick={this.state.doOnClick} data-src={this.state.itemComponentData.src} key={"link_"+this.state.componentIndex} >
                     {this.state.itemComponentData.title}
                 </a>
             </li>
         );
     }
 }
-
 module.exports=ItemListComponent;

@@ -27,7 +27,7 @@ class Lists extends React.Component{
             sections:  new Array(),
             itemsData: new Array(),
             allItemsSrc: new Array(),
-            allItemsData: new Array(),
+            allItemData: new Array(),
             likedItems: new Array(),
             typeOfMedia: this.props.typeOfMedia,
             doOnClick: this.props.doOnClick,
@@ -56,6 +56,7 @@ class Lists extends React.Component{
         return itemsDataArray;
 
     }
+
     createLists (listData){
         var listDataAsString=JSON.stringify(listData);
         var listDataArray=listData;
@@ -75,6 +76,7 @@ class Lists extends React.Component{
                 key={randomNumForKey}
                 liked={thisItemIsLiked}
                 doOnClick={this.state.doOnClick}
+                itemIsWatched={this.itemIsWatched(itemComponentData.src)}
             />
         );
     }
@@ -86,6 +88,16 @@ class Lists extends React.Component{
             return false
         }
     }
+
+    itemIsWatched(itemSrc){
+        var returnValue=false;
+        var currentPosition=this.state.allItemData.map(function(item,index){
+            if((item.src == itemSrc) && item.watched == true){
+                returnValue=true;
+            }
+        });
+        return returnValue;
+    }
     createPlayItemSection(headingName, videoPlayData, index){
         return(
             <div key={index}>
@@ -94,6 +106,23 @@ class Lists extends React.Component{
             </div>
         );
     }
+    /*
+    generateCssClass(whichType){
+        if(whichType=='like'){
+            var cssClass=(this.props.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart';//likes
+        }
+        else{
+            cssClass=(this.props.itemIsWatched) ? ' watched' : '';//watched
+        }
+        console.log('_________________________________________');
+        console.log('      **** Lists.js ****');
+        console.log('cssClass: '+cssClass);
+        console.log('_________________________________________');
+
+        return cssClass;
+
+    }
+    */
     componentWillMount(){
         var itemsData=this.props.listData;
         var allItemsSrc=this.state.allItemsSrc;
@@ -128,14 +157,13 @@ class Lists extends React.Component{
         });
 
         this.setState({
-            allItemsData: playItemSectionsData,
+            allItemData: playItemSectionsData,
             allItemsSrc: allItemsSrc,
             totalVideos: allItemsSrc.length
         });
-console.log('Lists.js -> this.state.allItemsSrc: '+this.state.allItemsSrc);
     }
     render(){
-        var allItemsDataElements=this.state.allItemsData;
+        var allItemsDataElements=this.state.allItemData;
         if (this.props.typeOfQuery == 'sections'){
             return(
                 <Sections sections={this.state.sections} />

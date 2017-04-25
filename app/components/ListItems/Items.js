@@ -6,14 +6,13 @@
  ********************************************************
  */
 
-//todo
-//remove mediaData once refactor done
+//todo remove mediaJSON once refactor done
 
 var React=require('react');
 var Lists = require('./Lists');
 var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
-class Images extends React.Component {
+class Items extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -40,5 +39,5 @@ class Images extends React.Component {
     }
 }
 
-module.exports=Images;
+module.exports=Items;
 
