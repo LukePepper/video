@@ -28,16 +28,11 @@ class ListItems extends React.Component {
             playItem: false,
             videoAutoPlay: true,
             currentVideo: '',
-            likedItems: new Array(),
-            watchedItems: new Array(),
-            totalItems: 0,
-            allItemsSrc: new Array(),
             allItemData: new Array(),
             sections: new Array(),
             itemPath: ''
         };
     }
-    // Modal and Play Item  - START
     playItem(event){
         this.setState({
             currentItem: (this.state.typeOfMedia=='videos') ? event.currentTarget.dataset.src : event.currentTarget.dataset.src,
@@ -54,24 +49,7 @@ class ListItems extends React.Component {
     closeModal () {
         this.setState({ isModalOpen: false })
     }
-    itemPosition(itemSrc){
-        var thisItemPosition;
-        var currentPosition=this.state.allItemData.map(function(item,index){
-            (item.src == itemSrc) ? thisItemPosition=index : null;
-        });
-        return thisItemPosition;
-    }
-    totalItems(){
-        return this.state.allItemData.length;
-    }
-    addToWatchedItems(thisItemSrc){
-          this.state.allItemData[this.itemPosition(thisItemSrc)].watched=true;
-        //todo update style on object - do with ItemListComponent
-    }
-    setTitleCssToWatched(itemSrc){
-        var itemId = 'item_'+(this.itemPosition(itemSrc)+1);
-        document.getElementById(itemId).className="watched";//todo: refactor this targeting the states/props
-    }
+
     renderSkipButton(typeOfButton){
         if( typeOfButton=='next'){
             if(this.itemPosition(this.state.currentItem)>=(this.totalItems()-1)){return null};
@@ -119,15 +97,26 @@ class ListItems extends React.Component {
             (this.state.allItemData[this.itemPosition(itemSrc)].liked) ? true : false
         );
     }
+    itemPosition(itemSrc){
+        var thisItemPosition;
+        var currentPosition=this.state.allItemData.map(function(item,index){
+            (item.src == itemSrc) ? thisItemPosition=index : null;
+        });
+        return thisItemPosition;
+    }
+    totalItems(){
+        return this.state.allItemData.length;
+    }
+    addToWatchedItems(thisItemSrc){
+        this.state.allItemData[this.itemPosition(thisItemSrc)].watched=true;
+        //todo update style on object - do with ItemListComponent
+    }
+    setTitleCssToWatched(itemSrc){
+        var itemId = 'item_'+(this.itemPosition(itemSrc)+1);
+        document.getElementById(itemId).className="watched";//todo: refactor this targeting the states/props
+    }
         buildItemsStateTable(){
             //todo refactor
-                /* todo
-                    * build data structure to hold all items - {src:"xxx.png",watched:false,liked:false}
-                    * - refactor other functions to use and update this data structure
-                    * - pass down this data structure to Lists.js to ingest (via Items.js)
-                    * - look at Lists.js line 89 onwards to see how it is done currently
-                 */
-
             var mediaData=this.state.mediaData;//pull in the data from JSON
             mediaData=(this.state.typeOfMedia=='videos') ? mediaData.videos : mediaData.images;//pull out the bits we need
 
@@ -143,6 +132,7 @@ class ListItems extends React.Component {
                 var itemOrdering=mediaData.map(function(item, index2){
                     (item.section == section) ? itemsArrayOrdered.push(item) : null;
                 });
+                return section;
             });
 
             //store to states
@@ -168,7 +158,7 @@ class ListItems extends React.Component {
                     <div className="itemPlayerContainer">
                         <div className="col-sm-1 col-md-2" />
                         <div className="col-sm-10 col-md-8 section-container">
-                            <Items doOnClick={this.state.doOnClick} typeOfMedia={this.state.typeOfMedia} allItemData={this.state.allItemData} sections={this.state.allItemData} />
+                            <Items doOnClick={this.state.doOnClick} typeOfMedia={this.state.typeOfMedia} allItemData={this.state.allItemData} sections={this.state.sections} />
                         </div>
                         <div className="col-sm-1 col-md-2" />
                         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} onClick={this.state.doOnClick} doOnClick={this.state.doOnClick} >
