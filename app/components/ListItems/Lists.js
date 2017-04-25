@@ -12,7 +12,29 @@ var React=require('react');
 var ItemListComponent=require('./ItemListComponent.js');
 mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
+var CommonFunctions=require('./CommonFunctions.js');
+
+/*
+function isThisItemLiked(itemSrc,allItemData){
+    //todo refactor repeat of item in ListItems.js "isThisItemLiked()"
+    if(itemSrc === null){
+        return false;
+    }
+    return (
+        (allItemData[itemPosition(itemSrc,allItemData)].liked) ? true : false
+    );
+}
+function itemPosition(itemSrc,allItemData){
+    //todo refactor repeat of item in ListItems.js "itemPosition()"
+    var thisItemPosition;
+    var currentPosition=allItemData.map(function(item,index){
+        (item.src == itemSrc) ? thisItemPosition=index : null;
+    });
+    return thisItemPosition;
+}
+*/
 class Lists extends React.Component{
+
     constructor(props) {
         super(props);
         this.state = {
@@ -23,13 +45,15 @@ class Lists extends React.Component{
         };
     }
     createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){
+
+
         return (
             <ItemListComponent
                 componentIndex={componentIndex}
                 numItemsRendered={numItemsRendered}
                 itemComponentData={itemComponentData}
                 key={Math.floor((Math.random() * 10000) + 1)}
-                liked={ this.isThisItemLiked(itemComponentData.src) }
+                liked={ this.isThisItemLiked(itemComponentData.src,this.state.allItemData) }
                 doOnClick={this.state.doOnClick}
                 itemIsWatched={ this.itemIsWatched(itemComponentData.src) }
                 typeOfMedia={this.props.typeOfMedia}
@@ -45,6 +69,7 @@ class Lists extends React.Component{
             (this.state.allItemData[this.itemPosition(itemSrc)].liked) ? true : false
          );
     }
+
     itemPosition(itemSrc){
         //todo refactor repeat of item in ListItems.js "itemPosition()"
         var thisItemPosition;
@@ -79,9 +104,7 @@ class Lists extends React.Component{
             var itemDataMap = self.state.allItemData.map(function(itemData, index2){
                 if(itemData.section == headingName){
                     i++;
-                    //dataToRender+=self.createItemOpenComponent( itemDataElements, index2, i);
                     return self.createItemOpenComponent( itemData, index2, i);
-
                 }
             });
             return self.createPlayItemSection(headingName, itemDataMap, index);

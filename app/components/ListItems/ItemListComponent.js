@@ -2,7 +2,7 @@
  ********************************************************************************
      Creates the list item elements - i.e. click-able link: Like Icon, Title
 
-     ItemListComponent
+     ItemListComponent.js
  ********************************************************************************
  */
 
@@ -24,6 +24,7 @@ class ItemListComponent extends React.Component {
         };
     }
     likeChange(e){
+        //todo refactor
         if(this.state.liked==true){
            this.setState({liked: false});
         }
@@ -49,21 +50,29 @@ class ItemListComponent extends React.Component {
         console.log('_________________________________________');
     }
     */
+    /*
     cssClassData(){
         var likeStandard='';
         var likeIsLiked='glyphicon glyphicon-heart liked';
     }
+    */
     componentWillMount(){
         //this.generateCssClass();
 
     }
     componentWillRender(){
-
+        this.setState({
+            liked: this.props.liked,
+            doOnClick: this.props.doOnClick,
+            typeOfMedia: this.props.typeOfMedia,
+            itemIsWatched: this.props.itemIsWatched
+        })
     }
     componentWillUpdate(){
         //this.generateCssClass()
     }
     render(){
+        //todo try => onclick={()=>{ f1(); f2() }}
         return(
             <li key={this.state.componentIndex}>
                 <div className={(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'} id={"like_"+this.state.numItemsRendered} onClick={ (e)=> this.likeChange(e) } key={'like_'+this.state.componentIndex} />
