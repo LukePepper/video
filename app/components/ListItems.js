@@ -28,11 +28,12 @@ class ListItems extends React.Component {
             mediaData: mediaJSON,
             playItem: false,
             videoAutoPlay: true,
-            currentVideo: ''
+            currentVideo: '',
+            likedItems: new Array(),
+            watchedItems: new Array(),
+            totalItems: 0,
+            allItemsSrc: new Array()
         };
-    }
-    componentWillRender(){
-
     }
     // Modal and Play Item  - START
     playItem(event){
@@ -40,10 +41,9 @@ class ListItems extends React.Component {
             currentItem: (this.state.typeOfMedia=='videos') ? videoPath+event.currentTarget.dataset.src : imagePath+event.currentTarget.dataset.src,
             playItem:true
         });
-
+console.log();
         this.openModal();
-
-        //this.addToWatchedItems(event.currentTarget.dataset.src);//todo add this function
+        this.addToWatchedItems(event.currentTarget.dataset.src);//todo add this function
         event.currentTarget.className = "watched";
     }
     openModal () {
@@ -57,6 +57,67 @@ class ListItems extends React.Component {
             this.setState({ isModalOpen: true });
         }
     }
+    itemPosition(item){
+        return this.state.allItemsSrc.indexOf(item);
+    }
+    addToWatchedItems(thisItemSrc){
+        var addToWatchedItemsArray=this.state.watchedItems;
+
+        if( addToWatchedItemsArray.indexOf(thisItemSrc) === -1 ) {
+            addToWatchedItemsArray.push(thisItemSrc);
+            this.setState({watchedItems: addToWatchedItemsArray});
+        }
+    }
+
+        //new imported functions - START
+        skipPrevButton(){
+            if(this.itemPosition(this.state.currentItem)==0){return null};
+            return(
+                <div id="prevItem" className="glyphicon glyphicon-chevron-left" ref="prev" onClick={e => this.skipItem('prev',e)} />
+            )
+        }
+        skipNextButton(){
+            if(this.itemPosition(this.state.currentItem)==(this.state.totalItems-1)){return null};
+            return(
+                <div id="nextItem" className="glyphicon glyphicon-chevron-right" ref="next" onClick={e => this.skipItem('next',e)} />
+            )
+        }
+        skipItem(direction, e){
+            currentItemPosition=this.itemPosition(this.state.currentItem);
+            if(direction=='prev' && currentItemPosition > 0){
+                nextPosition=currentItemPosition-1;
+                this.setState({currentItem: this.state.allItemsSrc[nextPosition]});
+                this.addToWatchedItems(  this.state.allItemsSrc[nextPosition] );
+                document.getElementById('item_'+nextPosition).className='watched';
+            }
+            else if( direction=='next' && currentItemPosition < this.state.totalItemss-1 ){
+                nextPosition=currentItemPosition+1;
+                this.setState({currentItem: this.state.allItemssSrc[nextPosition]});
+                this.addToWatchedItemss( this.state.allItemssSrc[nextPosition] );
+                document.getElementById('item_'+nextPosition).className='watched';
+            }
+        }
+        likeItemButton(liked,event){
+            var css="glyphicon glyphicon-heart"
+            if(liked!=-1){
+                css+=" liked";
+            }
+            return (
+                <div id="likeButtonModal" className={css} onClick={this.like} />
+            );
+        }
+        likeItemButtonClicked(event){
+            var currentItemSrc=this.state.currentItem;
+            if( isThisItemLiked ){
+                event.currentTarget.className=event.currentTarget.className+" liked";
+                likedItems.push( currentItemSrc );
+            }
+        }
+        isThisItemLiked(thisItem){
+            return (this.state.likedItems.indexOf(this.state.thisItem) === -1) ? false : true;
+        }
+        //new imported functions - END
+
     // Modal and Play Item  - END
     render(){
         return (
@@ -68,6 +129,9 @@ class ListItems extends React.Component {
                         </div>
                         <div className="col-sm-1 col-md-2" />
                         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} onClick={this.state.doOnClick} doOnClick={this.state.doOnClick} >
+                            {this.likeItemButton(this.isThisItemLiked(this.state.currentItem))}
+                            {this.skipPrevButton()}
+                            {this.skipNextButton()}
                             <ItemPlayer src={this.state.currentItem} typeOfMedia={this.state.typeOfMedia} autoPlay={this.state.videoAutoPlay} />
                         </Modal>
                     </div>

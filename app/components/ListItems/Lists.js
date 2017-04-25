@@ -1,6 +1,6 @@
 /*
  ********************************************************************************
- Creates the lists for the media items i.e. lists of Videos or lists of Images
+ Creates the lists for the media items i.e. lists of Videos or Images
 
  Lists.js
  ********************************************************************************

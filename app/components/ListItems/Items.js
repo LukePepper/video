@@ -1,6 +1,6 @@
 /*
  ********************************************************
- * Renders the lists of images
+ * Renders the lists of images or videos
  *
  * Items.js
  ********************************************************
