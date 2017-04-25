@@ -11,8 +11,6 @@ video{
   z-index: 8;
   background: rgba(0, 0, 0, 0.6);
 }
-
-
 #prevItem, #nextItem {
   position: absolute;
   font-size:50px;
@@ -24,9 +22,10 @@ video{
   z-index:10;
   top: 50%;
   transform: translate(-50%, -50%);
-}
-#prevItem:hover, #nextItem:hover{
-  opacity: 1;
+
+  &:hover{
+    opacity: 1;
+  }
 }
 #prevItem {
   left: 8px;
@@ -34,4 +33,3 @@ video{
 #nextItem {
   right: 8px;
 }
-

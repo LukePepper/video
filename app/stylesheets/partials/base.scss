@@ -6,18 +6,18 @@ body{
   height: 100%;
 }
 ul{
-  padding:0
-}
-ul li{
-  list-style-type:none;
-  margin-bottom:$margin-standard;
-  font-size:$text-regular;
-}
-ul li a{
-  color:$main-text;
-}
-ul li a:hover{
-  color:$main-text-hover;
+  padding:0;
+  li{
+    list-style-type:none;
+    margin-bottom:$margin-standard;
+    font-size:$text-regular;
+  }
+  li a{
+    color:$main-text;
+    &:hover{
+      color:$main-text-hover;
+    }
+  }
 }
 h2{
   margin-top:$margin-standard;
