@@ -32,7 +32,13 @@ class Items extends React.Component {
             <div>
                 <h2>{this.state.typeOfMedia}</h2>
                 <div className="chooseItem" >
-                    <Lists listData={this.state.mediaData} typeOfMedia={this.state.typeOfMedia} doOnClick={this.state.doOnClick} allItemData={this.props.allItemData} sections={this.props.sections} />
+                    <Lists
+                        listData={this.state.mediaData}
+                        typeOfMedia={this.state.typeOfMedia}
+                        doOnClick={this.state.doOnClick}
+                        allItemData={this.props.allItemData}
+                        sections={this.props.sections}
+                        itemPath={this.props.itemPath} />
                 </div>
             </div>
         );

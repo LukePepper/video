@@ -57,6 +57,7 @@ class Lists extends React.Component{
                 doOnClick={this.state.doOnClick}
                 itemIsWatched={ this.itemIsWatched(itemComponentData.src) }
                 typeOfMedia={this.props.typeOfMedia}
+                itemPath={this.props.itemPath}
             />
         );
     }

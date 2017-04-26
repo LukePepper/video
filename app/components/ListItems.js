@@ -158,7 +158,7 @@ class ListItems extends React.Component {
                     <div className="itemPlayerContainer">
                         <div className="col-sm-1 col-md-2" />
                         <div className="col-sm-10 col-md-8 section-container">
-                            <Items doOnClick={this.state.doOnClick} typeOfMedia={this.state.typeOfMedia} allItemData={this.state.allItemData} sections={this.state.sections} />
+                            <Items doOnClick={this.state.doOnClick} typeOfMedia={this.state.typeOfMedia} allItemData={this.state.allItemData} sections={this.state.sections} itemPath={this.state.itemPath} />
                         </div>
                         <div className="col-sm-1 col-md-2" />
                         <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} onClick={this.state.doOnClick} doOnClick={this.state.doOnClick} >

@@ -10,119 +10,119 @@
     {
       "title": "Drum Selection",
       "src": "drum_selection.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "drum_selection.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Drum Pickup",
       "src": "drum pick-up.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "drum_pick-up.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Removing a Drum from the Grease Stand",
       "src": "operation_of_grease_stand_removing_drum.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "operation_of_grease_stand_removing_drum.png",
       "subsection": true,
-      "section": "Operation of Grease Stand"
+      "section": "Operation Of The Grease Stand"
     },
     {
       "title": "Removing a Dented Drum from the Grease Stand",
       "src": "operation_of_grease_stand_removing_dented_drum.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "operation_of_grease_stand_removing_dented_drum.png",
       "subsection": true,
-      "section": "Operation of Grease Stand"
+      "section": "Operation Of The Grease Stand"
     },
     {
       "title": "Operating the Grease Stand",
       "src": "operation_of_grease_stand.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "operation_of_grease_stand.png",
       "subsection": true,
-      "section": "Operation of Grease Stand"
+      "section": "Operation Of The Grease Stand"
     },
     {
       "title": "Dealing With a Water Contaminated Drum",
       "src": "opereation_of_grease_stand_water_contamination.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "opereation_of_grease_stand_water_contamination.png",
       "subsection": true,
-      "section": "Operation of Grease Stand"
+      "section": "Operation Of The Grease Stand"
     },
     {
       "title": "Heavy Metals",
       "src": "heavy_metals.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "heavy_metals.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Starting The Mixing Machine",
       "src": "mixing_machine_starting.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "mixing_machine_starting.png",
       "subsection": true,
       "section": "The Mixing Machine"
     },
     {
       "title": "Adding Additives to the Mixing Machine (Heavy Metals, Tackifier, Setal)",
       "src": "mixing_machine_additives.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "mixing_machine_additives.png",
       "subsection": true,
       "section": "The Mixing Machine"
     },
     {
       "title": "Extractor Operation",
       "src": "extractor_operation.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "extractor_operation.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Floveyor Operation",
       "src": "floveyor_operation.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "floveyor_operation.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Rinstrum R420 Operation (Premium Lube)",
       "src": "load_cell_operation_r420.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "load_cell_operation_r420.png",
       "subsection": true,
       "section": "Load Cell Operation"
     },
     {
       "title": "Rinstrum R2100 Operation (ZN50)",
       "src": "load_cell_operation_r2100.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "load_cell_operation_r2100.png",
       "subsection": true,
       "section": "Load Cell Operation"
     },
     {
       "title": "Cleaning the Filter",
       "src": "load_cell_operation_clearning_filter.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "load_cell_operation_clearning_filter.png",
       "subsection": true,
       "section": "Load Cell Operation"
     },
     {
       "title": "Packaging Selection",
       "src": "packaging_selection.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "packaging_selection.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "Wrapping of a Pallet",
       "src": "wrapping_a_pallet.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "wrapping_a_pallet.png",
       "subsection": false,
       "section": ""
     },
     {
       "title": "ZN50",
       "src": "ZN50.mp4",
-      "src_thumbnail": "starting_the_compressor.png",
+      "src_thumbnail": "ZN50.png",
       "subsection": false,
       "section": ""
     }

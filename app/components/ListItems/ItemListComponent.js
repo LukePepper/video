@@ -76,8 +76,18 @@ class ItemListComponent extends React.Component {
         return(
             <li key={this.state.componentIndex}>
                 <div className={(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'} id={"like_"+this.state.numItemsRendered} onClick={ (e)=> this.likeChange(e) } key={'like_'+this.state.componentIndex} />
-                <a href="#" className={(this.props.itemIsWatched) ? 'watched' : ''}  id={'item_'+this.state.numItemsRendered}  onClick={this.state.doOnClick} data-src={this.state.itemComponentData.src} key={"link_"+this.state.componentIndex} >
-                    {this.state.itemComponentData.title}
+                <a
+                    href="#"
+                    className={(this.props.itemIsWatched) ? 'watched' : ''}
+                    id={'item_'+this.state.numItemsRendered}
+                    onClick={this.state.doOnClick}
+                    data-src={this.state.itemComponentData.src}
+                    key={"link_"+this.state.componentIndex}
+                    style={{ backgroundImage: 'url('+ this.props.itemPath + this.state.itemComponentData.src_thumbnail + ' )' } }
+                >
+                    <div className="linkText">
+                        {this.state.itemComponentData.title}
+                    </div>
                 </a>
             </li>
         );
