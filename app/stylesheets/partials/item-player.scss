@@ -30,10 +30,12 @@
     @include largeBreakPoint{
       width: 22%;
       height:70px;
+      margin-left:1.5%;
     }
     @include mediumBreakPoint{
       width: 30%;
       height:110px;
+      margin-left:1.5%;
     }
     @include mediumBreakPointMid{
       width: 30%;
@@ -42,15 +44,18 @@
     @include smallBreakPoint{
       width:45%;
       height:140px;
+      margin-left:2%;
     }
     @include smallBreakPointMid{
       width:45%;
       height:115px;
+
     }
 
     @include extraSmallBreakPoint{
-       width:86%;
-       height:150px;
+      width:86%;
+      height:150px;
+      margin-left:2.5%;
     }
     @include extraSmallBreakPointMid{
       width:86%;
