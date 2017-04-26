@@ -22,14 +22,14 @@
       "section": ""
     },
     {
-      "title": "Removing a Drum from the Grease Stand",
+      "title": "Removing a Drum",
       "src": "operation_of_grease_stand_removing_drum.mp4",
       "src_thumbnail": "operation_of_grease_stand_removing_drum.png",
       "subsection": true,
       "section": "Operation Of The Grease Stand"
     },
     {
-      "title": "Removing a Dented Drum from the Grease Stand",
+      "title": "Removing a Dented Drum",
       "src": "operation_of_grease_stand_removing_dented_drum.mp4",
       "src_thumbnail": "operation_of_grease_stand_removing_dented_drum.png",
       "subsection": true,
@@ -43,7 +43,7 @@
       "section": "Operation Of The Grease Stand"
     },
     {
-      "title": "Dealing With a Water Contaminated Drum",
+      "title": "Water Contaminated Drums",
       "src": "opereation_of_grease_stand_water_contamination.mp4",
       "src_thumbnail": "opereation_of_grease_stand_water_contamination.png",
       "subsection": true,
@@ -64,7 +64,7 @@
       "section": "The Mixing Machine"
     },
     {
-      "title": "Adding Additives to the Mixing Machine (Heavy Metals, Tackifier, Setal)",
+      "title": "Adding Additives (Heavy Metals, Tackifier, Setal)",
       "src": "mixing_machine_additives.mp4",
       "src_thumbnail": "mixing_machine_additives.png",
       "subsection": true,

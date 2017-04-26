@@ -19,6 +19,7 @@
     width:15px;
     height:15px;
     margin-right: $margin-standard;
+    z-index:1;
   }
   li{
     float:left;
@@ -92,7 +93,7 @@
         bottom: 0;
         position: absolute;
         background-color: $linkTextBg;
-        padding: 3% 1% 0% 1%;
+        padding: 2% 1% 1% 2%;
       }
       img{
 
