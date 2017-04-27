@@ -78,9 +78,13 @@ class ListItems extends React.Component {
     }
     likeItemButton(thisItemSrc){
         return (
-            <div id="likeButtonModal" className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart itemIsLiked' : 'glyphicon glyphicon-heart' } onClick={this.like} />
+            <div id="likeButtonModal" className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart' } onClick={this.likeItemButtonClicked.bind(this)} />
         );
     }
+    likeItemButtonClicked(){
+        this.itemLikeClicked(this.state.currentItem);
+    }
+
     // Modal and Play Item  - END
     setItemToLiked(itemSrc){
         this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked=true;
@@ -89,9 +93,7 @@ class ListItems extends React.Component {
         this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked=false;
     }
     isThisItemLiked(itemSrc){
-        if(itemSrc === null){
-            return false;
-        }
+        if(itemSrc === null){ return false }
         return (
             (this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked) ? true : false
         );
