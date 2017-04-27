@@ -13,7 +13,7 @@ class ItemPlayer extends React.Component{
         super(props);
         this.state = {
             typeOfMedia: this.props.typeOfMedia,
-            liked: this.props.liked,
+            liked: this.props.itemIsLiked,
             autoPlay: this.props.autoPlay
         };
     }

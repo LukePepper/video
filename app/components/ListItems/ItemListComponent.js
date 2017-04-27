@@ -15,73 +15,55 @@ class ItemListComponent extends React.Component {
             componentIndex: this.props.componentIndex,
             numItemsRendered: this.props.numItemsRendered,
             itemComponentData: this.props.itemComponentData,
-            liked: this.props.liked,
+            itemIsLiked: this.props.itemIsLiked,
             doOnClick: this.props.doOnClick,
             typeOfMedia: this.props.typeOfMedia,
             itemIsWatched: this.props.itemIsWatched,
             cssClassLike: this.props.cssClassLike,
-            cssClassLink: this.props.cssClassLink
+            cssClassLink: this.props.cssClassLink,
+            itemClicked: '',
+            itemLikedClicked: '',
+            itemLiked: ''
         };
     }
-    likeChange(e){
-        //todo refactor
-        if(this.state.liked==true){
-           this.setState({liked: false});
-        }
-        else{
-            this.setState({liked: true});
-        }
-        //this.generateCssClass();
+    itemLikeClicked(e){
+        var newLikeState = (this.state.itemIsLiked) ? false : true;
+        this.setState(
+            {
+                itemIsLiked: newLikeState,
+                itemLiked:  e.currentTarget.dataset.src
+            },
+            function(){
+                this.props.itemLikeClicked(this.state.itemLiked);
+            }
+        );
     }
-    /*
-    generateCssClass(){
-        var cssClassLike=(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart';//likes
-        var cssClassLink=(this.state.itemIsWatched) ? ' watched' : '';//watched
-
-        this.setState({
-            cssClassLike: cssClassLike,
-            cssClassLink: cssClassLink
-        });
-
-        console.log('_________________________________________');
-        console.log('      **** ItemListComponent.js ****');
-        console.log('cssClassLike: '+cssClassLike);
-        console.log('cssClassLink: '+cssClassLink);
-        console.log('_________________________________________');
+    itemClicked(e){
+        this.setState(
+            {
+                itemClicked: e.currentTarget.dataset.src,
+                itemIsWatched: 'watched'
+            },
+            function(){
+                this.props.itemClicked(this.state.itemClicked);
+            }
+        );
     }
-    */
-    /*
-    cssClassData(){
-        var likeStandard='';
-        var likeIsLiked='glyphicon glyphicon-heart liked';
-    }
-    */
     componentWillMount(){
-        //this.generateCssClass();
-
     }
     componentWillRender(){
-
     }
     componentWillUpdate(){
-        //this.generateCssClass()
-        this.setState({
-            liked: this.props.liked,
-            doOnClick: this.props.doOnClick,
-            typeOfMedia: this.props.typeOfMedia,
-            itemIsWatched: this.props.itemIsWatched
-        })
     }
     render(){
-        //todo try => onclick={()=>{ f1(); f2() }}
         return(
             <li key={this.state.componentIndex}>
-                <div className={(this.state.liked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'} id={"like_"+this.state.numItemsRendered} onClick={ (e)=> this.likeChange(e) } key={'like_'+this.state.componentIndex} />
+
                 <a
                     href="#"
-                    className={(this.props.itemIsWatched) ? 'watched' : ''}
+                    className={(this.state.itemIsWatched) ? 'watched' : ''}
                     id={'item_'+this.state.numItemsRendered}
-                    onClick={this.state.doOnClick}
+                    onClick={this.itemClicked.bind(this)}
                     data-src={this.state.itemComponentData.src}
                     key={"link_"+this.state.componentIndex}
                     style={{ backgroundImage: 'url('+ this.props.itemPath + this.state.itemComponentData.src_thumbnail + ' )' } }
@@ -90,6 +72,17 @@ class ItemListComponent extends React.Component {
                         {this.state.itemComponentData.title}
                     </div>
                 </a>
+
+                <div>
+                    <div
+                        className={(this.state.itemIsLiked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'}
+                        id={"like_"+this.state.numItemsRendered}
+                        onClick={this.itemLikeClicked.bind(this)}
+                        key={'like_'+this.state.componentIndex}
+                        data-src={this.state.itemComponentData.src}
+                    />
+                </div>
+
             </li>
         );
     }

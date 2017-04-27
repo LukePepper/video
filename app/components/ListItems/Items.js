@@ -20,6 +20,17 @@ class Items extends React.Component {
             doOnClick: this.props.doOnClick,
         };
     }
+    /* new event handler stuff */
+    itemClicked(clickedItemSrc){
+        this.setState({itemClicked:clickedItemSrc}, function(){
+            this.props.itemClicked(this.state.itemClicked);
+        });
+    }
+    itemLikeClicked(clickedLikeItemSrc){
+        this.setState({itemLiked:clickedLikeItemSrc}, function(){
+            this.props.itemLikeClicked(this.state.itemLiked);
+        });
+    }
     componentWillRender(){
         this.setState({
             mediaData: mediaJSON,
@@ -38,7 +49,10 @@ class Items extends React.Component {
                         doOnClick={this.state.doOnClick}
                         allItemData={this.props.allItemData}
                         sections={this.props.sections}
-                        itemPath={this.props.itemPath} />
+                        itemPath={this.props.itemPath}
+                        itemClicked={this.itemClicked.bind(this)}
+                        itemLikeClicked={this.itemLikeClicked.bind(this)}
+                    />
                 </div>
             </div>
         );

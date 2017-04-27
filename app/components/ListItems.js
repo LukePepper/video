@@ -29,18 +29,21 @@ class ListItems extends React.Component {
             currentVideo: '',
             allItemData: new Array(),
             sections: new Array(),
-            itemPath: ''
+            itemPath: '',
+            itemClicked: '',
+            itemLiked: ''
         };
     }
     playItem(event){
         this.setState({
-            currentItem: (this.state.typeOfMedia=='videos') ? event.currentTarget.dataset.src : event.currentTarget.dataset.src,
+            currentItem: event.currentTarget.dataset.src
         });
         this.openModal();
         this.addToWatchedItems(event.currentTarget.dataset.src);
         event.currentTarget.className = "watched";//todo: refactor this targeting the states/props
 
     }
+
     openModal () {
         this.setState({ isModalOpen: true })
     }
@@ -68,31 +71,38 @@ class ListItems extends React.Component {
             var nextPosition=currentItemPosition+1;
         }
 
-        this.setTitleCssToWatched(this.state.allItemData[nextPosition].src);//set the item css todo: refactor this targeting the states/props
+        //new
+        this.addToWatchedItems(this.state.allItemData[nextPosition].src);
+
+       //old
+       // this.setTitleCssToWatched(this.state.allItemData[nextPosition].src);//set the item css todo: refactor this targeting the states/props
         this.setState({currentItem: this.state.allItemData[nextPosition].src});//set the state
     }
     likeItemButton(thisItemSrc){
         return (
-            <div id="likeButtonModal" className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart' } onClick={this.like} />
+            <div id="likeButtonModal" className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart itemIsLiked' : 'glyphicon glyphicon-heart' } onClick={this.like} />
         );
     }
         likeItemButtonClicked(event){
             //todo refactor
             var currentItemSrc=this.state.currentItem;
             if( isThisItemLiked ){
-                event.currentTarget.className=event.currentTarget.className+" liked";
+                event.currentTarget.className=event.currentTarget.className+" itemIsLiked";
                 likedItems.push( currentItemSrc );//todo
             }
         }
     setItemToLiked(itemSrc){
-        this.state.allItemData[this.itemPosition(itemSrc)].liked=true;
+        this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked=true;
+    }
+    unsetItemToLiked(itemSrc){
+        this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked=false;
     }
     isThisItemLiked(itemSrc){
         if(itemSrc === null){
             return false;
         }
         return (
-            (this.state.allItemData[this.itemPosition(itemSrc)].liked) ? true : false
+            (this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked) ? true : false
         );
     }
     itemPosition(itemSrc){
@@ -141,9 +151,38 @@ class ListItems extends React.Component {
 
         }
     // Modal and Play Item  - END
+    /* new event handler stuff */
+    itemClicked(clickedItemSrc){
+        this.setState({itemClicked:clickedItemSrc}, function(){
+            this.playItemNew(clickedItemSrc);
+        });
+    }
+    itemLikeClicked(clickedLikeItemSrc){
+        if(this.isThisItemLiked(clickedLikeItemSrc)){
+            var newState = '';
+            this.unsetItemToLiked(clickedLikeItemSrc);
+        }
+        else{
+            var newState = clickedLikeItemSrc;
+            this.setItemToLiked(clickedLikeItemSrc);
+        }
+        this.setState({itemLiked:newState}, function(){
+
+        });
+    }
+    playItemNew(clickedItemSrc){
+        this.setState({
+            currentItem: clickedItemSrc
+        });
+        this.openModal();
+        this.addToWatchedItems(clickedItemSrc);
+        //event.currentTarget.className = "watched";//todo: refactor this targeting the states/props
+
+    }
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
         (this.state.typeOfMedia == 'videos') ? this.setState({ itemPath : videoPath}) : this.setState({ itemPath : imagePath});//select the path based on typeOfMedia
+
 
     }
     componentWillRender(){
@@ -155,14 +194,30 @@ class ListItems extends React.Component {
                     <div className="itemPlayerContainer">
                         <div className="col-sm-1 col-md-2" />
                         <div className="col-sm-10 col-md-8 section-container">
-                            <Items doOnClick={this.state.doOnClick} typeOfMedia={this.state.typeOfMedia} allItemData={this.state.allItemData} sections={this.state.sections} itemPath={this.state.itemPath} />
+                            <Items
+                                doOnClick={this.state.doOnClick}
+                                typeOfMedia={this.state.typeOfMedia}
+                                allItemData={this.state.allItemData}
+                                sections={this.state.sections}
+                                itemPath={this.state.itemPath}
+                                itemClicked={this.itemClicked.bind(this)}
+                                itemLikeClicked={this.itemLikeClicked.bind(this)}
+                            />
                         </div>
                         <div className="col-sm-1 col-md-2" />
-                        <Modal isOpen={this.state.isModalOpen} onClose={() => this.closeModal()} onClick={this.state.doOnClick} doOnClick={this.state.doOnClick} >
+                        <Modal
+                            isOpen={this.state.isModalOpen}
+                            onClose={() => this.closeModal()}
+                            onClick={this.state.doOnClick}
+                            doOnClick={this.state.doOnClick}
+                        >
                             {this.likeItemButton(this.state.currentItem)}
                             {this.renderSkipButton('prev')}
                             {this.renderSkipButton('next')}
-                            <ItemPlayer src={this.state.itemPath+this.state.currentItem} typeOfMedia={this.state.typeOfMedia} autoPlay={this.state.videoAutoPlay} />
+                            <ItemPlayer
+                                src={this.state.itemPath+this.state.currentItem}
+                                typeOfMedia={this.state.typeOfMedia}
+                                autoPlay={this.state.videoAutoPlay} />
                         </Modal>
                     </div>
                 </div>

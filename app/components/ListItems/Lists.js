@@ -21,7 +21,7 @@ function isThisItemLiked(itemSrc,allItemData){
         return false;
     }
     return (
-        (allItemData[itemPosition(itemSrc,allItemData)].liked) ? true : false
+        (allItemData[itemPosition(itemSrc,allItemData)].itemIsLiked) ? true : false
     );
 }
 function itemPosition(itemSrc,allItemData){
@@ -41,23 +41,25 @@ class Lists extends React.Component{
             sections:  this.props.sections,
             allItemData: this.props.allItemData,
             typeOfMedia: this.props.typeOfMedia,
-            doOnClick: this.props.doOnClick
+            doOnClick: this.props.doOnClick,
+            clickedItem: ''
         };
+
     }
     createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){
-
-
         return (
             <ItemListComponent
                 componentIndex={componentIndex}
                 numItemsRendered={numItemsRendered}
                 itemComponentData={itemComponentData}
                 key={Math.floor((Math.random() * 10000) + 1)}
-                liked={ this.isThisItemLiked(itemComponentData.src,this.state.allItemData) }
-                doOnClick={this.state.doOnClick}
+                itemIsLiked={ this.isThisItemLiked(itemComponentData.src) }
+                doOnClick={this.state.doOnClick.bind(this)}
                 itemIsWatched={ this.itemIsWatched(itemComponentData.src) }
                 typeOfMedia={this.props.typeOfMedia}
                 itemPath={this.props.itemPath}
+                itemClicked={this.itemClicked.bind(this)}
+                itemLikeClicked={this.itemLikeClicked.bind(this)}
             />
         );
     }
@@ -67,7 +69,7 @@ class Lists extends React.Component{
             return false;
          }
          return (
-            (this.state.allItemData[this.itemPosition(itemSrc)].liked) ? true : false
+            (this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked) ? true : false
          );
     }
 
@@ -111,6 +113,17 @@ class Lists extends React.Component{
             return self.createPlayItemSection(headingName, itemDataMap, index);
         });
         return dataToRender
+    }
+    /* new event handler stuff */
+    itemClicked(clickedItemSrc){
+        this.setState({itemClicked:clickedItemSrc}, function(){
+            this.props.itemClicked(this.state.itemClicked);
+        });
+    }
+    itemLikeClicked(clickedLikeItemSrc){
+        this.setState({itemLiked:clickedLikeItemSrc}, function(){
+            this.props.itemLikeClicked(this.state.itemLiked);
+        });
     }
     componentWillMount(){
 

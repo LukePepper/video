@@ -25,7 +25,7 @@ class CommonFunctions extends React.Component {
             return false;
         }
         return (
-            (allItemData[itemPosition(itemSrc, allItemData)].liked) ? true : false
+            (allItemData[itemPosition(itemSrc, allItemData)].itemIsLiked) ? true : false
         );
     }
 

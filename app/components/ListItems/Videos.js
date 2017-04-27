@@ -102,7 +102,7 @@ var Videos=React.createClass({
         var likedVideos=this.state.likedVideos;
 
            if(likedVideos.indexOf(videoSrc) !== -1){
-               className =+ ' liked';
+               className =+ ' itemIsLiked';
            }
 
         return (
@@ -142,7 +142,7 @@ var Videos=React.createClass({
 
         if( likedVideos.indexOf(thisVideoSrc) === -1 ){
             likedVideos.push( thisVideoSrc );
-            //event.currentTarget.className=event.currentTarget.className+" liked";
+            //event.currentTarget.className=event.currentTarget.className+" itemIsLiked";
             this.setLikeOnTitle(thisVideoSrc);
 
         }else{
@@ -163,7 +163,7 @@ var Videos=React.createClass({
         //todo get this called from item onClick
         videoIndex=this.state.allVideosSrc.indexOf(videoSrc);
         var itemId = 'like_'+(videoIndex+1);
-        document.getElementById(itemId).className=document.getElementById(itemId).className+" liked";
+        document.getElementById(itemId).className=document.getElementById(itemId).className+" itemIsLiked";
 
     },
     unsetLikeOnTitle: function(videoSrc){
@@ -176,7 +176,7 @@ var Videos=React.createClass({
     likeVideoButton: function(liked,event){
         var css="glyphicon glyphicon-heart"
         if(liked!=-1){
-            css+=" liked";
+            css+=" itemIsLiked";
         }
         return (
             <div id="likeButtonModal" className={css} onClick={this.like} />
@@ -185,7 +185,7 @@ var Videos=React.createClass({
     likeVideoButtonClicked: function(event){
         var currentVideoSrc=this.state.currentItem;
         if( likedVideos.indexOf(this.state.allVideosSrc[thisVideoId]) === -1 ){
-            event.currentTarget.className=event.currentTarget.className+" liked";
+            event.currentTarget.className=event.currentTarget.className+" itemIsLiked";
             likedVideos.push( currentVideoSrc );
         }
         else{
