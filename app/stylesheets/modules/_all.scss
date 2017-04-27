@@ -45,6 +45,7 @@ $BP-small-mid: 658px;
 $BP-extraSmall: 550px;
 $BP-extraSmall-Mid: 400px;
 
+/* todo refactor */
 @mixin extraSmallBreakPointMid {
   @media (max-width: $BP-extraSmall-Mid) {
     @content;
