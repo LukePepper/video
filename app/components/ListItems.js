@@ -16,6 +16,7 @@ var Items = require('./ListItems/Items');
 var ItemPlayer = require('./ListItems/ItemPlayer');
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
+var videoAutoPlay = true;//change this to prevent video auto playing
 
 
 class ListItems extends React.Component {
@@ -26,7 +27,7 @@ class ListItems extends React.Component {
             isModalOpen: false,
             currentItem: null,
             mediaData: mediaJSON,
-            videoAutoPlay: true,
+            videoAutoPlay: videoAutoPlay,
             allItemData: [],
             sections: [],
             itemPath: '',
