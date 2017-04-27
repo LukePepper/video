@@ -10,6 +10,7 @@
   ********************************************/
 
 var React=require('react');
+var PropTypes=require('prop-types');
 var mediaJSON=require('json-loader!./ListItems/Media.json');//JSON file containing the videos
 var Modal = require('./Modal');
 var Items = require('./ListItems/Items');
@@ -78,7 +79,11 @@ class ListItems extends React.Component {
     }
     likeItemButton(thisItemSrc){
         return (
-            <div id="likeButtonModal" className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart' } onClick={this.likeItemButtonClicked.bind(this)} />
+            <div
+                id="likeButtonModal"
+                className={ (this.isThisItemLiked(thisItemSrc)) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart' }
+                onClick={this.likeItemButtonClicked.bind(this)}
+            />
         );
     }
     likeItemButtonClicked(){
@@ -138,8 +143,6 @@ class ListItems extends React.Component {
         });
 
     }
-
-
     /*  event handler stuff */
     itemClicked(clickedItemSrc){
         this.setState({itemClicked:clickedItemSrc}, function(){
@@ -155,11 +158,8 @@ class ListItems extends React.Component {
             var newState = clickedLikeItemSrc;
             this.setItemToLiked(clickedLikeItemSrc);
         }
-        this.setState({itemLiked:newState}, function(){
-
-        });
+        this.setState({itemLiked:newState});
     }
-
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
         (this.state.typeOfMedia == 'videos') ? this.setState({ itemPath : videoPath}) : this.setState({ itemPath : imagePath});//select the path based on typeOfMedia
@@ -198,3 +198,7 @@ class ListItems extends React.Component {
     }
 }
 module.exports=ListItems;
+
+ListItems.propTypes={
+    typeOfMedia: PropTypes.string.isRequired
+};

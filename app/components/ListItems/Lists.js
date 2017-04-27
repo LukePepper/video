@@ -9,6 +9,7 @@
 //todo: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
 
 var React=require('react');
+var PropTypes=require('prop-types');
 var ItemListComponent=require('./ItemListComponent.js');
 var uuid=require('uuid');
 var mediaJSON=require('json-loader!./Media.json');//JSON file containing the videos
@@ -38,7 +39,6 @@ class Lists extends React.Component{
         );
     }
     isThisItemLiked(itemSrc){
-        //todo refactor repeat of item in ListItems.js "isThisItemLiked()"
          if(itemSrc === null){
             return false;
          }
@@ -47,7 +47,6 @@ class Lists extends React.Component{
          );
     }
     itemPosition(itemSrc){
-        //todo refactor repeat of item in ListItems.js "itemPosition()"
         var thisItemPosition;
         var currentPosition=this.state.allItemData.map(function(item,index){
             (item.src == itemSrc) ? thisItemPosition=index : null;
@@ -55,7 +54,6 @@ class Lists extends React.Component{
         return thisItemPosition;
     }
     itemIsWatched(itemSrc){
-        //todo refactor
         var returnValue=false;
         var currentPosition=this.state.allItemData.map(function(item,index){
             if((item.src == itemSrc) && item.watched == true){
@@ -107,3 +105,11 @@ class Lists extends React.Component{
     }
 }
 module.exports=Lists;
+
+ListspropTypes={
+    sections: PropTypes.string.isRequired,
+    allItemData:  PropTypes.string.isRequired,
+    itemPath:  PropTypes.string.isRequired,
+    itemClicked: PropTypes.string.isRequired,
+    itemLikeClicked: PropTypes.string.isRequired
+};

@@ -19,6 +19,7 @@
   "homepage": "https://github.com/LukePepper/video#readme",
   "dependencies": {
     "json-loader": "^0.5.4",
+    "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "uuid": "^3.0.1"

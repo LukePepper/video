@@ -6,18 +6,15 @@
  ********************************************************
  */
 
-//todo remove mediaJSON once refactor done
-
 var React=require('react');
+var PropTypes=require('prop-types');
 var Lists = require('./Lists');
-var mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
 class Items extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             typeOfMedia: this.props.typeOfMedia,
-            doOnClick: this.props.doOnClick,
         };
     }
     /* event handler stuff */
@@ -50,3 +47,6 @@ class Items extends React.Component {
 }
 module.exports=Items;
 
+ItemspropTypes={
+    typeOfMedia: PropTypes.string.isRequired,
+}

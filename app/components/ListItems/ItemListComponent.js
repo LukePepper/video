@@ -7,6 +7,7 @@
  */
 
 var React=require('react');
+var PropTypes=require('prop-types');
 var uuid=require('uuid');
 
 class ItemListComponent extends React.Component {
@@ -73,3 +74,14 @@ class ItemListComponent extends React.Component {
     }
 }
 module.exports=ItemListComponent;
+
+ItemListComponent.propTypes={
+        componentIndex: PropTypes.number,
+        numItemsRendered:  PropTypes.number,
+        itemComponentData:  PropTypes.object,
+        itemIsLiked: PropTypes.bool,
+        itemLikeClicked: PropTypes.func,
+        ItemClicked: PropTypes.func,
+        itemPath: PropTypes.string
+}
+
