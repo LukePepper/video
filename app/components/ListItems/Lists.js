@@ -10,7 +10,8 @@
 
 var React=require('react');
 var ItemListComponent=require('./ItemListComponent.js');
-mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
+var uuid=require('uuid');
+var mediaJSON=require('json-loader!./Media.json');//JSON file containing the videos
 
 class Lists extends React.Component{
     constructor(props) {
@@ -27,7 +28,7 @@ class Lists extends React.Component{
                 componentIndex={componentIndex}
                 numItemsRendered={numItemsRendered}
                 itemComponentData={itemComponentData}
-                key={Math.floor((Math.random() * 10000) + 1)}
+                key={uuid.v4()}
                 itemIsLiked={ this.isThisItemLiked(itemComponentData.src) }
                 itemIsWatched={ this.itemIsWatched(itemComponentData.src) }
                 itemPath={this.props.itemPath}
@@ -65,9 +66,9 @@ class Lists extends React.Component{
     }
     createPlayItemSection(headingName, videoPlayData, index){
         return(
-            <div key={index}>
+            <div key={uuid.v4()}>
                 <h3>{headingName}</h3>
-                <ul  key={index}>{videoPlayData}</ul>
+                <ul  key={uuid.v4()}>{videoPlayData}</ul>
             </div>
         );
     }

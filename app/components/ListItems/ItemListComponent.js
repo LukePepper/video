@@ -7,6 +7,7 @@
  */
 
 var React=require('react');
+var uuid=require('uuid');
 
 class ItemListComponent extends React.Component {
     constructor(props) {
@@ -46,12 +47,12 @@ class ItemListComponent extends React.Component {
     }
     render(){
         return(
-            <li key={this.state.componentIndex}>
+            <li key={uuid.v4()}>
                 <div
                     className={(this.state.itemIsLiked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'}
                     id={"like_"+this.state.numItemsRendered}
                     onClick={this.itemLikeClicked.bind(this)}
-                    key={'like_'+this.state.componentIndex}
+                    key={uuid.v4()}
                     data-src={this.state.itemComponentData.src}
                 />
                 <a
@@ -60,7 +61,7 @@ class ItemListComponent extends React.Component {
                     id={'item_'+this.state.numItemsRendered}
                     onClick={this.itemClicked.bind(this)}
                     data-src={this.state.itemComponentData.src}
-                    key={"link_"+this.state.componentIndex}
+                    key={uuid.v4()}
                     style={{ backgroundImage: 'url('+ this.props.itemPath + this.state.itemComponentData.src_thumbnail + ' )' } }
                 >
                     <div className="linkText">

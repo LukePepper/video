@@ -10,11 +10,13 @@
   ********************************************/
 
 var React=require('react');
+var mediaJSON=require('json-loader!./ListItems/Media.json');//JSON file containing the videos
 var Modal = require('./Modal');
 var Items = require('./ListItems/Items');
 var ItemPlayer = require('./ListItems/ItemPlayer');
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
+
 
 class ListItems extends React.Component {
     constructor(props) {
