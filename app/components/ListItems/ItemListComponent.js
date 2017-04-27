@@ -61,15 +61,16 @@ class ItemListComponent extends React.Component {
 
     }
     componentWillRender(){
+
+    }
+    componentWillUpdate(){
+        //this.generateCssClass()
         this.setState({
             liked: this.props.liked,
             doOnClick: this.props.doOnClick,
             typeOfMedia: this.props.typeOfMedia,
             itemIsWatched: this.props.itemIsWatched
         })
-    }
-    componentWillUpdate(){
-        //this.generateCssClass()
     }
     render(){
         //todo try => onclick={()=>{ f1(); f2() }}

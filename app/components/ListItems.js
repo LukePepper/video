@@ -25,7 +25,6 @@ class ListItems extends React.Component {
             currentItem: null,
             doOnClick: this.playItem.bind(this),
             mediaData: mediaJSON,
-            playItem: false,
             videoAutoPlay: true,
             currentVideo: '',
             allItemData: new Array(),
@@ -36,7 +35,6 @@ class ListItems extends React.Component {
     playItem(event){
         this.setState({
             currentItem: (this.state.typeOfMedia=='videos') ? event.currentTarget.dataset.src : event.currentTarget.dataset.src,
-            playItem:true
         });
         this.openModal();
         this.addToWatchedItems(event.currentTarget.dataset.src);
@@ -146,11 +144,10 @@ class ListItems extends React.Component {
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
         (this.state.typeOfMedia == 'videos') ? this.setState({ itemPath : videoPath}) : this.setState({ itemPath : imagePath});//select the path based on typeOfMedia
+
     }
     componentWillRender(){
-        if(this.state.playItem==true){
-            this.setState({ isModalOpen: true });
-        }
+
     }
     render(){
         return (
