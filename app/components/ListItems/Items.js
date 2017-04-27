@@ -20,7 +20,7 @@ class Items extends React.Component {
             doOnClick: this.props.doOnClick,
         };
     }
-    /* new event handler stuff */
+    /* event handler stuff */
     itemClicked(clickedItemSrc){
         this.setState({itemClicked:clickedItemSrc}, function(){
             this.props.itemClicked(this.state.itemClicked);
@@ -31,22 +31,12 @@ class Items extends React.Component {
             this.props.itemLikeClicked(this.state.itemLiked);
         });
     }
-    componentWillRender(){
-        this.setState({
-            mediaData: mediaJSON,
-            isModalOpen: this.props.isModalOpen,
-            currentItem: this.props.currentItem
-        })
-    }
     render(){
         return (
             <div>
                 <h2>{this.state.typeOfMedia}</h2>
                 <div className="chooseItem" >
                     <Lists
-                        listData={this.state.mediaData}
-                        typeOfMedia={this.state.typeOfMedia}
-                        doOnClick={this.state.doOnClick}
                         allItemData={this.props.allItemData}
                         sections={this.props.sections}
                         itemPath={this.props.itemPath}
@@ -58,6 +48,5 @@ class Items extends React.Component {
         );
     }
 }
-
 module.exports=Items;
 

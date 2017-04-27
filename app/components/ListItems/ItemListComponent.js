@@ -16,13 +16,8 @@ class ItemListComponent extends React.Component {
             numItemsRendered: this.props.numItemsRendered,
             itemComponentData: this.props.itemComponentData,
             itemIsLiked: this.props.itemIsLiked,
-            doOnClick: this.props.doOnClick,
-            typeOfMedia: this.props.typeOfMedia,
             itemIsWatched: this.props.itemIsWatched,
-            cssClassLike: this.props.cssClassLike,
-            cssClassLink: this.props.cssClassLink,
             itemClicked: '',
-            itemLikedClicked: '',
             itemLiked: ''
         };
     }
@@ -49,16 +44,16 @@ class ItemListComponent extends React.Component {
             }
         );
     }
-    componentWillMount(){
-    }
-    componentWillRender(){
-    }
-    componentWillUpdate(){
-    }
     render(){
         return(
             <li key={this.state.componentIndex}>
-
+                <div
+                    className={(this.state.itemIsLiked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'}
+                    id={"like_"+this.state.numItemsRendered}
+                    onClick={this.itemLikeClicked.bind(this)}
+                    key={'like_'+this.state.componentIndex}
+                    data-src={this.state.itemComponentData.src}
+                />
                 <a
                     href="#"
                     className={(this.state.itemIsWatched) ? 'watched' : ''}
@@ -72,17 +67,6 @@ class ItemListComponent extends React.Component {
                         {this.state.itemComponentData.title}
                     </div>
                 </a>
-
-                <div>
-                    <div
-                        className={(this.state.itemIsLiked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'}
-                        id={"like_"+this.state.numItemsRendered}
-                        onClick={this.itemLikeClicked.bind(this)}
-                        key={'like_'+this.state.componentIndex}
-                        data-src={this.state.itemComponentData.src}
-                    />
-                </div>
-
             </li>
         );
     }

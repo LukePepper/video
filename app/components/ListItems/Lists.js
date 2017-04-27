@@ -12,39 +12,14 @@ var React=require('react');
 var ItemListComponent=require('./ItemListComponent.js');
 mediaJSON = require('json-loader!./Media.json');//JSON file containing the videos
 
-var CommonFunctions=require('./CommonFunctions.js');
-
-/*
-function isThisItemLiked(itemSrc,allItemData){
-    //todo refactor repeat of item in ListItems.js "isThisItemLiked()"
-    if(itemSrc === null){
-        return false;
-    }
-    return (
-        (allItemData[itemPosition(itemSrc,allItemData)].itemIsLiked) ? true : false
-    );
-}
-function itemPosition(itemSrc,allItemData){
-    //todo refactor repeat of item in ListItems.js "itemPosition()"
-    var thisItemPosition;
-    var currentPosition=allItemData.map(function(item,index){
-        (item.src == itemSrc) ? thisItemPosition=index : null;
-    });
-    return thisItemPosition;
-}
-*/
 class Lists extends React.Component{
-
     constructor(props) {
         super(props);
         this.state = {
             sections:  this.props.sections,
             allItemData: this.props.allItemData,
-            typeOfMedia: this.props.typeOfMedia,
-            doOnClick: this.props.doOnClick,
             clickedItem: ''
         };
-
     }
     createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){
         return (
@@ -54,9 +29,7 @@ class Lists extends React.Component{
                 itemComponentData={itemComponentData}
                 key={Math.floor((Math.random() * 10000) + 1)}
                 itemIsLiked={ this.isThisItemLiked(itemComponentData.src) }
-                doOnClick={this.state.doOnClick.bind(this)}
                 itemIsWatched={ this.itemIsWatched(itemComponentData.src) }
-                typeOfMedia={this.props.typeOfMedia}
                 itemPath={this.props.itemPath}
                 itemClicked={this.itemClicked.bind(this)}
                 itemLikeClicked={this.itemLikeClicked.bind(this)}
@@ -72,7 +45,6 @@ class Lists extends React.Component{
             (this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked) ? true : false
          );
     }
-
     itemPosition(itemSrc){
         //todo refactor repeat of item in ListItems.js "itemPosition()"
         var thisItemPosition;
@@ -114,7 +86,7 @@ class Lists extends React.Component{
         });
         return dataToRender
     }
-    /* new event handler stuff */
+    /* event handler stuff */
     itemClicked(clickedItemSrc){
         this.setState({itemClicked:clickedItemSrc}, function(){
             this.props.itemClicked(this.state.itemClicked);
@@ -125,24 +97,12 @@ class Lists extends React.Component{
             this.props.itemLikeClicked(this.state.itemLiked);
         });
     }
-    componentWillMount(){
-
-
-    }
     render(){
-        if (this.props.typeOfQuery == 'sections'){
-            return(
-                <Sections sections={this.state.sections} />
-            );
-        }
-        else{
-            return(
-                <div>
-                    {this.createDataToRender()}
-                </div>
-            );
-        }
+        return(
+            <div>
+                {this.createDataToRender()}
+            </div>
+        );
     }
-};
-
+}
 module.exports=Lists;
