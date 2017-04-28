@@ -1,3 +1,12 @@
+/*
+*
+*  to supply custom menu items or change from the default of videos and images
+* pass over the required nav items
+* <Nav navItems={ [{ title:'videos', url:'/video'}, {title:'images',url:'/images'}] } />
+*
+ * */
+
+
 var React = require('react');
 var ListItems = require('./ListItems');
 var Nav = require('./Nav');
@@ -16,12 +25,22 @@ class AppComponent extends React.Component{
             typeOfMedia: event.currentTarget.title
         });
     }
+    setTypeOfMedia(menuItem){
+        this.setState({
+            selectedMenuItem: menuItem,
+            typeOfMedia: menuItem
+        });
+    }
     render() {
         //todo - bugfix re: needing to add a div to first component to render on menu change
 
         return(
             <div>
-                <Nav menuChange={this.menuChange.bind(this)} selectedMenuItem={this.state.selectedMenuItem} navItems={ { title:'videos', url:'/video'}, {title:'images',url:'/images'} }/>
+                <Nav
+                    menuChange={this.menuChange.bind(this)}
+                    setTypeOfMedia={this.setTypeOfMedia.bind(this)}
+                    selectedMenuItem={this.state.selectedMenuItem}
+                />
                 {(this.state.typeOfMedia == 'videos') ?
                         <div>
                             <ListItems typeOfMedia="videos" />

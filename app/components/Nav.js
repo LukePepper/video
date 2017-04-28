@@ -28,11 +28,15 @@ class Nav extends React.Component{
             navItems
         );
     }
+    setTypeOfMedia(mediaType){
+        this.props.setTypeOfMedia(mediaType);
+    }
     componentWillMount(){
-        if(this.props.navItems!==null){
-            setState({
+        if(this.props.navItems!==undefined){
+            this.setState({
                navItems: this.props.navItems
             });
+            this.setTypeOfMedia(this.props.navItems[0].title);
         }
     }
     render(){
