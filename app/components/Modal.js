@@ -46,14 +46,13 @@ class ModalItemList extends React.Component {
         )
     }
     skipItem(direction, e){
-        var currentItemPosition=this.props.self.itemPosition(this.props.self.state.currentItem);
+        let currentItemPosition=this.props.self.itemPosition(this.props.self.state.currentItem);
         if(direction=='prev' && currentItemPosition > 0){
             var nextPosition=currentItemPosition-1;
         }
         else if( direction=='next' && currentItemPosition < this.props.self.totalItems()-1 ){
             var nextPosition=currentItemPosition+1;
         }
-
         this.props.self.addToWatchedItems(this.props.self.state.allItemData[nextPosition].src);
         this.props.self.setState({currentItem: this.props.self.state.allItemData[nextPosition].src});//set the state
     }
@@ -66,6 +65,7 @@ class ModalItemList extends React.Component {
             />
         );
     }
+
     likeItemButtonClicked(){
         this.props.self.itemLikeClicked(this.props.self.state.currentItem);
     }

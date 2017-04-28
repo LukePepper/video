@@ -23,7 +23,7 @@ class ItemListComponent extends React.Component {
         };
     }
     itemLikeClicked(e){
-        var newLikeState = (this.state.itemIsLiked) ? false : true;
+        let newLikeState = (this.state.itemIsLiked) ? false : true;
         this.setState(
             {
                 itemIsLiked: newLikeState,

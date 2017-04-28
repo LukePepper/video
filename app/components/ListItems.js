@@ -63,8 +63,8 @@ class ListItems extends React.Component {
         );
     }
     isThisItemWatched(itemSrc){
-        var returnValue=false;
-        var currentPosition=this.state.allItemData.map((item,index)=>{
+        let returnValue=false;
+        let currentPosition=this.state.allItemData.map((item,index)=>{
             if((item.src == itemSrc) && item.watched == true){
                 returnValue=true;
             }
@@ -72,8 +72,8 @@ class ListItems extends React.Component {
         return returnValue;
     }
     itemPosition(itemSrc){
-        var thisItemPosition;
-        var currentPosition=this.state.allItemData.map((item,index)=>{
+        let thisItemPosition;
+        let currentPosition=this.state.allItemData.map((item,index)=>{
             (item.src == itemSrc) ? thisItemPosition=index : null;
         });
         return thisItemPosition;
@@ -85,18 +85,18 @@ class ListItems extends React.Component {
         this.state.allItemData[this.itemPosition(thisItemSrc)].watched=true;
     }
     buildItemsStateTable(){
-        var mediaData=this.state.mediaData;//pull in the data from JSON
+        let mediaData=this.state.mediaData;//pull in the data from JSON
         mediaData=(this.state.typeOfMedia=='videos') ? mediaData.videos : mediaData.images;//remove the bits we do not need
 
-        var sectionsArray=[];//build an array of sections
+        let sectionsArray=[];//build an array of sections
         var sections = mediaData.map((itemData)=>{
             (sectionsArray.indexOf(itemData.section) === -1 ) ? sectionsArray.push(itemData.section) : null;
         });
 
         //order array based on sections (i.e. so it is ready to render to the lists)
-        var itemsArrayOrdered=[];
+        let itemsArrayOrdered=[];
         var sections = sectionsArray.map((section, index)=>{
-            var itemOrdering=mediaData.map((item, index2)=>{
+            let itemOrdering=mediaData.map((item, index2)=>{
                 (item.section == section) ? itemsArrayOrdered.push(item) : null;
             });
             return section;
@@ -107,6 +107,7 @@ class ListItems extends React.Component {
             sections: sections
         });
     }
+
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
         (this.state.typeOfMedia == 'videos') ? this.setState({ itemPath : videoPath}) : this.setState({ itemPath : imagePath});//select the path based on typeOfMedia

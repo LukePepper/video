@@ -45,10 +45,10 @@ class Lists extends React.Component{
         );
     }
     createDataToRender(){
-        var self=this;
-        var i=0;
-        var dataToRender = this.state.sections.map((headingName, index)=>{
-            var itemDataMap = self.state.allItemData.map((itemData, index2)=>{
+        let self=this;
+        let i=0;
+        let dataToRender = this.state.sections.map((headingName, index)=>{
+            let itemDataMap = self.state.allItemData.map((itemData, index2)=>{
                 if(itemData.section == headingName){
                     i++;
                     return self.createItemOpenComponent( itemData, index2, i);
