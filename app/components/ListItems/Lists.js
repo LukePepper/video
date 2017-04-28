@@ -12,7 +12,6 @@ var React=require('react');
 var PropTypes=require('prop-types');
 var ItemListComponent=require('./ItemListComponent.js');
 var uuid=require('uuid');
-var mediaJSON=require('json-loader!./Media.json');//JSON file containing the videos
 
 class Lists extends React.Component{
     constructor(props) {
@@ -20,7 +19,6 @@ class Lists extends React.Component{
         this.state = {
             sections:  this.props.sections,
             allItemData: this.props.allItemData,
-            clickedItem: ''
         };
     }
     createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){

@@ -19,7 +19,6 @@ var videoPath = '../videos/';//change this to http:// for non-local videos hoste
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
 var videoAutoPlay = true;//change this to prevent video auto playing
 
-
 class ListItems extends React.Component {
     constructor(props) {
         super(props)
@@ -32,8 +31,6 @@ class ListItems extends React.Component {
             allItemData: [],
             sections: [],
             itemPath: '',
-            itemClicked: '',
-            itemLiked: ''
         };
     }
     // Modal and Play Item  - START
@@ -62,7 +59,12 @@ class ListItems extends React.Component {
             if(this.itemPosition(this.state.currentItem)<1){return null};
         }
         return(
-            <div id={typeOfButton+'Item'} className={ (typeOfButton=='next') ? "glyphicon glyphicon-chevron-right" : "glyphicon glyphicon-chevron-left" } ref={typeOfButton} onClick={e => this.skipItem(typeOfButton,e)} />
+            <div
+                id={typeOfButton+'Item'}
+                className={ (typeOfButton=='next') ? "glyphicon glyphicon-chevron-right" : "glyphicon glyphicon-chevron-left" }
+                ref={typeOfButton}
+                onClick={e => this.skipItem(typeOfButton,e)}
+            />
         )
     }
     skipItem(direction, e){
@@ -126,15 +128,13 @@ class ListItems extends React.Component {
         this.state.allItemData[this.itemPosition(thisItemSrc)].watched=true;
     }
     buildItemsStateTable(){
-        //todo refactor
         var mediaData=this.state.mediaData;//pull in the data from JSON
         mediaData=(this.state.typeOfMedia=='videos') ? mediaData.videos : mediaData.images;//pull out the bits we need
-        var sectionsArray=[];//build an array of sections
 
+        var sectionsArray=[];//build an array of sections
         var sections = mediaData.map(function(itemData){
             (sectionsArray.indexOf(itemData.section) === -1 ) ? sectionsArray.push(itemData.section) : null;
         });
-        //todo order sections alphabetically?
 
         //order array based on sections (i.e. so it is ready to render to the lists)
         var itemsArrayOrdered=[];
@@ -145,12 +145,10 @@ class ListItems extends React.Component {
             return section;
         });
 
-        //store to states
         this.setState({
             allItemData: itemsArrayOrdered,
             sections: sections
         });
-
     }
     /*  event handler stuff */
     itemClicked(clickedItemSrc){

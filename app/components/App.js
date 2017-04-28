@@ -2,8 +2,6 @@ var React = require('react');
 var ListItems = require('./ListItems');
 var Nav = require('./Nav');
 
-//var Videos = require('./Videos');//todo remove this
-
 class AppComponent extends React.Component{
     constructor(props) {
         super(props)
@@ -35,7 +33,6 @@ class AppComponent extends React.Component{
         )
     }
 }
-
 module.exports=AppComponent;
 
 

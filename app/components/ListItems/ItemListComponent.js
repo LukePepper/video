@@ -14,7 +14,6 @@ class ItemListComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            componentIndex: this.props.componentIndex,
             numItemsRendered: this.props.numItemsRendered,
             itemComponentData: this.props.itemComponentData,
             itemIsLiked: this.props.itemIsLiked,
