@@ -14,10 +14,9 @@ class Items extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            typeOfMedia: this.props.typeOfMedia,
+            typeOfMedia: this.props.typeOfMedia
         };
     }
-    /* event handler stuff */
     itemClicked(clickedItemSrc){
         this.setState({itemClicked:clickedItemSrc}, function(){
             this.props.itemClicked(this.state.itemClicked);

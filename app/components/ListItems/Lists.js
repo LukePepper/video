@@ -18,7 +18,7 @@ class Lists extends React.Component{
         super(props);
         this.state = {
             sections:  this.props.sections,
-            allItemData: this.props.allItemData,
+            allItemData: this.props.allItemData
         };
     }
     createItemOpenComponent(itemComponentData, componentIndex, numItemsRendered){
@@ -58,7 +58,6 @@ class Lists extends React.Component{
         });
         return dataToRender
     }
-    /* event handler stuff */
     itemClicked(clickedItemSrc){
         this.setState({itemClicked:clickedItemSrc}, function(){
             this.props.itemClicked(this.state.itemClicked);
