@@ -47,8 +47,8 @@ class Lists extends React.Component{
     createDataToRender(){
         var self=this;
         var i=0;
-        var dataToRender = this.state.sections.map(function(headingName, index){
-            var itemDataMap = self.state.allItemData.map(function(itemData, index2){
+        var dataToRender = this.state.sections.map((headingName, index)=>{
+            var itemDataMap = self.state.allItemData.map((itemData, index2)=>{
                 if(itemData.section == headingName){
                     i++;
                     return self.createItemOpenComponent( itemData, index2, i);
@@ -59,12 +59,12 @@ class Lists extends React.Component{
         return dataToRender
     }
     itemClicked(clickedItemSrc){
-        this.setState({itemClicked:clickedItemSrc}, function(){
+        this.setState({itemClicked:clickedItemSrc},()=>{
             this.props.itemClicked(this.state.itemClicked);
         });
     }
     itemLikeClicked(clickedLikeItemSrc){
-        this.setState({itemLiked:clickedLikeItemSrc}, function(){
+        this.setState({itemLiked:clickedLikeItemSrc},()=>{
             this.props.itemLikeClicked(this.state.itemLiked);
         });
     }

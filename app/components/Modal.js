@@ -19,8 +19,8 @@ class ModalItemList extends React.Component {
         this.props.self.setState({ isModalOpen: false })
     }
     playItem(clickedItemSrc){
-        //is this a call from the item onClick?
         if(clickedItemSrc.currentTarget !== undefined){
+            //this a call from the item onClick
             clickedItem.src = currentTarget.dataset.src;
         }
         this.props.self.setState({

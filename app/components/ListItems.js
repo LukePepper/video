@@ -17,7 +17,7 @@ var Items = require('./ListItems/Items');
 var ItemPlayer = require('./ListItems/ItemPlayer');
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
-var videoAutoPlay = true;//change this to prevent video auto playing
+var videoAutoPlay = true;//change this to prevent video auto playing if so desired
 
 class ListItems extends React.Component {
     constructor(props) {
@@ -35,7 +35,7 @@ class ListItems extends React.Component {
         };
     }
     itemClicked(clickedItemSrc){
-        this.setState({itemClicked:clickedItemSrc}, function(){
+        this.setState({itemClicked:clickedItemSrc}, ()=>{
             this.state.ModalControls.playItem(clickedItemSrc);
         });
     }
@@ -64,7 +64,7 @@ class ListItems extends React.Component {
     }
     isThisItemWatched(itemSrc){
         var returnValue=false;
-        var currentPosition=this.state.allItemData.map(function(item,index){
+        var currentPosition=this.state.allItemData.map((item,index)=>{
             if((item.src == itemSrc) && item.watched == true){
                 returnValue=true;
             }
@@ -73,7 +73,7 @@ class ListItems extends React.Component {
     }
     itemPosition(itemSrc){
         var thisItemPosition;
-        var currentPosition=this.state.allItemData.map(function(item,index){
+        var currentPosition=this.state.allItemData.map((item,index)=>{
             (item.src == itemSrc) ? thisItemPosition=index : null;
         });
         return thisItemPosition;
@@ -89,14 +89,14 @@ class ListItems extends React.Component {
         mediaData=(this.state.typeOfMedia=='videos') ? mediaData.videos : mediaData.images;//remove the bits we do not need
 
         var sectionsArray=[];//build an array of sections
-        var sections = mediaData.map(function(itemData){
+        var sections = mediaData.map((itemData)=>{
             (sectionsArray.indexOf(itemData.section) === -1 ) ? sectionsArray.push(itemData.section) : null;
         });
 
         //order array based on sections (i.e. so it is ready to render to the lists)
         var itemsArrayOrdered=[];
-        var sections = sectionsArray.map(function(section, index){
-            var itemOrdering=mediaData.map(function(item, index2){
+        var sections = sectionsArray.map((section, index)=>{
+            var itemOrdering=mediaData.map((item, index2)=>{
                 (item.section == section) ? itemsArrayOrdered.push(item) : null;
             });
             return section;

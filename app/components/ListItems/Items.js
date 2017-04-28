@@ -18,12 +18,12 @@ class Items extends React.Component {
         };
     }
     itemClicked(clickedItemSrc){
-        this.setState({itemClicked:clickedItemSrc}, function(){
+        this.setState({itemClicked:clickedItemSrc},()=>{
             this.props.itemClicked(this.state.itemClicked);
         });
     }
     itemLikeClicked(clickedLikeItemSrc){
-        this.setState({itemLiked:clickedLikeItemSrc}, function(){
+        this.setState({itemLiked:clickedLikeItemSrc},()=>{
             this.props.itemLikeClicked(this.state.itemLiked);
         });
     }

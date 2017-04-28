@@ -29,7 +29,7 @@ class ItemListComponent extends React.Component {
                 itemIsLiked: newLikeState,
                 itemLiked:  e.currentTarget.dataset.src
             },
-            function(){
+            ()=>{
                 this.props.itemLikeClicked(this.state.itemLiked);
             }
         );
@@ -40,7 +40,7 @@ class ItemListComponent extends React.Component {
                 itemClicked: e.currentTarget.dataset.src,
                 itemIsWatched: 'watched'
             },
-            function(){
+            ()=>{
                 this.props.itemClicked(this.state.itemClicked);
             }
         );
