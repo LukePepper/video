@@ -107,7 +107,6 @@ class ListItems extends React.Component {
             sections: sections
         });
     }
-
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
         (this.state.typeOfMedia == 'videos') ? this.setState({ itemPath : videoPath}) : this.setState({ itemPath : imagePath});//select the path based on typeOfMedia
