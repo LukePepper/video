@@ -21,7 +21,7 @@ class AppComponent extends React.Component{
 
         return(
             <div>
-                <Nav menuChange={this.menuChange.bind(this)} selectedMenuItem={this.state.selectedMenuItem} />
+                <Nav menuChange={this.menuChange.bind(this)} selectedMenuItem={this.state.selectedMenuItem} navItems={ { title:'videos', url:'/video'}, {title:'images',url:'/images'} }/>
                 {(this.state.typeOfMedia == 'videos') ?
                         <div>
                             <ListItems typeOfMedia="videos" />

@@ -28,7 +28,13 @@ class Nav extends React.Component{
             navItems
         );
     }
-
+    componentWillMount(){
+        if(this.props.navItems!==null){
+            setState({
+               navItems: this.props.navItems
+            });
+        }
+    }
     render(){
         return(
             <div id="topNav">

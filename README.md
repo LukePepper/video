@@ -1,2 +1,4 @@
 # video
-React Video 
+Displays Videos and Images in galleries.
+
+
