@@ -20,6 +20,11 @@ class CommonFunctions extends React.Component {
 
     isThisItemLiked() {
         itemSrc=this.props.itemSrc;
+
+        console.log('################ CommonFuctions.js #############################');
+        console.log('itemSrc: '+itemSrc);
+
+
         //todo refactor repeat of item in ListItems.js "isThisItemLiked()"
         if (itemSrc === null) {
             return false;
@@ -43,8 +48,12 @@ class CommonFunctions extends React.Component {
     }
 
     render(){
+
+        var dataToReturn=this.isThisItemLiked();
         return (
-            hi
+            <div>
+                {dataToReturn}
+            </div>
         );
     }
 }

@@ -28,6 +28,12 @@ class Items extends React.Component {
             this.props.itemLikeClicked(this.state.itemLiked);
         });
     }
+    isThisItemLiked(itemSrc){
+        return this.props.isThisItemLiked(itemSrc);
+    }
+    isThisItemWatched(itemSrc){
+        return this.props.isThisItemWatched(itemSrc);
+    }
     render(){
         return (
             <div>
@@ -39,6 +45,8 @@ class Items extends React.Component {
                         itemPath={this.props.itemPath}
                         itemClicked={this.itemClicked.bind(this)}
                         itemLikeClicked={this.itemLikeClicked.bind(this)}
+                        isThisItemLiked={this.isThisItemLiked.bind(this)}
+                        isThisItemWatched={this.isThisItemWatched.bind(this)}
                     />
                 </div>
             </div>
@@ -47,6 +55,13 @@ class Items extends React.Component {
 }
 module.exports=Items;
 
-ItemspropTypes={
+Items.propTypes={
     typeOfMedia: PropTypes.string.isRequired,
+    allItemData: PropTypes.array.isRequired,
+    sections: PropTypes.array.isRequired,
+    itemPath: PropTypes.string.isRequired,
+    itemClicked: PropTypes.func.isRequired,
+    itemLikeClicked: PropTypes.func.isRequired,
+    isThisItemLiked: PropTypes.func.isRequired,
+    isThisItemWatched: PropTypes.func.isRequired,
 }

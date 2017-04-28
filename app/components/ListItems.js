@@ -103,6 +103,15 @@ class ListItems extends React.Component {
             (this.state.allItemData[this.itemPosition(itemSrc)].itemIsLiked) ? true : false
         );
     }
+    isThisItemWatched(itemSrc){
+        var returnValue=false;
+        var currentPosition=this.state.allItemData.map(function(item,index){
+            if((item.src == itemSrc) && item.watched == true){
+                returnValue=true;
+            }
+        });
+        return returnValue;
+    }
     itemPosition(itemSrc){
         var thisItemPosition;
         var currentPosition=this.state.allItemData.map(function(item,index){
@@ -177,6 +186,8 @@ class ListItems extends React.Component {
                                 itemPath={this.state.itemPath}
                                 itemClicked={this.itemClicked.bind(this)}
                                 itemLikeClicked={this.itemLikeClicked.bind(this)}
+                                isThisItemLiked={this.isThisItemLiked.bind(this)}
+                                isThisItemWatched={this.isThisItemWatched.bind(this)}
                             />
                         </div>
                         <div className="col-sm-1 col-md-2" />
