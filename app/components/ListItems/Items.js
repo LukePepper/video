@@ -63,5 +63,5 @@ Items.propTypes={
     itemClicked: PropTypes.func.isRequired,
     itemLikeClicked: PropTypes.func.isRequired,
     isThisItemLiked: PropTypes.func.isRequired,
-    isThisItemWatched: PropTypes.func.isRequired,
+    isThisItemWatched: PropTypes.func.isRequired
 }

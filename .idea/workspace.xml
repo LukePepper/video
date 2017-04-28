@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed77bf45-fa61-4105-8ec9-9bf5114e8b6c" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\dev\video\,gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/CommonFunctions.js" afterPath="$PROJECT_DIR$/app/components/ListItems/CommonFunctions.js" />
+      <change type="DELETED" beforePath="C:\dev\video\app\components\ListItems\CommonFunctions.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" afterPath="$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/Items.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Items.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems.js" afterPath="$PROJECT_DIR$/app/components/ListItems.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/components/ListItems/Lists.js" afterPath="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" afterPath="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="video.iws" />
@@ -45,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListItems.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ListItems.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="12.714286" vertical-offset="2408" max-vertical-offset="3960">
-              <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+            <state vertical-scroll-proportion="4.7854986" vertical-offset="0" max-vertical-offset="3960">
+              <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -58,8 +56,8 @@
       <file leaf-file-name="Items.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems/Items.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.964286" vertical-offset="351" max-vertical-offset="1296">
-              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state vertical-scroll-proportion="-8.357142" vertical-offset="432" max-vertical-offset="1296">
+              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -67,23 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Lists.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Lists.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.43705463" vertical-offset="904" max-vertical-offset="1908">
-              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CommonFunctions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/components/ListItems/CommonFunctions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1188">
-              <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+            <state vertical-scroll-proportion="-9.0" vertical-offset="1188" max-vertical-offset="1854">
+              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -94,8 +80,8 @@
       <file leaf-file-name="ItemListComponent.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="810" max-vertical-offset="1674">
-              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="1692">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -156,12 +142,12 @@
         <option value="$PROJECT_DIR$/app/stylesheets/modules/_all.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/base.scss" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/nav.scss" />
-        <option value="$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" />
         <option value="$PROJECT_DIR$/app/stylesheets/partials/item-player.scss" />
         <option value="$PROJECT_DIR$/app/components/ListItems/CommonFunctions.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js" />
+        <option value="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
         <option value="$PROJECT_DIR$/app/components/ListItems/Items.js" />
         <option value="$PROJECT_DIR$/app/components/ListItems.js" />
-        <option value="$PROJECT_DIR$/app/components/ListItems/Lists.js" />
       </list>
     </option>
   </component>
@@ -363,7 +349,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32968536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14227086" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24934895" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -743,20 +729,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/ListItems/CommonFunctions.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="1188">
-          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="521" max-vertical-offset="1692">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/ListItems/ItemListComponent.js">
+    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1674">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        <state vertical-scroll-proportion="-9.0" vertical-offset="1188" max-vertical-offset="1854">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -765,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/ListItems/Items.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.964286" vertical-offset="351" max-vertical-offset="1296">
-          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state vertical-scroll-proportion="-8.357142" vertical-offset="432" max-vertical-offset="1296">
+          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -775,19 +761,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/components/ListItems.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="12.714286" vertical-offset="2408" max-vertical-offset="3960">
-          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+        <state vertical-scroll-proportion="4.7854986" vertical-offset="0" max-vertical-offset="3960">
+          <caret line="176" column="0" selection-start-line="176" selection-start-column="0" selection-end-line="176" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/components/ListItems/Lists.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.43705463" vertical-offset="904" max-vertical-offset="1908">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

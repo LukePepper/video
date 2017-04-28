@@ -12,7 +12,6 @@ var React=require('react');
 var PropTypes=require('prop-types');
 var ItemListComponent=require('./ItemListComponent.js');
 var uuid=require('uuid');
-var CommonFunctions=require('./CommonFunctions');
 var mediaJSON=require('json-loader!./Media.json');//JSON file containing the videos
 
 class Lists extends React.Component{
@@ -48,8 +47,6 @@ class Lists extends React.Component{
         );
     }
     createDataToRender(){
-
-        //todo refactor: this is a repeated mapping loop -> store the data in the first instance of this pattern and pass down as prop
         var self=this;
         var i=0;
         var dataToRender = this.state.sections.map(function(headingName, index){

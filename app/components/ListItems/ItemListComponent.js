@@ -80,6 +80,7 @@ ItemListComponent.propTypes={
         numItemsRendered:  PropTypes.number,
         itemComponentData:  PropTypes.object,
         itemIsLiked: PropTypes.bool,
+        itemIsWatched: PropTypes.bool,
         itemLikeClicked: PropTypes.func,
         ItemClicked: PropTypes.func,
         itemPath: PropTypes.string
