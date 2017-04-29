@@ -19,7 +19,10 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                query: {
+                    presets: ['react', 'es2015'],
+                },
             },
             { // regular css files
                 test: /\.css$/,
@@ -36,6 +39,11 @@ module.exports = {
     output: {
         filename: 'transformed.js',
         path: __dirname + '/build'
+    },
+    externals: {
+        'cheerio': 'window',
+        'react/lib/ExecutionEnvironment': true,
+        'react/lib/ReactContext': true,
     },
     plugins: [
         HTMLWebpackPluginConfig,
