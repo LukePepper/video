@@ -11,6 +11,4 @@ describe('Hello World', function () {
         var result = incrementer(8);
         expect(result).eql(9);
     });
-});/**
- * Created by Luke on 30/04/2017.
- */
+});

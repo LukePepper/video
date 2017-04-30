@@ -1,1 +1,2 @@
---require babel-register param
+--compilers js:babel-core/register
+--require babel-register
