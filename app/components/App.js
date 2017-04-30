@@ -6,7 +6,7 @@
 *
  * */
 
-import React from 'react';//es2015
+import React from 'react';
 import ListItems from './ListItems';
 import Nav from './Nav';
 
