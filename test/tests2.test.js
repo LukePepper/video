@@ -1,6 +1,5 @@
 /**
- * tests that ES2015 (ES6) style imports is working correctly
- * Tests Mocha, Chai working correctly
+ * Created by Luke on 30/04/2017.
  */
 import { describe, before, it } from 'mocha';
 import {expect} from 'chai';
@@ -11,6 +10,4 @@ describe('Hello World', function () {
         var result = incrementer(8);
         expect(result).eql(9);
     });
-});/**
- * Created by Luke on 30/04/2017.
- */
+});
