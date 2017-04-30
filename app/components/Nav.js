@@ -1,6 +1,7 @@
-var React=require('react');
+//var React=require('react');
+import React from 'react';
 
-class Nav extends React.Component{
+export default class Nav extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -55,4 +56,4 @@ class Nav extends React.Component{
         )
     }
 };
-module.exports=Nav;
+//module.exports=Nav;

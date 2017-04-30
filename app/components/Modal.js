@@ -3,9 +3,10 @@
     Modal - displayed on item list onCLick - displays images or videos
 ********************************************************************************
 */
-var React=require('react');
+//var React=require('react');
+import React from'react';
 
-class ModalItemList extends React.Component {
+export default class ModalItemList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -93,4 +94,4 @@ class ModalItemList extends React.Component {
         )
     }
 }
-module.exports=ModalItemList;
+//module.exports=ModalItemList;

@@ -8,12 +8,16 @@
 
 //todo: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
 
-var React=require('react');
-var PropTypes=require('prop-types');
-var ItemListComponent=require('./ItemListComponent.js');
-var uuid=require('uuid');
+//var React=require('react');
+//var PropTypes=require('prop-types');
+//var ItemListComponent=require('./ItemListComponent.js');
+//var uuid=require('uuid');
+import React from 'react';
+import PropTypes from 'prop-types';
+import ItemListComponent from './ItemListComponent.js';
+import uuid from 'uuid';
 
-class Lists extends React.Component{
+export default class Lists extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -82,7 +86,7 @@ class Lists extends React.Component{
         );
     }
 }
-module.exports=Lists;
+//module.exports=Lists;
 
 Lists.propTypes={
     sections: PropTypes.array.isRequired,

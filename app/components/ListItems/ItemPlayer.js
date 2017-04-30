@@ -6,9 +6,11 @@
  ********************************************************
  */
 
-var React=require('react');
+//var React=require('react');
 
-class ItemPlayer extends React.Component{
+import React from 'react';
+
+export default class ItemPlayer extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -34,4 +36,4 @@ class ItemPlayer extends React.Component{
     }
 };
 
-module.exports=ItemPlayer;
+//module.exports=ItemPlayer;

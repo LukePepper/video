@@ -6,12 +6,11 @@
 *
  * */
 
+import React from 'react';//es2015
+import ListItems from './ListItems';
+import Nav from './Nav';
 
-var React = require('react');
-var ListItems = require('./ListItems');
-var Nav = require('./Nav');
-
-class AppComponent extends React.Component{
+export default class AppComponent extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
@@ -52,6 +51,6 @@ class AppComponent extends React.Component{
         )
     }
 }
-module.exports=AppComponent;
+//module.exports=AppComponent;
 
 

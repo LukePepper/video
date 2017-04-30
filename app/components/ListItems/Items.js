@@ -6,11 +6,14 @@
  ********************************************************
  */
 
-var React=require('react');
-var PropTypes=require('prop-types');
-var Lists = require('./Lists');
+//var React=require('react');
+//var PropTypes=require('prop-types');
+//var Lists = require('./Lists');
+import React from 'react';
+import PropTypes from 'prop-types';
+import Lists from './Lists';
 
-class Items extends React.Component {
+export default class Items extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -52,7 +55,7 @@ class Items extends React.Component {
         );
     }
 }
-module.exports=Items;
+//module.exports=Items;
 
 Items.propTypes={
     typeOfMedia: PropTypes.string.isRequired,

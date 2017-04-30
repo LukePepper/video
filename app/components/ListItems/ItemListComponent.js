@@ -6,11 +6,14 @@
  ********************************************************************************
  */
 
-var React=require('react');
-var PropTypes=require('prop-types');
-var uuid=require('uuid');
+//var React=require('react');
+//var PropTypes=require('prop-types');
+//var uuid=require('uuid');
+import React from 'react';
+import PropTypes from 'prop-types';
+import uuid from 'uuid';
 
-class ItemListComponent extends React.Component {
+export default class ItemListComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -72,7 +75,7 @@ class ItemListComponent extends React.Component {
         );
     }
 }
-module.exports=ItemListComponent;
+//module.exports=ItemListComponent;
 
 ItemListComponent.propTypes={
         componentIndex: PropTypes.number,

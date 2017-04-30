@@ -9,17 +9,24 @@
  * ListItems.js
   ********************************************/
 
-var React=require('react');
-var PropTypes=require('prop-types');
-var mediaJSON=require('json-loader!./ListItems/Media.json');//JSON file containing the videos
-var Modal = require('./Modal');
-var Items = require('./ListItems/Items');
-var ItemPlayer = require('./ListItems/ItemPlayer');
+//var React=require('react');
+//var PropTypes=require('prop-types');
+//var mediaJSON=require('json-loader!./ListItems/Media.json');//JSON file containing the videos
+//var Modal = require('./Modal');
+//var Items = require('./ListItems/Items');
+//var ItemPlayer = require('./ListItems/ItemPlayer');
+import React from 'react';
+import PropTypes from 'prop-types';
+import mediaJSON from 'json-loader!./ListItems/Media.json';//JSON file containing the videos
+import Modal from './Modal';
+import Items from './ListItems/Items';
+import ItemPlayer  from './ListItems/ItemPlayer';
+
 var videoPath = '../videos/';//change this to http:// for non-local videos hosted on a web server
 var imagePath = '../images/';//change this to http:// for non-local videos hosted on a web server
 var videoAutoPlay = true;//change this to prevent video auto playing if so desired
 
-class ListItems extends React.Component {
+export default class ListItems extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -146,7 +153,7 @@ class ListItems extends React.Component {
         );
     }
 }
-module.exports=ListItems;
+//module.exports=ListItems;
 
 ListItems.propTypes={
     typeOfMedia: PropTypes.string.isRequired
