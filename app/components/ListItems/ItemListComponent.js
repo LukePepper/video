@@ -87,4 +87,3 @@ ItemListComponent.propTypes={
         ItemClicked: PropTypes.func,
         itemPath: PropTypes.string
 }
-

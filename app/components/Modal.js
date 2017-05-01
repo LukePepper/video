@@ -63,6 +63,7 @@ export default class ModalItemList extends React.Component {
                 id="likeButtonModal"
                 className={ ( this.props.self.isThisItemLiked(thisItemSrc) ) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart' }
                 onClick={this.likeItemButtonClicked.bind(this)}
+                ref="modalLikeButton"
             />
         );
     }

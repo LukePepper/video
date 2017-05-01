@@ -18,15 +18,16 @@ describe('App/components/ListItems/ItemPlayer', function(){
               const item = renderIntoDocument(
                       <ItemPlayer typeOfMedia={testDataItem.typeOfMedia} src={testDataItem.src} itemIsLiked={testDataItem.itemIsLiked} autoPlay={testDataItem.autoPlay} />
               );
-              let itemRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
+              const itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
 
               expect(item).toExist();
-              expect(itemRef) .toExist();
+              expect(itemPlayerRef) .toExist();
               expect(item.state.typeOfMedia).toEqual(testDataItem.typeOfMedia);
               expect(item.state.liked).toEqual(testDataItem.itemIsLiked);
               expect(item.state.autoPlay).toEqual(testDataItem.autoPlay);
               expect(item.props.src).toEqual(testDataItem.src);
-              expect(itemRef.src).toEqual(testDataItem.src);
+              expect(itemPlayerRef.src).toEqual(testDataItem.src);
+
               done();
         });
     });
