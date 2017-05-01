@@ -4,7 +4,6 @@ var HTMLWebpackPluginConfig=new HTMLWebpackPlugin({
     filename: 'index.html',
     inject: 'body'
 });
-
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var locals = {

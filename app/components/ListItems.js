@@ -9,12 +9,6 @@
  * ListItems.js
   ********************************************/
 
-//var React=require('react');
-//var PropTypes=require('prop-types');
-//var mediaJSON=require('json-loader!./ListItems/Media.json');//JSON file containing the videos
-//var Modal = require('./Modal');
-//var Items = require('./ListItems/Items');
-//var ItemPlayer = require('./ListItems/ItemPlayer');
 import React from 'react';
 import PropTypes from 'prop-types';
 import mediaJSON from 'json-loader!./ListItems/Media.json';//JSON file containing the videos

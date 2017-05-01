@@ -6,8 +6,6 @@
  ********************************************************
  */
 
-//var React=require('react');
-
 import React from 'react';
 
 export default class ItemPlayer extends React.Component{
