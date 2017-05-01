@@ -6,9 +6,10 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "mocha App/**/*.test.js",
+    "test": "mocha --watch App/**/*.test.js",
+    "testAuto" : "mocha App/**/*.test.js",
     "testnew": "find ./ -name '*.test.js' | xargs mocha -R min -r babel/register",
-    "devtest": "webpack-dev-server --config webpack.tests.config.js",
+    "devtest": "webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline",
     "dev": "webpack-dev-server --config webpack.config.js"
   },
   "repository": {

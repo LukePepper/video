@@ -18,7 +18,7 @@ describe('App/components/ListItems/ItemPlayer', function(){
               const item = renderIntoDocument(
                       <ItemPlayer typeOfMedia={testDataItem.typeOfMedia} src={testDataItem.src} itemIsLiked={testDataItem.itemIsLiked} autoPlay={testDataItem.autoPlay} />
               );
-              const itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
+              let itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
 
               expect(item).toExist();
               expect(itemPlayerRef) .toExist();
