@@ -6,11 +6,9 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server",
-    "test": "mocha --watch App/**/*.test.js",
-    "testAuto" : "mocha App/**/*.test.js",
-    "testnew": "find ./ -name '*.test.js' | xargs mocha -R min -r babel/register",
-    "devtest": "webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline",
-    "dev": "webpack-dev-server --config webpack.config.js"
+    "startNew": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
+"startNewWP2": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
+    "test": "mocha --watch App/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -38,10 +36,14 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2016": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "body-parser": "^1.15.0",
     "chai": "^3.5.0",
+    "concurrently": "^3.4.0",
+    "connect": "^3.4.1",
     "expect": "^1.20.2",
     "extract-text-webpack-plugin": "^2.1.0",
     "fetch-mock": "^5.10.0",
+    "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.28.0",
     "jsdom": "^8.2.0",
     "mocha": "^3.3.0",
@@ -51,7 +53,8 @@
     "react-addons-test-utils": "^15.5.1",
     "should": "^11.2.1",
     "source-map": "^0.5.6",
+    "source-map-loader": "^0.1.5",
     "webpack": "^2.4.1",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.5"
   }
 }
