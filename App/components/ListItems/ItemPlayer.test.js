@@ -3,7 +3,9 @@ import expect from 'expect';
 import {renderIntoDocument} from 'react-dom/test-utils';
 import ItemPlayer from './ItemPlayer';
 
-/* test data */
+/* test data
+* todo: move this to an external location
+*/
 var testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
 var testData = [
   { title: 'should render with LIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:true, autoPlay:true },
@@ -11,6 +13,9 @@ var testData = [
   { title: 'should render with LIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:true, autoPlay:true },
   { title: 'should render with UNLIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:false, autoPlay:true },
 ];
+var testServerUrl = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
+
+console.log('window.location.hostname :'+window.location.hostname );
 
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
@@ -26,7 +31,7 @@ describe('App/components/ListItems/ItemPlayer', function(){
               expect(item.state.liked).toEqual(testDataItem.itemIsLiked);
               expect(item.state.autoPlay).toEqual(testDataItem.autoPlay);
               expect(item.props.src).toEqual(testDataItem.src);
-              expect(itemPlayerRef.src).toEqual(testDataItem.src);
+              expect(itemPlayerRef.src).toEqual(testServerUrl+testDataItem.src);
 
               done();
         });
