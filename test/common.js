@@ -6,9 +6,6 @@ export default class testData extends React.Component {
       this.state = {testServerUrl: null};
   }
   testServerUrl(hostName){
-    console.log('______________________________');
-    console.log(hostName);
-    console.log('______________________________');
     return (hostName == '' ) ? '' : 'http://localhost:8081/';
   }
   testImages(){

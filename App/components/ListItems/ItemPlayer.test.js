@@ -7,32 +7,34 @@ const testImages= new commonData.testImages();
 const hostName = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
 import ItemPlayer from './ItemPlayer';
 
-
-
-//const testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
 const testData = [
-  { title: 'should render with LIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:true, autoPlay:true },
-  { title: 'should render with UNLIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:false, autoPlay:true },
-  { title: 'should render with LIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:true, autoPlay:true },
-  { title: 'should render with UNLIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:false, autoPlay:true },
+  { title: 'LIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:true, autoPlay:true },
+  { title: 'UNLIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:false, autoPlay:true },
+  { title: 'LIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:true, autoPlay:true },
+  { title: 'UNLIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:false, autoPlay:true },
 ];
 
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
-        it(testDataItem.title, (done)=>{
-              const item = renderIntoDocument(
-                      <ItemPlayer typeOfMedia={testDataItem.typeOfMedia} src={testDataItem.src} itemIsLiked={testDataItem.itemIsLiked} autoPlay={testDataItem.autoPlay} />
-              );
-              let itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
+        const item = renderIntoDocument(
+                <ItemPlayer typeOfMedia={testDataItem.typeOfMedia} src={testDataItem.src} itemIsLiked={testDataItem.itemIsLiked} autoPlay={testDataItem.autoPlay} />
+        );
+        let itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
 
+        it(testDataItem.title + '-> item and item player exist', (done)=>{
               expect(item).toExist();
               expect(itemPlayerRef) .toExist();
+              done();
+        });
+        it(testDataItem.title + ' -> state tests', (done)=>{
               expect(item.state.typeOfMedia).toEqual(testDataItem.typeOfMedia);
               expect(item.state.liked).toEqual(testDataItem.itemIsLiked);
               expect(item.state.autoPlay).toEqual(testDataItem.autoPlay);
+              done();
+        });
+        it(testDataItem.title + '-> src tests', (done)=>{
               expect(item.props.src).toEqual(testDataItem.src);
               expect(itemPlayerRef.src).toEqual(hostName+testDataItem.src);
-
               done();
         });
     });
