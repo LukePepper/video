@@ -1,19 +1,21 @@
 import * as React from 'react';
 import expect from 'expect';
 import {renderIntoDocument} from 'react-dom/test-utils';
+import Common from 'test/common.js';
+var commonData = new Common;
+const testImages= new commonData.testImages();
+const hostName = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
 import ItemPlayer from './ItemPlayer';
 
-/* test data
-* todo: move this to an external location
-*/
-const testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
+
+
+//const testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
 const testData = [
   { title: 'should render with LIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:true, autoPlay:true },
   { title: 'should render with UNLIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:false, autoPlay:true },
   { title: 'should render with LIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:true, autoPlay:true },
   { title: 'should render with UNLIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:false, autoPlay:true },
 ];
-const testServerUrl = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
 
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
@@ -29,7 +31,7 @@ describe('App/components/ListItems/ItemPlayer', function(){
               expect(item.state.liked).toEqual(testDataItem.itemIsLiked);
               expect(item.state.autoPlay).toEqual(testDataItem.autoPlay);
               expect(item.props.src).toEqual(testDataItem.src);
-              expect(itemPlayerRef.src).toEqual(testServerUrl+testDataItem.src);
+              expect(itemPlayerRef.src).toEqual(hostName+testDataItem.src);
 
               done();
         });
