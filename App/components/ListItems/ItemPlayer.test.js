@@ -15,8 +15,6 @@ var testData = [
 ];
 var testServerUrl = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
 
-console.log('window.location.hostname :'+window.location.hostname );
-
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
         it(testDataItem.title, (done)=>{

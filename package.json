@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server",
-    "startNew": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
-"startNewWP2": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
+    "startOld": "webpack-dev-server",
+    "start": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
     "test": "mocha --watch App/**/*.test.js"
   },
   "repository": {
