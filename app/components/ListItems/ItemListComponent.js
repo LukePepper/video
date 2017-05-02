@@ -6,9 +6,6 @@
  ********************************************************************************
  */
 
-//var React=require('react');
-//var PropTypes=require('prop-types');
-//var uuid=require('uuid');
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid';
@@ -78,7 +75,6 @@ export default class ItemListComponent extends React.Component {
 //module.exports=ItemListComponent;
 
 ItemListComponent.propTypes={
-        componentIndex: PropTypes.number,
         numItemsRendered:  PropTypes.number,
         itemComponentData:  PropTypes.object,
         itemIsLiked: PropTypes.bool,

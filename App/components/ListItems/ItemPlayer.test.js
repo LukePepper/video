@@ -6,14 +6,14 @@ import ItemPlayer from './ItemPlayer';
 /* test data
 * todo: move this to an external location
 */
-var testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
-var testData = [
+const testImages= {videos: "videos/drum_pick-up.mp4", images: "images/IMG_1406.JPG"};//todo change these to a generic test doc or web url
+const testData = [
   { title: 'should render with LIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:true, autoPlay:true },
   { title: 'should render with UNLIKED video', typeOfMedia: 'videos', src: testImages.videos, itemIsLiked:false, autoPlay:true },
   { title: 'should render with LIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:true, autoPlay:true },
   { title: 'should render with UNLIKED image', typeOfMedia: 'images', src: testImages.images, itemIsLiked:false, autoPlay:true },
 ];
-var testServerUrl = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
+const testServerUrl = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
 
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
