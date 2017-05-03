@@ -3,8 +3,8 @@ import expect from 'expect';
 import {renderIntoDocument} from 'react-dom/test-utils';
 import Common from 'test/common.js';
 var commonData = new Common;
-const testImages= new commonData.testImages();
-const hostName = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
+const testImages= commonData.testImages();
+const hostName = commonData.testServerUrl(window.location.hostname);
 import ItemPlayer from './ItemPlayer';
 
 const testData = [

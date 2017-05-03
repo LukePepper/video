@@ -5,8 +5,12 @@ import expect from 'expect';
 import {renderIntoDocument} from 'react-dom/test-utils';
 import {Simulate} from 'react-dom/test-utils';
 import Common from 'test/common.js';
+var commonData = new Common;
+const hostName = commonData.testServerUrl(window.location.hostname);
 import ItemListComponent from './ItemListComponent';
-const hostName = (window.location.hostname == '' ) ? '' : 'http://localhost:8081/';
+
+//todo try using these: import {testImages} from 'common.js'
+
 
 const itemComponentData={title:'test link', src:'videos/drum_pick-up.mp4', src_thumbnail:'videos/drum_pick-up.png'};
 const numItemsRendered=1;

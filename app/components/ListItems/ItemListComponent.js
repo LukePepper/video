@@ -24,8 +24,6 @@ export default class ItemListComponent extends React.Component {
         };
     }
     itemLikeClicked(e){
-console.log('@@@@ itemLikeClicked() @@@@@@@@');
-console.log('before this.state.itemIsLiked: '+this.state.itemIsLiked);
         let itemLiked = (e == undefined) ? 'unit-test' : e.currentTarget.dataset.src;
         let newLikeState = (this.state.itemIsLiked) ? false : true;
         this.setState(
@@ -37,9 +35,6 @@ console.log('before this.state.itemIsLiked: '+this.state.itemIsLiked);
                 this.props.itemLikeClicked(this.state.itemLiked);
             }
         );
-        console.log('@@@@ itemLikeClicked() @@@@@@@@');
-        console.log('2- this.state.itemIsLiked: '+this.state.itemIsLiked);
-
     }
     itemClicked(e){
         let itemClicked = (e == undefined) ? 'unit-test' : e.currentTarget.dataset.src;

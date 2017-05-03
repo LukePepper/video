@@ -1,6 +1,8 @@
 import React from 'react';
 
 export default class testData extends React.Component {
+
+  //todo try using these: import {testImages} from 'common.js'
   constructor(props) {
       super(props);
       this.state = {testServerUrl: null};
