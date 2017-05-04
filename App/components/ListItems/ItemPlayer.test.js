@@ -17,7 +17,12 @@ const testData = [
 describe('App/components/ListItems/ItemPlayer', function(){
     testData.map((testDataItem)=>{
         const item = renderIntoDocument(
-                <ItemPlayer typeOfMedia={testDataItem.typeOfMedia} src={testDataItem.src} itemIsLiked={testDataItem.itemIsLiked} autoPlay={testDataItem.autoPlay} />
+                <ItemPlayer
+                    typeOfMedia={testDataItem.typeOfMedia}
+                    src={testDataItem.src}
+                    itemIsLiked={testDataItem.itemIsLiked}
+                    autoPlay={testDataItem.autoPlay}
+                />
         );
         let itemPlayerRef = (testDataItem.typeOfMedia == 'videos') ? item.refs.video : item.refs.image;
 

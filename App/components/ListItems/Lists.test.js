@@ -1,53 +1,73 @@
 import * as React from 'react';
 import expect from 'expect';
-import {renderIntoDocument} from 'react-dom/test-utils';
+import * as TestUtils from 'react-dom/test-utils';//todo refactor
+import {renderIntoDocument} from 'react-dom/test-utils';//todo refactor
 import Common from 'test/common.js';
 var commonData = new Common;
 const hostName = commonData.testServerUrl(window.location.hostname);
-import {testServerUrl} from 'test/common.js' //todo do i need this?
+import {testServerUrl} from 'test/common.js' //todo refactor: do i need this?
 import Lists from './Lists'
 
-const itemComponentData={title:'test link', src:'videos/drum_pick-up.mp4', src_thumbnail:'videos/drum_pick-up.png'};
-const sections=['Test Section 0', 'Test Section 1', 'Test Section 2'];
-const itemPath='/images';
-const numItemsRendered=1;
-
- function itemClicked(){
-  return true;
-}
-function itemLikeClicked(){
-  return true;
-}
-function isThisItemLiked(){
-  return true;
-}
-function isThisItemWatched(){
-  return true;
-}
-
 describe('App/components/ListItems/Lists', function(){
-        // var ListComponent = <Lists
-        //     allItemData={itemComponentData}
-        //     sections={sections}
-        //     itemPath={itemPath}
-        //     itemClicked={this.itemClicked.bind(this)}
-        //     itemLikeClicked={this.itemLikeClicked.bind(this)}
-        //     isThisItemLiked={this.isThisItemLiked.bind(this)}
-        //     isThisItemWatched={this.isThisItemWatched.bind(this)}
-        // />;
-        it('hello world' + ' -> item exists', (done)=>{
-              expect(1).toEqual(1);
-              done();
+        var listComponent = renderIntoDocument(
+            <Lists
+                allItemData={commonData.allItemData()}
+                sections={commonData.sections()}
+                itemPath={commonData.itemPath()}
+                itemClicked={commonData.itemClicked}
+                itemLikeClicked={commonData.itemLikeClicked}
+                isThisItemLiked={commonData.isThisItemLiked}
+                isThisItemWatched={commonData.isThisItemWatched}
+            />
+        );
+        it('ListComponent Rendered', ()=>{
+            expect(listComponent).toExist;
+        });
+        it('Check State Data', ()=>{
+            expect(listComponent.state.sections).toEqual(commonData.sections());
+            expect(listComponent.state.allItemData).toEqual(commonData.allItemData());
         });
 
-        //itemClicked()
-        //do click
-        //check state.itemClicked
-        //calls func in this file
-
-        //itemLikeClicked()
-        //do click
-        //check state.itemLiked
-        //calls func in this file
+        //check rendered data is correct - check all sections exist
+        it('Check Rendered Data -> Section Headings', ()=>{
+          let headingsTags = TestUtils.scryRenderedDOMComponentsWithTag(listComponent, 'h3');//get all the <h3> tags
+          headingsTags.map((headingItem,index)=>{
+              expect(headingItem.textContent).toContain(commonData.sections()[index]);
+          });
+        });
+        //todo Check Rendered Data -> Item Data -> Title
+        //do i need watched and unwatched states? test both videos and images?
+        it('Check Rendered Data -> Item Data -> Title', ()=>{
+          let liTags = TestUtils.scryRenderedDOMComponentsWithTag(listComponent, 'li');//get all the <h3> tags
+          liTags.map((liItem,index)=>{
+              for(let i=0;i<liItem.children.length;i++){
+                if(liItem.children[i].id.includes('item')){
+                  //this is a link component
+                  expect(liItem.children[i].dataset.src).toEqual(commonData.allItemData()[index].src);//check the src
+                  expect(liItem.children[i].style.backgroundImage).toEqual('url(\"'+commonData.itemPath()+commonData.allItemData()[index].src_thumbnail+'\")');//check the background image - i.e. the thumb_src
+                  expect(commonData.sections()[index]).toEqual(commonData.allItemData()[index].section);//check the section
+                  //check the title`
+                  for(let j=0;j<liItem.children[i].length;j++){
+                    if(liItem.children[i].children[j].className.includes('linkText') ){
+                      let linkText=liItem.children[i].children[j].textContent;
+                      expect(linkText).toEqual(allItemData()[index].title);
+                    }
+                  };
+                }else if(liItem.children[i].id.includes('like')){
+                  //this is a like component
+                }
+              }
+          });
+        });
+        it('Click -> ITEM is clicked', ()=>{
+            let clickOnItem = listComponent.itemClicked(commonData.itemComponentData.src);//simulate item click
+            expect(commonData.itemComponentData.src).toEqual(listComponent.state.itemClicked);//check the state and ensure the correct data is stored
+            expect(clickOnItem).toBe(true);  //check the click calls the function: itemClicked() in this file
+        });
+        it('Click -> LIKED is clickled', ()=>{
+          let clickOnItemLike = listComponent.itemLikeClicked(commonData.itemComponentData.src);//simulate item click
+          expect(commonData.itemComponentData.src).toEqual(listComponent.state.itemLiked);//check the state and ensure the correct data is stored
+          expect(clickOnItemLike).toBe(true);  //check the click calls the function: itemClicked() in this file
+        });
 
 });

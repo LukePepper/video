@@ -66,11 +66,13 @@ export default class Lists extends React.Component{
         this.setState({itemClicked:clickedItemSrc},()=>{
             this.props.itemClicked(this.state.itemClicked);
         });
+        return true;
     }
     itemLikeClicked(clickedLikeItemSrc){
         this.setState({itemLiked:clickedLikeItemSrc},()=>{
             this.props.itemLikeClicked(this.state.itemLiked);
         });
+        return true;
     }
     isThisItemLiked(itemSrc){
         return this.props.isThisItemLiked(itemSrc)
