@@ -32,7 +32,6 @@ export default class AppComponent extends React.Component{
     }
     render() {
         //todo - bugfix re: needing to add a div to first component to render on menu change
-
         return(
             <div>
                 <Nav
@@ -51,6 +50,3 @@ export default class AppComponent extends React.Component{
         )
     }
 }
-//module.exports=AppComponent;
-
-

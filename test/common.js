@@ -1,6 +1,6 @@
 import React from 'react';
 
-
+//todo move these into the state
 var itemClickedVal=false;
 var itemLikeClickedVal=false;
 
@@ -27,6 +27,7 @@ export default class testData extends React.Component {
     return allItemDataArray;
   }
   sections(){
+    //do experiment with doing alway with the need to call() - perhaps losing the return?
       return ['Test Section 0', 'Test Section 1', 'Test Section 2'];
   }
   itemPath(){

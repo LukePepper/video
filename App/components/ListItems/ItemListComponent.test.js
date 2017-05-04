@@ -12,13 +12,13 @@ import ItemListComponent from './ItemListComponent';
 //todo try using these: import {testImages} from 'common.js'
 
 
-const itemComponentData={title:'test link', src:'videos/drum_pick-up.mp4', src_thumbnail:'videos/drum_pick-up.png'};
+const itemComponentData={title:'test link', src:'drum_pick-up.mp4', src_thumbnail:'drum_pick-up.png'};
 const numItemsRendered=1;
 const testData = [
-  { title: 'LIKED item, UNWATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, itemIsLiked:true, itemIsWatched:false },
-  { title: 'UNLIKED item, UNWATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, itemIsLiked:false, itemIsWatched:false },
-  { title: 'LIKED item, WATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, itemIsLiked:true, itemIsWatched:true },
-  { title: 'UNLIKED item, WATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, itemIsLiked:false, itemIsWatched:true },
+  { title: 'LIKED item, UNWATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, src_thumbnail: itemComponentData.src_thumbnail, itemIsLiked:true, itemIsWatched:false },
+  { title: 'UNLIKED item, UNWATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, src_thumbnail: itemComponentData.src_thumbnail, itemIsLiked:false, itemIsWatched:false },
+  { title: 'LIKED item, WATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, src_thumbnail: itemComponentData.src_thumbnail, itemIsLiked:true, itemIsWatched:true },
+  { title: 'UNLIKED item, WATCHED', itemComponentData: itemComponentData, numItemsRendered: numItemsRendered, src: itemComponentData.src, src_thumbnail: itemComponentData.src_thumbnail, itemIsLiked:false, itemIsWatched:true },
 ];
 
 function itemClicked(e){
@@ -27,7 +27,7 @@ function itemClicked(e){
 function itemLikeClicked(e){
   //do nothing
 }
-describe('App/components/ListItems/ListComponent', function(){
+describe('App/components/ListItems/ItemListComponent', function(){
     testData.map((testDataItem)=>{
         let item = renderIntoDocument(
                 <ItemListComponent
@@ -101,7 +101,8 @@ describe('App/components/ListItems/ListComponent', function(){
         });
         it(testDataItem.title + '-> background image', (done)=>{
           let linkObj = item.refs['item_'+parseInt(numItemsRendered)];
-          expect(linkObj.style.backgroundImage).toBe('url(\"'+item.props.itemPath+item.state.itemComponentData.src_thumbnail+'\")');
+          var stringToSearchFor = ( item.props.itemPath.includes('http') ) ? 'url(\"'+item.props.itemPath+item.state.itemComponentData.src_thumbnail+'\")' : 'url('+item.props.itemPath+item.state.itemComponentData.src_thumbnail+')' ;
+          expect(linkObj.style.backgroundImage).toBe(stringToSearchFor);
           done();
         });
 

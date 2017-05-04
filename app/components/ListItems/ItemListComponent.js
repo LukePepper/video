@@ -67,7 +67,7 @@ export default class ItemListComponent extends React.Component {
                     onClick={this.itemClicked.bind(this)}
                     data-src={this.state.itemComponentData.src}
                     key={uuid.v4()}
-                    style={{ backgroundImage: 'url('+ this.props.itemPath + this.state.itemComponentData.src_thumbnail + ' )' } }
+                    style={{ backgroundImage: 'url('+ this.props.itemPath + this.state.itemComponentData.src_thumbnail + ')' } }
                 >
                     <div className="linkText" ref="linkText">
                         {this.state.itemComponentData.title}
