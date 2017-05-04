@@ -70,5 +70,4 @@ describe('App/components/ListItems/Lists', function(){
           expect(commonData.itemComponentData.src).toEqual(listComponent.state.itemLiked);//check the state and ensure the correct data is stored
           expect(clickOnItemLike).toBe(true);  //check the click calls the function: itemClicked() in this file
         });
-
 });
