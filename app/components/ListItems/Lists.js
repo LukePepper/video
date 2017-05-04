@@ -6,7 +6,7 @@
  ********************************************************************************
  */
 
-//todo: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
+//TODO: bugfix: first item in JSON file must have section of '' - if not there are problems displaying the section headings - fix this
 
 //var React=require('react');
 //var PropTypes=require('prop-types');

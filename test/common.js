@@ -1,6 +1,6 @@
 import React from 'react';
 
-//todo move these into the state
+//TODO move these into the state
 var itemClickedVal=false;
 var itemLikeClickedVal=false;
 
@@ -13,7 +13,7 @@ export default class testData extends React.Component {
       return {
           title:'test link',
           src:'drum_pick-up.mp4',
-          src_thumbnail:'drum_pick-up.png',
+          src_thumbnail:'drum_pick-up.png'
         };
   }
   allItemData(){

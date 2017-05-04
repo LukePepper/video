@@ -31,7 +31,7 @@ export default class AppComponent extends React.Component{
         });
     }
     render() {
-        //todo - bugfix re: needing to add a div to first component to render on menu change
+        //TODO - bugfix re: needing to add a div to first component to render on menu change
         return(
             <div>
                 <Nav

@@ -9,7 +9,7 @@ var commonData = new Common;
 const hostName = commonData.testServerUrl(window.location.hostname);
 import ItemListComponent from './ItemListComponent';
 
-//todo try using these: import {testImages} from 'common.js'
+//TODO try using these: import {testImages} from 'common.js'
 
 
 const itemComponentData={title:'test link', src:'drum_pick-up.mp4', src_thumbnail:'drum_pick-up.png'};

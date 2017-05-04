@@ -1,11 +1,11 @@
 import * as React from 'react';
 import expect from 'expect';
-import * as TestUtils from 'react-dom/test-utils';//todo refactor
-import {renderIntoDocument} from 'react-dom/test-utils';//todo refactor
+import * as TestUtils from 'react-dom/test-utils';//TODO refactor
+import {renderIntoDocument} from 'react-dom/test-utils';//TODO refactor
 import Common from 'test/common.js';
 var commonData = new Common;
 const hostName = commonData.testServerUrl(window.location.hostname);
-import {testServerUrl} from 'test/common.js' //todo refactor: do i need this?
+import {testServerUrl} from 'test/common.js' //TODO refactor: do i need this?
 import Lists from './Lists'
 
 describe('App/components/ListItems/Lists', function(){
@@ -35,16 +35,17 @@ describe('App/components/ListItems/Lists', function(){
               expect(headingItem.textContent).toContain(commonData.sections()[index]);
           });
         });
-        //todo Check Rendered Data -> Item Data -> Title
+        //TODO Check Rendered Data -> Item Data -> Title
         //do i need watched and unwatched states? test both videos and images?
-        it('Check Rendered Data -> Item Data -> Title', ()=>{
+        it('Check Rendered Data -> Item Data -> Title, src, backgroundImage (src_thumbnail), section', ()=>{
           let liTags = TestUtils.scryRenderedDOMComponentsWithTag(listComponent, 'li');//get all the <h3> tags
           liTags.map((liItem,index)=>{
               for(let i=0;i<liItem.children.length;i++){
                 if(liItem.children[i].id.includes('item')){
                   //this is a link component
-                  expect(liItem.children[i].dataset.src).toEqual(commonData.allItemData()[index].src);//check the src
-                  expect(liItem.children[i].style.backgroundImage).toEqual('url(\"'+commonData.itemPath()+commonData.allItemData()[index].src_thumbnail+'\")');//check the background image - i.e. the thumb_src
+                  var stringToSearchFor = ( hostName.includes('http') ) ? 'url(\"'+commonData.itemPath()+commonData.allItemData()[index].src_thumbnail+'\")' : 'url('+commonData.itemPath()+commonData.allItemData()[index].src_thumbnail+')' ;
+                  expect(liItem.children[i].getAttribute('data-src')).toEqual(commonData.allItemData()[index].src);//check the src
+                  expect(liItem.children[i].style.backgroundImage).toEqual(stringToSearchFor);//check the background image - i.e. the thumb_src
                   expect(commonData.sections()[index]).toEqual(commonData.allItemData()[index].section);//check the section
                   //check the title`
                   for(let j=0;j<liItem.children[i].length;j++){

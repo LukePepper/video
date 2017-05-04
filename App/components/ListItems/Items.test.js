@@ -24,7 +24,7 @@ describe('App/components/ListItems/Items', function(){
             expect(itemsComponent.state.typeOfMedia).toEqual(typeOfMedia);
         });
         it('Click -> ITEM is clicked', ()=>{
-//todo try this out :  TestUtils.Simulate.doubleClick(liComponent);          
+//TODO try this out :  TestUtils.Simulate.doubleClick(liComponent);          
             let clickOnItem = itemsComponent.itemClicked(commonData.itemComponentData.src);//simulate item click
             expect(commonData.itemComponentData.src).toEqual(itemsComponent.state.itemClicked);//check the state and ensure the correct data is stored
             expect(clickOnItem).toBe(true);  //check the click calls the function: itemClicked() in this file
