@@ -11,7 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import mediaJSON from 'json-loader!./ListItems/Media.json';//JSON file containing the videos
+import mediaJSON from './ListItems/Media.json';//JSON file containing the videos
 import Modal from './Modal';
 import Items from './ListItems/Items';
 import ItemPlayer  from './ListItems/ItemPlayer';

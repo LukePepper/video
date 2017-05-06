@@ -1,16 +1,11 @@
 import * as React from 'react';
 import expect from 'expect';
-import * as TestUtils from 'react-dom/test-utils';//TODO refactor
 import {renderIntoDocument} from 'react-dom/test-utils';//TODO refactor
-import Common from 'test/common.js';
-var commonData = new Common;
-const hostName = commonData.testServerUrl(window.location.hostname);
-import {testServerUrl} from 'test/common.js' //TODO refactor: do i need this?
 import App from './App'
 
 describe('App/components/Components/App', function(){
         var AppComponent = renderIntoDocument(
-            <App/>
+            <App />
         );
         it('AppComponent rendered', ()=>{
             expect(App).toExist;

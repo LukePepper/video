@@ -7,7 +7,8 @@
     "build": "webpack",
     "startOld": "webpack-dev-server",
     "start": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
-    "test": "mocha --watch App/**/*.test.js"
+    "test": "mocha --watch App/**/*.test.js",
+    "production" : "webpack --progress --profile --colors --config webpack.production.config.js "
   },
   "repository": {
     "type": "git",

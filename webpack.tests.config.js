@@ -24,7 +24,7 @@ module.exports = {
         }
     ]
   },
-    devServer: {
+  devServer: {
     host: host,
     port: port
   },
