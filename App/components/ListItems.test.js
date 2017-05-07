@@ -29,6 +29,26 @@ function isModalOpen(ListItemsComponent, testItemData){
 }
 
 describe('App/components/Components/ListItems', function(){
+        function isModalOpen(ListItemsComponent, ){
+          try{
+            let modalObj = TestUtils.findRenderedDOMComponentWithClass(
+                ListItemsComponent,
+                'modalStyle'
+            );
+            if(modalObj.getAttribute('id') == 'modal'){
+                return true;
+            }
+            else{
+              return false;
+            }
+
+          }
+          catch(e){
+            //we are expecting the modal to not exist as an error is a good thing
+            return false;
+          }
+        }
+
         const testItemData=mediaJSON.videos[2];
         var itemPosition=0;
         const ListItemsComponent = TestUtils.renderIntoDocument(
@@ -86,31 +106,13 @@ describe('App/components/Components/ListItems', function(){
           expect( ListItemsComponent.totalItems() ).toBe(totalItems);
         });
         it('Modal -> Open', ()=>{
-          //TODO refactor using function and promise
           ListItemsComponent.state.ModalControls.playItem(testItemData.src);
-          let modalObj = TestUtils.findRenderedDOMComponentWithClass(
-              ListItemsComponent,
-              'modalStyle'
-          );
-          expect(modalObj.getAttribute('id')).toBe('modal');
+          expect( isModalOpen(ListItemsComponent) ).toBe(true);
         });
         it('Modal -> Close', ()=>{
-          //TODO refactor using function and promise
-          let testPassed=false;
           ListItemsComponent.state.ModalControls.closeModal();
-          try{
-            let modalObj = TestUtils.findRenderedDOMComponentWithClass(
-                ListItemsComponent,
-                'modalStyle'
-            );
-          }
-          catch(e){
-            //we are expecting the modal to not exist as an error is a good thing
-            testPassed=true;
-          }
-          expect(testPassed).toBe(true);
+          expect( isModalOpen(ListItemsComponent) ).toBe(false);
         });
-
         it('buildItemsStateTable', ()=>{
           /*
             //TODO
@@ -125,21 +127,10 @@ console.log('itemPosition: '+itemPosition);
             expect(watchedValue).toBe(false);
 */
         });
-
         it('itemClicked', ()=>{
             ListItemsComponent.state.allItemData[itemPosition].watched=false;//reset the watched state
             ListItemsComponent.itemClicked(testItemData.src);
             expect(ListItemsComponent.state.itemClicked).toBe(testItemData.src);
-
-            //check the modal is open
-            //TODO refactor using function and promise
-            let modalObj = TestUtils.findRenderedDOMComponentWithClass(
-                ListItemsComponent,
-                'modalStyle'
-            );
-            expect(modalObj.getAttribute('id')).toBe('modal');
-
-            //check the modal function for stuff - i.e. updating the watched state of the clicked item
-            expect(ListItemsComponent.state.currentItem).toBe(testItemData.src);
+            expect( isModalOpen(ListItemsComponent) ).toBe(true);
         });
 });
