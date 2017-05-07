@@ -140,7 +140,8 @@ export default class ListItems extends React.Component {
                             <ItemPlayer
                                 src={this.state.itemPath+this.state.currentItem}
                                 typeOfMedia={this.state.typeOfMedia}
-                                autoPlay={this.state.videoAutoPlay} />
+                                autoPlay={this.state.videoAutoPlay}
+                            />
                         </Modal>
                     </div>
                 </div>

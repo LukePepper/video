@@ -1,59 +1,35 @@
 import * as React from 'react';
 import expect from 'expect';
 import * as TestUtils from 'react-dom/test-utils';
-import Common from 'test/common.js';
-var commonData = new Common;
-const hostName = commonData.testServerUrl(window.location.hostname);
 import ListItems from './ListItems';
 import mediaJSON from './ListItems/Media.json';
 
-function isModalOpen(ListItemsComponent, testItemData){
-    try{
-        let modalObj = TestUtils.findRenderedDOMComponentWithClass(
-            ListItemsComponent,
-            'modalStyle'
-        );
-
-        if(modalObj.getAttribute('id') == 'modal'){
-          return true;
-        }
-        else{
-          return false;
-        }
-    }
-    catch(e){
-        //the modal does not exist - return false
-        return false;
-    }
-
-}
-
 describe('App/components/Components/ListItems', function(){
         function isModalOpen(ListItemsComponent, ){
-          try{
-            let modalObj = TestUtils.findRenderedDOMComponentWithClass(
-                ListItemsComponent,
-                'modalStyle'
-            );
-            if(modalObj.getAttribute('id') == 'modal'){
-                return true;
+            try{
+                let modalObj = TestUtils.findRenderedDOMComponentWithClass(
+                    ListItemsComponent,
+                    'modalStyle'
+                );
+                if(modalObj.getAttribute('id') == 'modal'){
+                    return true;
+                }
+                else{
+                    return false;
+                }
             }
-            else{
-              return false;
+            catch(e){
+                //we are expecting the modal to not exist as an error is a good thing
+                return false;
             }
-          }
-          catch(e){
-            //we are expecting the modal to not exist as an error is a good thing
-            return false;
-          }
         }
 
-        const testItemData=mediaJSON.videos[2];
-        var itemPosition=0;
+        const testItemData=mediaJSON.videos[2];//row of data to use as test
+        var itemPosition=0;//initialise this var - will be set to correct value later
         const ListItemsComponent = TestUtils.renderIntoDocument(
             <ListItems typeOfMedia="videos" />
         );
-        const allItemData=ListItemsComponent.state.allItemData;//TODO move after test
+        const allItemData=ListItemsComponent.state.allItemData;
 
         it('ListItemsComponent rendered', ()=>{
             expect(ListItemsComponent).toExist;
@@ -65,6 +41,11 @@ describe('App/components/Components/ListItems', function(){
             expect(ListItemsComponent.state.mediaData).toEqual(mediaJSON);
             expect(ListItemsComponent.state.videoAutoPlay).toEqual(true);
             expect(ListItemsComponent.state.itemPath).toEqual('../videos/');
+        });
+        it('buildItemsStateTable', (done)=>{
+            let allItemDataReturned =  ListItemsComponent.buildItemsStateTable();
+            expect( allItemDataReturned[itemPosition].src ).toEqual(allItemData[itemPosition].src);
+            done();
         });
         it('itemPosition', ()=>{
           let thisItemPosition;
@@ -111,11 +92,6 @@ describe('App/components/Components/ListItems', function(){
         it('Modal -> Close', ()=>{
           ListItemsComponent.state.ModalControls.closeModal();
           expect( isModalOpen(ListItemsComponent) ).toBe(false);
-        });
-        it('buildItemsStateTable', (done)=>{
-            let allItemData =  ListItemsComponent.buildItemsStateTable();
-            expect( allItemData[itemPosition].src ).toEqual(testItemData.src);
-            done();
         });
         it('itemClicked', ()=>{
             ListItemsComponent.state.allItemData[itemPosition].watched=false;//reset the watched state
