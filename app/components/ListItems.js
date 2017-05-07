@@ -11,7 +11,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import mediaJSON from './ListItems/Media.json';//JSON file containing the videos
+import mediaJSON from './ListItems/Media.json';
 import Modal from './Modal';
 import Items from './ListItems/Items';
 import ItemPlayer  from './ListItems/ItemPlayer';
@@ -147,8 +147,6 @@ export default class ListItems extends React.Component {
         );
     }
 }
-//module.exports=ListItems;
-
 ListItems.propTypes={
     typeOfMedia: PropTypes.string.isRequired
 };

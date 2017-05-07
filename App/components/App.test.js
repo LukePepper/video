@@ -1,6 +1,6 @@
 import * as React from 'react';
 import expect from 'expect';
-import {renderIntoDocument} from 'react-dom/test-utils';//TODO refactor
+import {renderIntoDocument} from 'react-dom/test-utils';
 import App from './App'
 
 describe('App/components/Components/App', function(){

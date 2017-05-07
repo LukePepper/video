@@ -3,10 +3,12 @@
     Modal - displayed on item list onCLick - displays images or videos
 ********************************************************************************
 */
-//var React=require('react');
 import React from'react';
 
-export default class ModalItemList extends React.Component {
+//TODO fade modal in and out
+//TODO maintain video player height when clicking next/prev
+
+export default class Modal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -86,7 +88,7 @@ export default class ModalItemList extends React.Component {
         }
         return (
             <div>
-                <div className="modalStyle">
+                <div className="modalStyle" id="modal">
                     {this.props.children}
                     <div className="glyphicon glyphicon-remove" aria-hidden="true" id="closeModal" onClick={e => this.close(e)}></div>
                 </div>
@@ -95,4 +97,3 @@ export default class ModalItemList extends React.Component {
         )
     }
 }
-//module.exports=ModalItemList;
