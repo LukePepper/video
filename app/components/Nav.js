@@ -31,7 +31,8 @@ export default class Nav extends React.Component{
         );
     }
     setTypeOfMedia(mediaType){
-        this.props.setTypeOfMedia(mediaType);
+        let returnedData = this.props.setTypeOfMedia(mediaType);
+        return returnedData;
     }
     componentWillMount(){
         if(this.props.navItems!==undefined){
