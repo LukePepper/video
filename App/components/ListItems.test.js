@@ -41,7 +41,6 @@ describe('App/components/Components/ListItems', function(){
             else{
               return false;
             }
-
           }
           catch(e){
             //we are expecting the modal to not exist as an error is a good thing
@@ -113,19 +112,10 @@ describe('App/components/Components/ListItems', function(){
           ListItemsComponent.state.ModalControls.closeModal();
           expect( isModalOpen(ListItemsComponent) ).toBe(false);
         });
-        it('buildItemsStateTable', ()=>{
-          /*
-            //TODO
-            let watchedValue = ListItemsComponent.isThisItemWatched(testItemData.src);
-            expect(watchedValue).toBe(true);
-console.log(watchedValue);
-            ListItemsComponent.buildItemsStateTable();
-console.log(watchedValue);
-            watchedValue = ListItemsComponent.isThisItemWatched(testItemData.src);
-console.log(ListItemsComponent.state.allItemData[itemPosition]);
-console.log('itemPosition: '+itemPosition);
-            expect(watchedValue).toBe(false);
-*/
+        it('buildItemsStateTable', (done)=>{
+            let allItemData =  ListItemsComponent.buildItemsStateTable();
+            expect( allItemData[itemPosition].src ).toEqual(testItemData.src);
+            done();
         });
         it('itemClicked', ()=>{
             ListItemsComponent.state.allItemData[itemPosition].watched=false;//reset the watched state

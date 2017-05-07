@@ -102,11 +102,11 @@ export default class ListItems extends React.Component {
             });
             return section;
         });
-
         this.setState({
             allItemData: itemsArrayOrdered,
             sections: sections
         });
+        return itemsArrayOrdered;
     }
     componentWillMount(){
         this.buildItemsStateTable();//build the arrays of items and sections
