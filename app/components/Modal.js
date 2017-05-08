@@ -16,7 +16,7 @@ export default class Modal extends React.Component {
         }
     }
     openModal () {
-        this.props.self.setState({ isModalOpen: true })
+        this.props.self.setState({ isModalOpen: true });
     }
     closeModal () {
         this.props.self.setState({ isModalOpen: false })
@@ -24,7 +24,7 @@ export default class Modal extends React.Component {
     playItem(clickedItemSrc){
         if(clickedItemSrc.currentTarget !== undefined){
             //this a call from the item onClick
-            clickedItem.src = currentTarget.dataset.src;
+            clickedItemSrc = currentTarget.dataset.src;
         }
         this.props.self.setState({
             currentItem: clickedItemSrc
