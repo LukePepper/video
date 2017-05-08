@@ -15,7 +15,9 @@ export default class Nav extends React.Component{
     generateNavItem(item,index){
         var menuChange =   this.props.menuChange;
         return(
-            <li className={(item.title==this.props.selectedMenuItem) ? "selected" : ""} key={index}><a onClick={e => menuChange(e)} title={item.title} ref={'menuItem_'+index}>{item.title}</a></li>
+            <li className={(item.title==this.props.selectedMenuItem) ? "selected" : ""} key={index}>
+                <a onClick={e => menuChange(e)} title={item.title} ref={'menuItem_'+index}>{item.title}</a>
+            </li>
         )
     }
     //TODO on the map use ()=> to eliminate the need for the self
