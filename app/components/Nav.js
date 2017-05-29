@@ -5,7 +5,7 @@ export default class Nav extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            navItems:  [{ title:'videos', url:'/video'}, {title:'images',url:'/images'}],
+            navItems:  [{ title:'videos', url:'/video'}],
             selectedMenuItem: 'videos'
         };
     }

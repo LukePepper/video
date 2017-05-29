@@ -51,14 +51,6 @@ export default class ItemListComponent extends React.Component {
     render(){
         return(
             <li key={uuid.v4()}>
-                <div
-                    className={(this.state.itemIsLiked) ? 'glyphicon glyphicon-heart liked' : 'glyphicon glyphicon-heart'}
-                    id={"like_"+this.state.numItemsRendered}
-                    ref={"like_"+this.state.numItemsRendered}
-                    onClick={this.itemLikeClicked.bind(this)}
-                    key={uuid.v4()}
-                    data-src={this.state.itemComponentData.src}
-                />
                 <a
                     href="#"
                     className={(this.state.itemIsWatched) ? 'watched' : ''}
