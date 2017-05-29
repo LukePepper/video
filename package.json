@@ -8,7 +8,7 @@
     "startOld": "webpack-dev-server",
     "start": "concurrently --kill-others  \"webpack-dev-server --config webpack.config.js\" \"webpack-dev-server --config webpack.tests.config.js --content-base unit-tests/ --inline\" \"mocha --watch App/**/*.test.js\"  ",
     "test": "mocha --watch App/**/*.test.js",
-    "production" : "webpack --progress --profile --colors --config webpack.production.config.js "
+    "production": "webpack --progress --profile --colors --config webpack.production.config.js "
   },
   "repository": {
     "type": "git",
@@ -50,8 +50,10 @@
     "mocha": "^3.3.0",
     "mocha-jsdom": "^1.1.0",
     "mocha-loader": "^1.1.1",
+    "node-sass": "^4.5.3",
     "open-browser-webpack-plugin": "0.0.5",
     "react-addons-test-utils": "^15.5.1",
+    "sass-loader": "^6.0.5",
     "should": "^11.2.1",
     "source-map": "^0.5.6",
     "source-map-loader": "^0.1.5",
