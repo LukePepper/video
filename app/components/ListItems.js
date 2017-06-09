@@ -133,6 +133,8 @@ export default class ListItems extends React.Component {
                         <Modal
                             isOpen={this.state.isModalOpen}
                             onClose={() => this.state.ModalControls.closeModal()}
+                            ref="Modal"
+                            self={this}
                         >
                             {this.state.ModalControls.likeItemButton(this.state.currentItem)}
                             {this.state.ModalControls.renderSkipButton('prev')}

@@ -19,9 +19,14 @@ describe('App/components/Components/ListItems', function(){
                 }
             }
             catch(e){
-                //we are expecting the modal to not exist as an error is a good thing
+                //if we are expecting the modal to not exist as an error is a good thing
                 return false;
             }
+        }
+        function resetWatchedItems(){
+          for(let i=0;i<ListItemsComponent.state.allItemData.length;i++){
+            ListItemsComponent.state.allItemData[i].watched=false;
+          }
         }
 
         const testItemData=mediaJSON.videos[2];//row of data to use as test
@@ -98,5 +103,62 @@ describe('App/components/Components/ListItems', function(){
             ListItemsComponent.itemClicked(testItemData.src);
             expect(ListItemsComponent.state.itemClicked).toBe(testItemData.src);
             expect( isModalOpen(ListItemsComponent) ).toBe(true);
+        });
+
+        //modal tests
+        it('Modal -> Play Item', ()=>{
+            ListItemsComponent.state.ModalControls.playItem(testItemData.src);
+            expect( isModalOpen(ListItemsComponent) ).toBe(true);
+        });
+        it('Modal -> Render Like Item button', ()=>{
+          expect(ListItemsComponent.refs.modalLikeButton).toExist;
+        });
+        it('Modal -> RenderSkip Button - > Next', ()=>{
+            expect(ListItemsComponent.refs.next).toExist;
+        });
+        it('Modal -> RenderSkip Button - < Prev', ()=>{
+            expect(ListItemsComponent.refs.next).toExist;
+        });
+        it('Modal -> RenderSkip Button - > Prev - first video opened - PREV should NOT display', ()=>{
+          ListItemsComponent.state.ModalControls.closeModal();
+          let testItemData=mediaJSON.videos[0];
+          ListItemsComponent.itemClicked(testItemData.src);
+          let prevButton = ListItemsComponent.refs.prev;
+          expect(prevButton).toEqual(undefined);
+        });
+        it('Modal -> Skip Item - > Next', ()=>{
+            let itemPosition=ListItemsComponent.itemPosition(ListItemsComponent.state.currentItem);
+            resetWatchedItems();
+            expect(ListItemsComponent.state.allItemData[itemPosition+1].watched).toBe(false);
+            ListItemsComponent.refs.Modal.skipItem('next',this);
+            expect(ListItemsComponent.state.allItemData[itemPosition+1].watched).toBe(true);
+        });
+        it('Modal -> RenderSkip Button - > Next - last video opened - LAST should NOT display', ()=>{
+          ListItemsComponent.state.ModalControls.closeModal();
+          let testItemData=ListItemsComponent.state.allItemData[ListItemsComponent.state.allItemData.length-1];
+          ListItemsComponent.itemClicked(testItemData.src);
+          let nextButton = ListItemsComponent.refs.next;
+          expect(nextButton).toEqual(undefined);
+        });
+        it('Modal -> Skip Item - < Prev', ()=>{
+          let itemPosition=ListItemsComponent.itemPosition(ListItemsComponent.state.currentItem);
+          resetWatchedItems();
+          expect(ListItemsComponent.state.allItemData[itemPosition-1].watched).toBe(false);
+          ListItemsComponent.refs.Modal.skipItem('prev',this);
+          expect(ListItemsComponent.state.allItemData[itemPosition-1].watched).toBe(true)
+        });
+        it('Modal -> Like Item button -> ClassName', ()=>{
+          let itemPosition=ListItemsComponent.itemPosition(ListItemsComponent.state.currentItem);
+          expect(ListItemsComponent.state.allItemData[itemPosition].itemIsLiked).toBe(undefined);
+          expect(ListItemsComponent.refs.modalLikeButton).toExist();
+          expect(ListItemsComponent.refs.modalLikeButton.className).toEqual('glyphicon glyphicon-heart');
+        });
+
+        it('Modal -> Like Item button -> Click', ()=>{
+          let itemPosition=ListItemsComponent.itemPosition(ListItemsComponent.state.currentItem);
+          expect(ListItemsComponent.state.allItemData[itemPosition].itemIsLiked).toBe(undefined);
+          ListItemsComponent.refs.Modal.likeItemButtonClicked();
+          expect(ListItemsComponent.refs.modalLikeButton.className).toEqual('glyphicon glyphicon-heart liked');
+          expect(ListItemsComponent.state.allItemData[itemPosition].itemIsLiked).toEqual(true);
         });
 });

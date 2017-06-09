@@ -16,10 +16,22 @@ export default class Modal extends React.Component {
         }
     }
     openModal () {
+      if(this.props.self !== undefined){
         this.props.self.setState({ isModalOpen: true });
+      }
+      else{
+        //call from tests
+        return true
+      }
     }
     closeModal () {
+      if(this.props.self !== undefined){
         this.props.self.setState({ isModalOpen: false })
+      }
+      else{
+        //call from tests
+        return false;
+      }
     }
     playItem(clickedItemSrc){
         if(clickedItemSrc.currentTarget !== undefined){
